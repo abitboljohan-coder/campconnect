@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment ça marche — CampConnect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green-dark:#0d1f0d;--green-deep:#173404;--green-mid:#27500A;--green-main:#639922;--green-light:#97C459;--green-pale:#C0DD97;--green-bg:#EAF3DE;--cream:#f5f2eb;--text:#1c1c1c;--text-muted:#6b6b6b;--max:780px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;background:rgba(245,242,235,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(99,153,34,0.12)}
+.nav-inner{width:100%;max-width:calc(var(--max) + 80px);margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--green-mid);text-decoration:none;display:flex;align-items:center;gap:7px}
+.nav-logo span{color:var(--green-main)}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--green-main)}
+.nav-link.active{color:var(--green-main)}
+.nav-cta{background:var(--green-main);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--green-mid)}
+@media(max-width:600px){.nav-link{display:none}}
+
+.page-header{background:var(--green-dark);padding:120px clamp(20px,4vw,40px) 80px;position:relative;overflow:hidden;text-align:center}
+.page-header-trees{position:absolute;bottom:0;left:0;right:0;height:22%;background:var(--green-deep);clip-path:polygon(0% 80%,4% 40%,8% 72%,12% 20%,16% 60%,20% 28%,24% 65%,28% 18%,32% 55%,36% 25%,40% 62%,44% 20%,48% 58%,52% 22%,56% 60%,60% 28%,64% 65%,68% 20%,72% 58%,76% 32%,80% 66%,84% 28%,88% 60%,92% 35%,96% 68%,100% 45%,100% 100%,0% 100%)}
+.page-label{font-size:11px;font-weight:600;color:var(--green-pale);letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:14px}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:900;color:white;line-height:1.12;margin-bottom:16px}
+.page-title em{color:var(--green-light);font-style:italic}
+.page-sub{font-size:clamp(14px,1.7vw,16px);color:rgba(192,221,151,0.55);max-width:500px;margin:0 auto;line-height:1.75}
+
+section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-label{display:inline-block;font-size:10px;font-weight:600;color:var(--green-main);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;line-height:1.18;margin-bottom:12px}
+.section-sub{font-size:15px;color:var(--text-muted);line-height:1.75;max-width:520px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* STEPS */
+.steps{margin-top:48px;display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(0,0,0,0.06);align-items:start}
+.step:last-child{border:none}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--green-dark);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--green-light);flex-shrink:0}
+.step-title{font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px}
+.step-desc{font-size:14px;color:var(--text-muted);line-height:1.75;margin-bottom:12px}
+.step-pills{display:flex;gap:8px;flex-wrap:wrap}
+.step-pill{font-size:11px;font-weight:600;color:var(--green-main);background:var(--green-bg);padding:4px 12px;border-radius:20px}
+
+/* TIMELINE */
+.timeline{margin-top:56px;background:white;border:1px solid rgba(0,0,0,0.07);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:0}
+.tl-title{font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+.tl-row{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.05);position:relative}
+.tl-row:last-child{border:none;padding-bottom:0}
+.tl-date{font-size:11px;font-weight:700;color:var(--green-main);min-width:60px;padding-top:2px}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--green-main);flex-shrink:0;margin-top:4px}
+.tl-content{flex:1}
+.tl-event{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.tl-detail{font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* VACANCIERS */
+.vac-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+@media(max-width:560px){.vac-grid{grid-template-columns:1fr}}
+.vac-card{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px}
+.vac-step{display:flex;align-items:flex-start;gap:14px}
+.vac-icon{width:40px;height:40px;border-radius:10px;background:var(--green-bg);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.vac-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.vac-desc{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+/* TECH */
+.tech-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:36px}
+.tech-card{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:12px}
+.tech-dot{width:8px;height:8px;border-radius:50%;background:var(--green-main);flex-shrink:0}
+.tech-text{font-size:13px;font-weight:500;color:var(--text)}
+.tech-sub{font-size:11px;color:var(--text-muted);margin-top:1px}
+
+/* FAQ LIGHT */
+.faq-list{margin-top:40px;display:flex;flex-direction:column;gap:2px}
+.faq-item{background:white;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none}
+.faq-q:hover{background:var(--cream)}
+.faq-arrow{color:var(--green-main);transition:transform 0.3s;flex-shrink:0;font-size:16px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+.faq-a-inner{padding:0 20px 16px;font-size:13px;color:var(--text-muted);line-height:1.75}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-item.open .faq-a{max-height:200px}
+
+footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);margin-bottom:8px}
+.footer-sub{font-size:11px;color:rgba(192,221,151,0.3)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🌲 Camp<span>Connect</span></a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <a href="comment.html" class="nav-link active">Comment ça marche</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="apropos.html" class="nav-link">À propos</a>
+      <a href="index.html#contact" class="nav-cta">Rejoindre le pilote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="page-label">Comment ça marche</div>
+  <h1 class="page-title">De la signature à l'app en ligne :<br><em>2 semaines, 4 étapes.</em></h1>
+  <p class="page-sub">Pas de code à écrire de votre côté. Pas de formation technique. On s'occupe de tout — vous vous occupez de vos vacanciers.</p>
+  <div class="page-header-trees"></div>
+</div>
+
+<!-- ÉTAPES GÉRANT -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-label reveal">Pour le gérant</div>
+    <h2 class="section-title reveal">Ce que vous faites.<br>Ce qu'on fait.</h2>
+    <p class="section-sub reveal">Les 4 étapes du déploiement, de la signature à la première notification envoyée.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Vous nous envoyez 3 éléments</div>
+          <div class="step-desc">Votre logo en haute définition, vos couleurs (ou votre charte graphique), et le plan de votre camping — une photo suffit. C'est tout ce dont on a besoin pour créer votre app branded.</div>
+          <div class="step-pills">
+            <span class="step-pill">Jour 1</span>
+            <span class="step-pill">15 min de votre temps</span>
+            <span class="step-pill">Logo + couleurs + plan</span>
+          </div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">On construit et soumet votre app</div>
+          <div class="step-desc">On intègre votre identité visuelle dans l'app, on configure votre carte de camping, on paramètre votre dashboard. L'app est soumise sur l'App Store et Google Play sous le nom de votre camping. Vous n'avez rien à faire.</div>
+          <div class="step-pills">
+            <span class="step-pill">Jours 2 à 7</span>
+            <span class="step-pill">100% pris en charge</span>
+            <span class="step-pill">iOS + Android</span>
+          </div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">On forme votre équipe en 1 heure</div>
+          <div class="step-desc">Une session visio avec votre responsable accueil ou animation. On parcourt le dashboard gérant ensemble : publier une animation, envoyer une notification push, lire les statistiques. Un guide PDF vous est remis à l'issue de la session.</div>
+          <div class="step-pills">
+            <span class="step-pill">Jours 8 à 10</span>
+            <span class="step-pill">1h en visio</span>
+            <span class="step-pill">Guide PDF inclus</span>
+          </div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Vos vacanciers arrivent, ils scannent</div>
+          <div class="step-desc">On vous fournit un kit d'affichage complet prêt à imprimer : affiche A4 pour la réception, carton de table pour les emplacements, QR code autonome. Dès l'arrivée, vos vacanciers téléchargent l'app en 10 secondes — sans compte, sans mot de passe.</div>
+          <div class="step-pills">
+            <span class="step-pill">Dès le jour 14</span>
+            <span class="step-pill">Kit affichage fourni</span>
+            <span class="step-pill">Zéro friction pour vos vacanciers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE VISUELLE -->
+<section style="background:white">
+  <div class="section-inner">
+    <div class="section-label reveal">Calendrier type</div>
+    <h2 class="section-title reveal">Votre déploiement semaine par semaine</h2>
+    <div class="timeline reveal">
+      <div class="tl-title">Exemple — Contrat signé le 1er avril, ouverture camping le 15 avril</div>
+      <div class="tl-row">
+        <div class="tl-date">Sem. 1</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-event">Onboarding + collecte des éléments visuels</div>
+          <div class="tl-detail">Logo, couleurs, plan du camping reçus. Configuration lancée.</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">Sem. 2</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-event">Build + soumission App Store et Google Play</div>
+          <div class="tl-detail">Votre app branded en cours de validation Apple et Google (72h en général).</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">J+10</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-event">Formation équipe + remise du kit affichage</div>
+          <div class="tl-detail">Session visio d'1h. QR codes + affiches envoyés par email au format imprimable.</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">J+14</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-event">App en ligne — premiers vacanciers</div>
+          <div class="tl-detail">L'app est disponible sur les stores. Vos vacanciers peuvent la télécharger.</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">Mensuel</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-event">Point de suivi + optimisation</div>
+          <div class="tl-detail">On analyse ensemble les stats, on ajuste les animations, on améliore l'adoption.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE VIVENT LES VACANCIERS -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-label reveal">Pour vos vacanciers</div>
+    <h2 class="section-title reveal">L'expérience côté vacancier :<br>simple comme un story Instagram.</h2>
+    <p class="section-sub reveal">Zéro barrière à l'entrée. La friction tue l'adoption — on l'a éliminée.</p>
+    <div class="vac-grid">
+      <div class="vac-card reveal">
+        <div class="vac-step">
+          <div class="vac-icon">📱</div>
+          <div>
+            <div class="vac-title">Scan du QR code à l'accueil</div>
+            <div class="vac-desc">En 10 secondes, l'app est téléchargée. Pas de compte, pas de mot de passe, pas de formulaire.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vac-card reveal">
+        <div class="vac-step">
+          <div class="vac-icon">🗺️</div>
+          <div>
+            <div class="vac-title">Découverte de la carte</div>
+            <div class="vac-desc">Ils voient le camping en temps réel : piscine, snack, sanitaires — et les groupes actifs autour d'eux.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vac-card reveal">
+        <div class="vac-step">
+          <div class="vac-icon">👥</div>
+          <div>
+            <div class="vac-title">Rejoindre ou créer un groupe</div>
+            <div class="vac-desc">"Volley 17h — terrain A — 4 personnes". Un tap pour rejoindre. Un tap pour créer.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vac-card reveal">
+        <div class="vac-step">
+          <div class="vac-icon">🔔</div>
+          <div>
+            <div class="vac-title">Notification push pour vos animations</div>
+            <div class="vac-desc">"Soirée karaoké ce soir 21h — 12 inscrits". Ils s'inscrivent en un clic depuis la notif.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vac-card reveal">
+        <div class="vac-step">
+          <div class="vac-icon">💬</div>
+          <div>
+            <div class="vac-title">Chat avec les autres vacanciers</div>
+            <div class="vac-desc">Messagerie au sein du camping uniquement. Vos familles se trouvent, les jeunes s'organisent.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vac-card reveal">
+        <div class="vac-step">
+          <div class="vac-icon">🌍</div>
+          <div>
+            <div class="vac-title">30+ langues automatiques</div>
+            <div class="vac-desc">L'app détecte la langue du téléphone. Vos vacanciers étrangers lisent tout dans leur langue.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH & SÉCURITÉ -->
+<section style="background:white">
+  <div class="section-inner">
+    <div class="section-label reveal">Infrastructure</div>
+    <h2 class="section-title reveal">Solide, sécurisée,<br>conforme RGPD.</h2>
+    <p class="section-sub reveal">Développée par un ingénieur réseau et sécurité. Chaque détail technique est pensé pour protéger vos vacanciers et votre réputation.</p>
+    <div class="tech-row">
+      <div class="tech-card reveal">
+        <div class="tech-dot"></div>
+        <div><div class="tech-text">Hébergement France</div><div class="tech-sub">OVH, données en Europe</div></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-dot"></div>
+        <div><div class="tech-text">RGPD natif</div><div class="tech-sub">DPA fourni, 0 donnée revendue</div></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-dot"></div>
+        <div><div class="tech-text">Chiffrement TLS</div><div class="tech-sub">Toutes les communications</div></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-dot"></div>
+        <div><div class="tech-text">99.9% uptime</div><div class="tech-sub">SLA garanti offre Chaîne</div></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-dot"></div>
+        <div><div class="tech-text">Données exportables</div><div class="tech-sub">CSV à tout moment</div></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-dot"></div>
+        <div><div class="tech-text">Mises à jour auto</div><div class="tech-sub">Incluses, sans action de votre part</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-label reveal">Questions pratiques</div>
+    <h2 class="section-title reveal">Ce que vous nous demandez avant de signer</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Que se passe-t-il si peu de vacanciers téléchargent l'app ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">L'emplacement du QR code est déterminant. On recommande : panneau à la réception, carton sur chaque table du snack-bar, affiche aux sanitaires. Nos campings pilotes atteignent 60-80% d'adoption dès la première semaine avec ce kit de 3 points de contact.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Mon équipe n'est pas à l'aise avec la technologie. C'est un problème ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Non. Le dashboard gérant a été conçu pour être aussi simple qu'une messagerie. Si votre équipe sait envoyer un SMS, elle sait utiliser CampConnect. La formation d'1h couvre 100% des besoins du quotidien.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">L'app fonctionne-t-elle sans connexion internet au camping ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">L'app nécessite une connexion (WiFi camping ou données mobiles). Les fonctions de base (carte, agenda) fonctionnent en mode dégradé avec une connexion faible. Le chat et les notifications push nécessitent une connexion active.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Peut-on modifier le contenu de l'app en cours de saison ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oui, en temps réel depuis votre dashboard. Vous ajoutez une animation, modifiez un horaire, envoyez une notification — tout se reflète immédiatement dans l'app de vos vacanciers. Aucune mise à jour de l'app n'est nécessaire.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--green-deep);text-align:center">
+  <div class="section-inner">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:white;margin-bottom:12px;line-height:1.2" class="reveal">Prêt à essayer pour la saison 2025 ?</h2>
+    <p style="font-size:15px;color:rgba(192,221,151,0.5);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7" class="reveal">100% gratuit pour 3 campings pionniers. Il reste 2 places.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="reveal">
+      <a href="index.html#contact" style="display:inline-block;background:var(--green-main);color:white;font-size:14px;font-weight:600;padding:13px 26px;border-radius:30px;text-decoration:none">Postuler au pilote gratuit →</a>
+      <a href="tarifs.html" style="display:inline-block;background:transparent;color:var(--green-pale);font-size:14px;font-weight:600;padding:13px 26px;border-radius:30px;text-decoration:none;border:1px solid rgba(99,153,34,0.35)">Voir les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🌲 CampConnect</div>
+  <div style="display:flex;gap:20px;justify-content:center;margin:12px 0">
+    <a href="tarifs.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Tarifs</a>
+    <a href="apropos.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">À propos</a>
+    <a href="comment.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Comment ça marche</a>
+    <a href="index.html#contact" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Contact</a>
+  </div>
+  <div class="footer-sub">contact@campconnect.fr · © 2025</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+</script>
+</body>
+</html>
