@@ -140,18 +140,22 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
   .form-row{grid-template-columns:1fr}
   .hero-stats{gap:24px}
 }
-@media(max-width:420px){
-  .prob-cards{grid-template-columns:1fr}
-  .feat-grid{grid-template-columns:1fr}
-}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--green-main)}
+@media(max-width:600px){.nav-link{display:none}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">🌲 Camp<span>Connect</span></div>
-    <a href="#contact" class="nav-cta">Rejoindre le pilote</a>
+    <a href="index.html" class="nav-logo" style="text-decoration:none">🌲 Camp<span>Connect</span></a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <a href="comment.html" class="nav-link">Comment ça marche</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="apropos.html" class="nav-link">À propos</a>
+      <a href="#contact" class="nav-cta">Rejoindre le pilote</a>
+    </div>
   </div>
 </nav>
 
@@ -327,10 +331,16 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 
 <footer>
   <div class="footer-logo">🌲 CampConnect</div>
+  <div style="display:flex;gap:20px;justify-content:center;margin:12px 0">
+    <a href="tarifs.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none;font-weight:500">Tarifs</a>
+    <a href="apropos.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none;font-weight:500">À propos</a>
+    <a href="comment.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none;font-weight:500">Comment ça marche</a>
+    <a href="#contact" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none;font-weight:500">Contact</a>
+  </div>
   <div class="footer-sub">La couche sociale manquante dans les campings · contact@campconnect.fr · © 2025</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Stars
 const starsEl=document.getElementById('stars');
 for(let i=0;i<28;i++){
@@ -340,13 +350,4 @@ for(let i=0;i<28;i++){
 }
 // Reveal on scroll
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-// Form
-function submitForm(e){
-  e.preventDefault();
-  document.querySelector('.contact-form').style.display='none';
-  document.getElementById('success-msg').style.display='block';
-}
-</script>
-</body>
-</html>
+document.querySelectorAll('.reveal').forEach

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — CampConnect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green-dark:#0d1f0d;--green-deep:#173404;--green-mid:#27500A;--green-main:#639922;--green-light:#97C459;--green-pale:#C0DD97;--green-bg:#EAF3DE;--cream:#f5f2eb;--text:#1c1c1c;--text-muted:#6b6b6b;--max:780px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;background:rgba(245,242,235,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(99,153,34,0.12)}
+.nav-inner{width:100%;max-width:calc(var(--max) + 80px);margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--green-mid);text-decoration:none;display:flex;align-items:center;gap:7px}
+.nav-logo span{color:var(--green-main)}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--green-main)}
+.nav-cta{background:var(--green-main);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--green-mid)}
+@media(max-width:600px){.nav-link{display:none}}
+.page-header{background:var(--green-dark);padding:120px clamp(20px,4vw,40px) 80px;position:relative;overflow:hidden}
+.page-header-inner{max-width:var(--max);margin:0 auto}
+.page-header-trees{position:absolute;bottom:0;left:0;right:0;height:22%;background:var(--green-deep);clip-path:polygon(0% 80%,4% 40%,8% 72%,12% 20%,16% 60%,20% 28%,24% 65%,28% 18%,32% 55%,36% 25%,40% 62%,44% 20%,48% 58%,52% 22%,56% 60%,60% 28%,64% 65%,68% 20%,72% 58%,76% 32%,80% 66%,84% 28%,88% 60%,92% 35%,96% 68%,100% 45%,100% 100%,0% 100%)}
+.page-label{font-size:11px;font-weight:600;color:var(--green-pale);letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:14px}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:900;color:white;line-height:1.12;margin-bottom:16px}
+.page-title em{color:var(--green-light);font-style:italic}
+.page-sub{font-size:clamp(14px,1.7vw,16px);color:rgba(192,221,151,0.55);max-width:520px;line-height:1.75}
+section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-label{display:inline-block;font-size:10px;font-weight:600;color:var(--green-main);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;line-height:1.18;margin-bottom:12px}
+.section-sub{font-size:15px;color:var(--text-muted);line-height:1.75;max-width:520px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+/* STORY */
+.story-grid{display:grid;grid-template-columns:1fr 2fr;gap:clamp(32px,5vw,60px);align-items:start;margin-top:48px}
+@media(max-width:640px){.story-grid{grid-template-columns:1fr}}
+.founder-card{background:white;border:1px solid rgba(0,0,0,0.07);border-radius:18px;padding:24px;text-align:center;position:sticky;top:80px}
+.founder-avatar{width:80px;height:80px;border-radius:50%;background:var(--green-bg);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green-mid)}
+.founder-name{font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px}
+.founder-role{font-size:12px;color:var(--text-muted);margin-bottom:16px}
+.founder-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.founder-tag{font-size:10px;font-weight:600;color:var(--green-main);background:var(--green-bg);padding:3px 10px;border-radius:20px}
+.story-text p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:18px}
+.story-text p:last-child{margin-bottom:0}
+.story-text strong{color:var(--text);font-weight:600}
+.story-text em{font-style:italic;color:var(--text)}
+/* VALEURS */
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:40px}
+.value-card{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:22px}
+.value-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--green-bg);line-height:1;margin-bottom:8px}
+.value-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px}
+.value-desc{font-size:13px;color:var(--text-muted);line-height:1.6}
+/* COMMENT ÇA MARCHE */
+.steps{margin-top:48px;display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
+.step:last-child{border:none}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--green-dark);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);flex-shrink:0}
+.step-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px}
+.step-desc{font-size:14px;color:var(--text-muted);line-height:1.7}
+.step-detail{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.step-pill{font-size:11px;font-weight:600;color:var(--green-main);background:var(--green-bg);padding:3px 10px;border-radius:20px}
+/* VISION */
+.vision-block{background:var(--green-dark);border-radius:18px;padding:clamp(28px,4vw,48px);margin-top:48px;position:relative;overflow:hidden}
+.vision-trees{position:absolute;bottom:0;left:0;right:0;height:30%;background:var(--green-deep);clip-path:polygon(0% 70%,5% 30%,10% 65%,15% 10%,20% 55%,25% 25%,30% 60%,35% 10%,40% 50%,45% 20%,50% 55%,55% 15%,60% 50%,65% 25%,70% 60%,75% 15%,80% 55%,85% 30%,90% 65%,95% 35%,100% 70%,100% 100%,0% 100%)}
+.vision-quote{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,24px);font-style:italic;color:white;line-height:1.5;position:relative;z-index:1;max-width:580px}
+.vision-quote em{color:var(--green-light)}
+.vision-attr{font-size:13px;color:rgba(192,221,151,0.45);margin-top:16px;font-weight:500;position:relative;z-index:1}
+footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);margin-bottom:8px}
+.footer-sub{font-size:11px;color:rgba(192,221,151,0.3)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🌲 Camp<span>Connect</span></a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <a href="comment.html" class="nav-link">Comment ça marche</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="apropos.html" class="nav-link active">À propos</a>
+      <a href="index.html#contact" class="nav-cta">Rejoindre le pilote</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-label">À propos</div>
+    <h1 class="page-title">Une idée née <em>sous une tente</em>,<br>construite pour durer.</h1>
+    <p class="page-sub">CampConnect est développé par un ingénieur français indépendant, convaincu qu'il manque une couche sociale dans les campings — et déterminé à la construire.</p>
+  </div>
+  <div class="page-header-trees"></div>
+</div>
+
+<!-- STORY -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="founder-card reveal">
+        <div class="founder-avatar">J</div>
+        <div class="founder-name">Johan</div>
+        <div class="founder-role">Fondateur · CampConnect</div>
+        <div class="founder-tags">
+          <span class="founder-tag">Ingénieur réseau</span>
+          <span class="founder-tag">Île-de-France</span>
+          <span class="founder-tag">Sécurité infra</span>
+          <span class="founder-tag">Builder indépendant</span>
+        </div>
+      </div>
+      <div class="story-text reveal">
+        <p>J'ai grandi en camping. Pas comme vacancier passager — comme quelqu'un pour qui le camping c'est une façon d'être en vacances, avec des règles tacites : on partage, on croise des inconnus, on finit par jouer au volley avec des gens qu'on ne connaissait pas trois heures avant.</p>
+        <p>Il y a quelques années, j'ai remarqué que ça se passait de moins en moins. <strong>Pas parce que les gens ont changé</strong> — 68% des vacanciers disent toujours vouloir rencontrer d'autres personnes. Mais parce qu'il n'y a plus d'outil pour provoquer ces rencontres.</p>
+        <p>Les campings ont investi dans leurs infrastructures, leurs piscines, leurs animations. Mais leur communication est restée en 2005 : un panneau d'affichage papier, un groupe Facebook mal tenu, et une app de réservation qui ne parle qu'au gérant.</p>
+        <p><strong>CampConnect, c'est la pièce manquante.</strong> Pas une app de plus pour gérer des réservations — une app pour que les vacanciers se trouvent, se parlent, et vivent des souvenirs ensemble. Une app qui donne au camping un outil pour animer sa communauté, pas seulement la loger.</p>
+        <p>En tant qu'ingénieur réseau et sécurité, je construis une infrastructure solide, scalable et conforme RGPD. En tant que fondateur solo pour l'instant, je reste proche de chaque camping pilote — leurs retours façonnent directement le produit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section style="background:white" id="comment">
+  <div class="section-inner">
+    <div class="section-label reveal">Comment ça marche</div>
+    <h2 class="section-title reveal">De la signature à l'app en ligne :<br>4 étapes, 2 semaines.</h2>
+    <p class="section-sub reveal">Pas de code à écrire de votre côté. Pas de formation informatique. Juste vos couleurs, votre logo, et votre programme d'animations.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">On configure votre app à vos couleurs</div>
+          <div class="step-desc">Vous nous envoyez votre logo, vos couleurs et votre plan du camping (même une photo fera l'affaire). On crée votre version branded de l'app et on la soumet sur l'App Store et Google Play sous votre nom.</div>
+          <div class="step-detail">
+            <span class="step-pill">J1 — J3</span>
+            <span class="step-pill">Aucune action de votre part</span>
+          </div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">On forme votre équipe en 1h</div>
+          <div class="step-desc">Une session visio d'une heure avec votre responsable accueil ou animation. On parcourt ensemble le dashboard gérant, comment publier une animation, envoyer une notification push, lire les statistiques.</div>
+          <div class="step-detail">
+            <span class="step-pill">J7 — J10</span>
+            <span class="step-pill">1h visio</span>
+            <span class="step-pill">Guide PDF inclus</span>
+          </div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Vos vacanciers scannent un QR code à l'accueil</div>
+          <div class="step-desc">On vous fournit un kit d'affichage prêt à imprimer : QR code, affiche A4, carton de table. Dès l'arrivée, vos vacanciers téléchargent l'app en 10 secondes — sans compte, sans mot de passe.</div>
+          <div class="step-detail">
+            <span class="step-pill">Dès J14</span>
+            <span class="step-pill">Kit affichage fourni</span>
+            <span class="step-pill">0 friction utilisateur</span>
+          </div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Vous pilotez, on mesure, on améliore ensemble</div>
+          <div class="step-desc">Votre dashboard vous montre en temps réel les groupes créés, les animations les plus fréquentées, les profils de vos vacanciers. On fait un point mensuel pendant la saison pilote pour ajuster ce qui peut l'être.</div>
+          <div class="step-detail">
+            <span class="step-pill">Toute la saison</span>
+            <span class="step-pill">Point mensuel inclus</span>
+            <span class="step-pill">Données exportables</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALEURS -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-label reveal">Ce qu'on croit</div>
+    <h2 class="section-title reveal">Trois convictions qui guident<br>chaque décision produit.</h2>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <div class="value-title">Le lien humain se provoque</div>
+        <div class="value-desc">Les rencontres ne se font pas par hasard. Elles se font quand il y a un outil, une occasion, un prétexte. On construit ce prétexte.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">02</div>
+        <div class="value-title">Le téléphone n'est pas l'ennemi</div>
+        <div class="value-desc">Les 18-35 ans passent 3h20/jour sur leur téléphone, même sous la tente. Plutôt que de lutter contre ce comportement, on le redirige vers du collectif.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">03</div>
+        <div class="value-title">Les données appartiennent au camping</div>
+        <div class="value-desc">Vous êtes le client, pas le produit. Vos données vacanciers restent les vôtres, hébergées en France, exportables à tout moment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="vision-block reveal">
+      <div class="vision-quote">"Le camping a inventé la vie collective en vacances. CampConnect lui redonne <em>les outils du XXIe siècle</em> pour continuer à le faire."</div>
+      <div class="vision-attr">Johan, fondateur · CampConnect 2025</div>
+      <div class="vision-trees"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:white;text-align:center">
+  <div class="section-inner">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;margin-bottom:12px;line-height:1.2" class="reveal">Vous voulez être parmi les 3 campings pionniers ?</h2>
+    <p style="font-size:15px;color:var(--text-muted);margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7" class="reveal">Saison 2025, 100% gratuit, sans engagement. Il reste 2 places.</p>
+    <a href="index.html#contact" class="reveal" style="display:inline-block;background:var(--green-main);color:white;font-size:14px;font-weight:600;padding:13px 28px;border-radius:30px;text-decoration:none">Postuler au pilote gratuit →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🌲 CampConnect</div>
+  <div style="display:flex;gap:20px;justify-content:center;margin:12px 0">
+    <a href="tarifs.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Tarifs</a>
+    <a href="apropos.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">À propos</a>
+    <a href="apropos.html#comment" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Comment ça marche</a>
+    <a href="index.html#contact" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Contact</a>
+  </div>
+  <div class="footer-sub">contact@campconnect.fr · © 2025</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
