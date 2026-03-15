@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampConnect — L'app qui réunit vos vacanciers</title>
+<meta name="description" content="La première application mobile white label pour campings, centrée sur le lien entre vacanciers.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gd:#0d1f0d;--gdp:#173404;--gm:#27500A;--gn:#639922;--gl:#97C459;--gp:#C0DD97;--gb:#EAF3DE;--cr:#f5f2eb;--tx:#1c1c1c;--mu:#6b6b6b;--mx:780px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:rgba(245,242,235,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(99,153,34,0.12)}
+.ni{max-width:calc(var(--mx) + 80px);margin:0 auto;padding:0 clamp(20px,4vw,40px);height:60px;display:flex;align-items:center;justify-content:space-between}
+.nl{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gm);text-decoration:none;display:flex;align-items:center;gap:6px}
+.nl span{color:var(--gn)}
+.nk{font-size:13px;font-weight:500;color:var(--mu);text-decoration:none;transition:color .2s}
+.nk:hover{color:var(--gn)}
+.nc{background:var(--gn);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;transition:background .2s}
+.nc:hover{background:var(--gm)}
+@media(max-width:600px){.nk{display:none}}
+
+.hero{min-height:100vh;background:var(--gd);display:flex;align-items:center;justify-content:center;text-align:center;padding:100px clamp(20px,4vw,40px) 80px;position:relative}
+.hi{max-width:var(--mx);margin:0 auto;position:relative;z-index:2}
+.ht{position:absolute;bottom:0;left:0;right:0;height:26%;background:var(--gdp);clip-path:polygon(0% 80%,3% 45%,6% 72%,9% 25%,12% 58%,15% 30%,18% 66%,21% 18%,24% 55%,27% 28%,30% 62%,33% 20%,36% 58%,39% 30%,42% 65%,45% 22%,48% 60%,51% 25%,54% 62%,57% 28%,60% 65%,63% 18%,66% 58%,69% 30%,72% 66%,75% 22%,78% 60%,81% 35%,84% 68%,87% 28%,90% 62%,100% 50%,100% 100%,0% 100%);z-index:1}
+.hs{position:absolute;inset:0;pointer-events:none;z-index:0}
+
+.hbadge{display:inline-flex;align-items:center;gap:7px;background:rgba(99,153,34,0.13);border:1px solid rgba(99,153,34,0.3);border-radius:30px;padding:6px 16px;font-size:11px;font-weight:600;color:var(--gp);margin-bottom:28px;letter-spacing:.3px}
+.hbdot{width:6px;height:6px;border-radius:50%;background:var(--gl);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1.htitle{font-family:'Playfair Display',serif;font-size:clamp(32px,5.5vw,60px);font-weight:900;color:#fff;line-height:1.12;margin-bottom:18px;letter-spacing:-.5px}
+h1.htitle em{color:var(--gl);font-style:italic}
+.hsub{font-size:clamp(14px,1.7vw,17px);color:rgba(192,221,151,.6);max-width:480px;line-height:1.75;margin:0 auto 32px}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.bp{background:var(--gn);color:#fff;font-size:14px;font-weight:600;padding:13px 26px;border-radius:30px;border:none;font-family:'DM Sans',sans-serif;text-decoration:none;transition:background .2s,transform .15s;cursor:pointer}
+.bp:hover{background:var(--gm);transform:translateY(-2px)}
+.bg{background:transparent;color:var(--gp);font-size:14px;font-weight:600;padding:13px 26px;border-radius:30px;border:1px solid rgba(99,153,34,.35);font-family:'DM Sans',sans-serif;text-decoration:none;transition:border-color .2s,transform .15s;cursor:pointer}
+.bg:hover{border-color:var(--gn);transform:translateY(-2px)}
+.hstats{display:flex;gap:clamp(24px,5vw,56px);margin-top:56px;flex-wrap:wrap;justify-content:center}
+.hn{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,38px);font-weight:700;color:var(--gl);line-height:1}
+.hlb{font-size:11px;font-weight:500;color:rgba(192,221,151,.4);margin-top:3px}
+
+section{padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
+.si{max-width:var(--mx);margin:0 auto}
+.sl{display:inline-block;font-size:10px;font-weight:600;color:var(--gn);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+h2.st{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;line-height:1.18;margin-bottom:14px;letter-spacing:-.3px}
+.ss{font-size:clamp(14px,1.5vw,16px);color:var(--mu);line-height:1.75;max-width:520px}
+
+.genz{background:var(--gd);padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
+.genz .si{text-align:center}
+.genz h2.st{color:#fff}
+.genz h2.st em{color:var(--gl);font-style:italic}
+.genz .ss{color:rgba(192,221,151,.5);margin:0 auto 40px}
+.gstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:560px){.gstats{grid-template-columns:1fr}}
+.gstat{background:rgba(255,255,255,.04);border:1px solid rgba(99,153,34,.15);border-radius:14px;padding:clamp(18px,2.5vw,28px) 16px;text-align:center}
+.gnum{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,46px);font-weight:700;color:var(--gl);line-height:1}
+.gdesc{font-size:12px;font-weight:500;color:rgba(192,221,151,.38);margin-top:8px;line-height:1.5}
+
+.prob{background:#fff}
+.probi{max-width:var(--mx);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:center}
+@media(max-width:640px){.probi{grid-template-columns:1fr}}
+.pcards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc{background:var(--cr);border-radius:12px;padding:16px;border:1px solid rgba(0,0,0,.05)}
+.pi{font-size:20px;margin-bottom:8px}
+.pt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.pd{font-size:12px;color:var(--mu);line-height:1.55}
+
+.feats{background:var(--cr)}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+@media(max-width:640px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.fgrid{grid-template-columns:1fr}}
+.fc{background:#fff;border-radius:14px;padding:20px;border:1px solid rgba(0,0,0,.05);transition:transform .2s}
+.fc:hover{transform:translateY(-3px)}
+.fe{font-size:22px;margin-bottom:12px}
+.fn{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:5px}
+.fd{font-size:12px;color:var(--mu);line-height:1.6}
+.ftag{display:inline-block;margin-top:10px;font-size:10px;font-weight:600;color:var(--gn);background:var(--gb);padding:3px 9px;border-radius:20px}
+
+.pilot{background:var(--gdp)}
+.piloti{max-width:520px;margin:0 auto;text-align:center}
+.pbadge{display:inline-block;background:var(--gn);color:#fff;font-size:10px;font-weight:700;padding:5px 16px;border-radius:30px;margin-bottom:20px;letter-spacing:.8px}
+.ptitle{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:#fff;margin-bottom:8px}
+.pprice{font-family:'Playfair Display',serif;font-size:clamp(60px,10vw,96px);font-weight:900;color:var(--gl);line-height:1}
+.ppsub{font-size:clamp(13px,1.5vw,15px);color:rgba(192,221,151,.45);margin-bottom:28px}
+.plist{display:flex;flex-direction:column;gap:11px;text-align:left;max-width:380px;margin:0 auto 28px;background:rgba(255,255,255,.04);border:1px solid rgba(99,153,34,.15);border-radius:14px;padding:22px 24px}
+.pitem{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:rgba(192,221,151,.8)}
+.pcheck{width:18px;height:18px;border-radius:50%;background:rgba(99,153,34,.2);display:flex;align-items:center;justify-content:center;color:var(--gl);font-size:10px;flex-shrink:0}
+.pscar{font-size:12px;color:rgba(192,221,151,.4);margin-bottom:20px}
+.pscar strong{color:var(--gl)}
+
+.contact{background:var(--cr)}
+.contacti{max-width:520px;margin:0 auto;text-align:center}
+.cform{display:flex;flex-direction:column;gap:12px;margin-top:32px;text-align:left}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.frow{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fl{font-size:11px;font-weight:700;color:var(--tx);letter-spacing:.4px;text-transform:uppercase}
+.fi{padding:11px 15px;border-radius:9px;border:1.5px solid rgba(0,0,0,.09);font-size:14px;font-family:'DM Sans',sans-serif;color:var(--tx);background:#fff;outline:none;transition:border-color .2s;width:100%}
+.fi:focus{border-color:var(--gn)}
+textarea.fi{resize:vertical;min-height:90px}
+.fsub{background:var(--gn);color:#fff;font-size:14px;font-weight:600;padding:13px;border-radius:30px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;margin-top:4px;width:100%}
+.fsub:hover{background:var(--gm)}
+.fnote{font-size:11px;color:var(--mu);text-align:center;margin-top:8px}
+
+footer{background:var(--gd);padding:32px clamp(20px,4vw,40px);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gl);margin-bottom:8px}
+.flinks{display:flex;gap:20px;justify-content:center;margin:10px 0}
+.flinks a{font-size:12px;color:rgba(192,221,151,.4);text-decoration:none}
+.fsub2{font-size:11px;color:rgba(192,221,151,.25)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <a href="index.html" class="nl">🌲 Camp<span>Connect</span></a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <a href="comment.html" class="nk">Comment ça marche</a>
+      <a href="tarifs.html" class="nk">Tarifs</a>
+      <a href="apropos.html" class="nk">À propos</a>
+      <a href="#contact" class="nc">Rejoindre le pilote</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hs" id="stars"></div>
+  <div class="hi">
+    <div class="hbadge"><div class="hbdot"></div>Offre pilote — Saison 2025 — 3 places disponibles</div>
+    <h1 class="htitle">L'app qui réunit vos vacanciers<br><em>autour du feu</em></h1>
+    <p class="hsub">La première application mobile white label pensée pour créer du lien entre vacanciers — pas seulement gérer les réservations.</p>
+    <div class="hbtns">
+      <a href="#contact" class="bp">Rejoindre le pilote gratuit</a>
+      <a href="#features" class="bg">Voir les fonctionnalités</a>
+    </div>
+    <div class="hstats">
+      <div><div class="hn">+42%</div><div class="hlb">Participation animations</div></div>
+      <div><div class="hn">4.8×</div><div class="hlb">Plus de fidélisation</div></div>
+      <div><div class="hn">8 800</div><div class="hlb">Campings en France</div></div>
+    </div>
+  </div>
+  <div class="ht"></div>
+</section>
+
+<section class="genz">
+  <div class="si">
+    <div class="sl rv">La réalité de vos vacanciers</div>
+    <h2 class="st rv">Vos 18-35 ans sont sur leur téléphone.<br><em>Même sous la tente.</em></h2>
+    <p class="ss rv">Cette génération représente la majorité de vos vacanciers. Elle ne va pas décrocher — mais vous pouvez transformer ce comportement en votre plus grand atout.</p>
+    <div class="gstats">
+      <div class="gstat rv"><div class="gnum">3h20</div><div class="gdesc">passées sur les réseaux par vacancier et par jour</div></div>
+      <div class="gstat rv"><div class="gnum">72%</div><div class="gdesc">des 18-35 ans partagent leurs vacances en story</div></div>
+      <div class="gstat rv"><div class="gnum">68%</div><div class="gdesc">des vacanciers souhaitent rencontrer d'autres campeurs</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="prob">
+  <div class="probi">
+    <div>
+      <div class="sl rv">Le problème</div>
+      <h2 class="st rv">Vous connaissez<br>ce scénario.</h2>
+      <p class="ss rv">Des animations organisées avec soin, une saison chargée… mais les vacanciers ne se rencontrent jamais vraiment. Et ils ne reviennent pas.</p>
+    </div>
+    <div class="pcards">
+      <div class="pc rv"><div class="pi">📋</div><div class="pt">Tableau papier dépassé</div><div class="pd">Vos clients sont sur Instagram. Votre programme est sur un panneau.</div></div>
+      <div class="pc rv"><div class="pi">🏐</div><div class="pt">Animations vides</div><div class="pd">Les vacanciers ne voient pas votre programme. Ils ne viennent pas.</div></div>
+      <div class="pc rv"><div class="pi">👥</div><div class="pt">Aucun lien créé</div><div class="pd">Chaque vacancier repart seul. Sans souvenir collectif. Sans raison de revenir.</div></div>
+      <div class="pc rv"><div class="pi">📊</div><div class="pt">Zéro donnée</div><div class="pd">Qui sont vos vacanciers ? Ce qu'ils aiment ? Impossible à savoir.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="feats" id="features">
+  <div class="si">
+    <div class="sl rv">La solution</div>
+    <h2 class="st rv">Une app à votre nom,<br>à vos couleurs.</h2>
+    <p class="ss rv">Vos vacanciers téléchargent l'app de <em>votre</em> camping. Pas une app générique.</p>
+    <div class="fgrid">
+      <div class="fc rv"><div class="fe">🗺️</div><div class="fn">Carte interactive</div><div class="fd">Vos vacanciers se repèrent instantanément — piscine, sanitaires, snack, et les autres vacanciers.</div><div class="ftag">Vacanciers</div></div>
+      <div class="fc rv"><div class="fe">👥</div><div class="fn">Groupes spontanés</div><div class="fd">Volley, feu de camp, rando, soirée jeux. Créer et rejoindre en un clic.</div><div class="ftag">Vacanciers</div></div>
+      <div class="fc rv"><div class="fe">💬</div><div class="fn">Chat vacanciers</div><div class="fd">Messagerie instantanée au sein de votre camping. Les familles se trouvent, les jeunes se retrouvent.</div><div class="ftag">Vacanciers</div></div>
+      <div class="fc rv"><div class="fe">📅</div><div class="fn">Agenda animations</div><div class="fd">Toutes vos activités notifiées en push. Inscriptions en un clic. Fini les animations vides.</div><div class="ftag">Vacanciers + Gérant</div></div>
+      <div class="fc rv"><div class="fe">📊</div><div class="fn">Dashboard gérant</div><div class="fd">Fréquentation, activités populaires, profils vacanciers. Vous savez enfin qui vient.</div><div class="ftag">Gérant</div></div>
+      <div class="fc rv"><div class="fe">🌍</div><div class="fn">30+ langues</div><div class="fd">L'app détecte la langue du téléphone. Vos vacanciers étrangers inclus automatiquement.</div><div class="ftag">International</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pilot">
+  <div class="piloti">
+    <div class="pbadge rv">OFFRE PILOTE — SAISON 2025</div>
+    <h2 class="ptitle rv">Déployez CampConnect</h2>
+    <div class="pprice rv">0 €</div>
+    <p class="ppsub rv">100% gratuit pour 3 campings pionniers</p>
+    <div class="plist rv">
+      <div class="pitem"><div class="pcheck">✓</div>App mobile à votre marque (iOS + Android)</div>
+      <div class="pitem"><div class="pcheck">✓</div>Configuration et déploiement pris en charge</div>
+      <div class="pitem"><div class="pcheck">✓</div>Dashboard gérant avec analytics en temps réel</div>
+      <div class="pitem"><div class="pcheck">✓</div>Support personnel dédié toute la saison</div>
+      <div class="pitem"><div class="pcheck">✓</div>Formation de votre équipe incluse</div>
+      <div class="pitem"><div class="pcheck">✓</div>Tarif préférentiel garanti pour 2026</div>
+    </div>
+    <p class="pscar rv"><strong>2 places restantes</strong> sur 3 — Premier arrivé, premier servi.</p>
+    <a href="#contact" class="bp rv" style="display:inline-block">Réserver ma place gratuite</a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contacti">
+    <div class="sl rv">Contact</div>
+    <h2 class="st rv">Intéressé par le pilote ?</h2>
+    <p class="ss rv" style="margin:0 auto;text-align:center">Une réponse suffit. Je vous envoie une démo vidéo dans la foulée.</p>
+    <form class="cform rv" onsubmit="submitForm(event)">
+      <div class="frow">
+        <div class="fg"><label class="fl">Nom du camping</label><input type="text" class="fi" placeholder="Camping du Lac" required></div>
+        <div class="fg"><label class="fl">Votre nom</label><input type="text" class="fi" placeholder="Jean Dupont" required></div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="contact@moncamping.fr" required></div>
+      <div class="fg"><label class="fl">Votre camping (optionnel)</label><textarea class="fi" placeholder="Nombre d'emplacements, région, type de clientèle..."></textarea></div>
+      <button type="submit" class="fsub">Envoyer ma candidature →</button>
+      <p class="fnote">Aucun engagement. Réponse sous 24h.</p>
+    </form>
+    <div id="ok" style="display:none;text-align:center;padding:32px;background:var(--gb);border-radius:16px;margin-top:24px">
+      <div style="font-size:36px;margin-bottom:12px">🌲</div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gm);margin-bottom:8px">Message reçu !</div>
+      <div style="font-size:14px;color:var(--mu)">Je reviens vers vous sous 24h avec la démo vidéo.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">🌲 CampConnect</div>
+  <div class="flinks">
+    <a href="tarifs.html">Tarifs</a>
+    <a href="apropos.html">À propos</a>
+    <a href="comment.html">Comment ça marche</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="fsub2">La couche sociale manquante dans les campings · contact@campconnect.fr · © 2025</div>
+</footer>
+
+<script>
+// Stars
+const se=document.getElementById('stars');
+for(let i=0;i<24;i++){
+  const s=document.createElement('div');
+  const sz=(Math.random()*2+1).toFixed(1);
+  s.style.cssText='position:absolute;border-radius:50%;background:rgba(192,221,151,'+((Math.random()*.4+.2).toFixed(2))+');width:'+sz+'px;height:'+sz+'px;top:'+(Math.random()*80)+'%;left:'+(Math.random()*100)+'%;animation:twinkle '+(Math.random()*3+2).toFixed(1)+'s '+(Math.random()*2).toFixed(1)+'s infinite';
+  se.appendChild(s);
+}
+const style=document.createElement('style');
+style.textContent='@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.8;transform:scale(1.5)}}';
+document.head.appendChild(style);
+
+// Reveal — fonctionne avec ou sans IntersectionObserver
+function revealAll(){document.querySelectorAll('.rv').forEach(el=>el.classList.add('on'));}
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  // Fallback : révèle tout après 1.5s si rien n'est visible
+  setTimeout(()=>{
+    const hidden=document.querySelectorAll('.rv:not(.on)');
+    if(hidden.length>document.querySelectorAll('.rv').length/2) revealAll();
+  },1500);
+} else {
+  revealAll();
+}
+
+function submitForm(e){
+  e.preventDefault();
+  document.querySelector('.cform').style.display='none';
+  document.getElementById('ok').style.display='block';
+}
+</script>
+</body>
+</html>
