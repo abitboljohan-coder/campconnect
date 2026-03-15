@@ -30,8 +30,8 @@ section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
 .section-label{display:inline-block;font-size:10px;font-weight:600;color:var(--green-main);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;line-height:1.18;margin-bottom:12px}
 .section-sub{font-size:15px;color:var(--text-muted);line-height:1.75;max-width:520px}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
-.reveal.visible{opacity:1;transform:none}
+.reveal{transition:opacity .6s ease,transform .6s ease}.reveal.ready{opacity:0;transform:translateY(20px)}.reveal.on{opacity:1!important;transform:none!important}
+.reveal.ready{opacity:0;transform:translateY(20px)}.reveal.on{opacity:1;transform:none}
 /* PRICING CARDS */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
 @media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
@@ -338,8 +338,18 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>el.classList.add('ready'));
+function revealAll(){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));}
+if('IntersectionObserver' in window){
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('ready'));
+function revealAll(){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));}
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  setTimeout(()=>{const h=document.querySelectorAll('.reveal:not(.on)');if(h.length>document.querySelectorAll('.reveal').length/2)revealAll();},1500);
+}else{revealAll();}
+  setTimeout(()=>{const h=document.querySelectorAll('.reveal:not(.on)');if(h.length>document.querySelectorAll('.reveal').length/2)revealAll();},1500);
+}else{revealAll();}
 function toggleFaq(el){const item=el.parentElement;item.classList.toggle('open');}
 function calcROI(){
   const empl=+document.getElementById('empl').value;
