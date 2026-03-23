@@ -100,6 +100,31 @@ section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
 footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align:center}
 .footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);margin-bottom:8px}
 .footer-sub{font-size:11px;color:rgba(192,221,151,0.3)}
+/* MISE EN SITUATION */
+.story-section{background:#fff}
+.story-inner{max-width:800px;margin:0 auto}
+.story-header{text-align:center;margin-bottom:52px}
+.story-timeline{display:flex;flex-direction:column;gap:0}
+.story-step{display:grid;grid-template-columns:80px 1fr;gap:0 28px;position:relative}
+.story-step:not(:last-child)::before{content:'';position:absolute;left:39px;top:52px;bottom:-20px;width:2px;background:linear-gradient(to bottom,var(--green-main),rgba(99,153,34,0.1));z-index:0}
+.story-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:4px;position:relative;z-index:1}
+.story-dot{width:40px;height:40px;border-radius:50%;background:var(--green-bg);border:2px solid var(--green-main);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.story-day{font-size:10px;font-weight:700;color:var(--green-main);letter-spacing:.5px;text-transform:uppercase;margin-top:6px;white-space:nowrap}
+.story-content{background:var(--cream);border-radius:16px;padding:22px 24px;margin-bottom:20px;border-left:3px solid var(--green-main)}
+.story-content h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.story-content p{font-size:14px;color:var(--text-muted);line-height:1.7;margin:0}
+.story-content .story-quote{font-style:italic;color:var(--green-mid);font-size:14px;border-left:3px solid var(--green-main);padding-left:12px;margin-top:12px}
+.story-highlight{background:var(--green-dark);border-radius:16px;padding:22px 24px;margin-bottom:20px;border-left:3px solid var(--green-light)}
+.story-highlight h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.story-highlight p{font-size:14px;color:rgba(192,221,151,0.7);line-height:1.7;margin:0}
+.story-highlight .story-quote{font-style:italic;color:var(--green-light);font-size:14px;border-left:3px solid var(--green-light);padding-left:12px;margin-top:12px}
+.story-person{display:flex;align-items:center;gap:16px;background:var(--green-dark);border-radius:16px;padding:20px 24px;margin-bottom:40px}
+.story-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--green-mid),var(--green-main));display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.story-person-info{flex:1}
+.story-person-name{font-size:16px;font-weight:700;color:#fff}
+.story-person-role{font-size:12px;color:rgba(192,221,151,0.55);margin-top:2px}
+.story-person-desc{font-size:13px;color:rgba(192,221,151,0.7);margin-top:6px;line-height:1.5}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.5)}}
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.5)}}
 </style>
 </head>
@@ -337,6 +362,115 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
         <div class="faq-q">Que se passe-t-il après la saison pilote gratuite ? <span class="faq-arrow">↓</span></div>
         <div class="faq-a"><div class="faq-a-inner">Vous choisissez librement de continuer ou non. Si vous continuez, vous bénéficiez d'un tarif préférentiel garanti à vie (minimum -20% sur les tarifs affichés) en remerciement de votre participation au pilote. Aucun engagement, aucune clause automatique.</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISE EN SITUATION -->
+<section class="story-section">
+  <div class="section-inner story-inner">
+    <div class="story-header">
+      <div class="section-label reveal">Mise en situation</div>
+      <h2 class="section-title reveal">Bernard, gérant depuis 22 ans.<br><em style="font-style:italic;color:var(--green-main)">Pas du tout technophile.</em></h2>
+      <p class="section-sub reveal" style="margin:0 auto;text-align:center">Voici comment s'est passée son intégration, du premier contact jusqu'à la première saison.</p>
+    </div>
+
+    <!-- Persona -->
+    <div class="story-person reveal">
+      <div class="story-avatar">👨‍🌾</div>
+      <div class="story-person-info">
+        <div class="story-person-name">Bernard M. — Camping Les Rives du Gard</div>
+        <div class="story-person-role">Gérant depuis 1998 · 180 emplacements · Gard (30)</div>
+        <div class="story-person-desc">Gère tout avec un classeur et un tableau blanc. Son fils lui a créé un Facebook il y a 5 ans qu'il n'a jamais utilisé. Il tape avec deux doigts.</div>
+      </div>
+    </div>
+
+    <div class="story-timeline">
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">📬</div>
+          <div class="story-day">Semaine 1</div>
+        </div>
+        <div class="story-content">
+          <h3>Le premier contact — un voisin lui en parle</h3>
+          <p>Le gérant du camping voisin mentionne CampConnect à Bernard lors du marché du jeudi. Bernard est sceptique : <em>"Une appli ? Mes vacanciers ont 55 ans en moyenne."</em> Il regarde quand même le site le soir, lit la page tarifs. Il appelle le lendemain.</p>
+          <div class="story-quote">"Je comprends pas tout mais le prix pilote à zéro euro, ça m'a convaincu d'essayer. Qu'est-ce que j'avais à perdre ?"</div>
+        </div>
+      </div>
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">📞</div>
+          <div class="story-day">Semaine 1</div>
+        </div>
+        <div class="story-content">
+          <h3>L'appel de 20 minutes — pas de démo PowerPoint</h3>
+          <p>On lui pose 4 questions : combien d'emplacements, est-ce qu'il a un plan du camping, quelle est sa couleur préférée, et son email. C'est tout. Il envoie une photo de son plan photocopié par WhatsApp.</p>
+          <div class="story-quote">"J'attendais une heure de présentation commerciale. Ça a duré 20 minutes et c'était moi qui parlais le plus."</div>
+        </div>
+      </div>
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">⚙️</div>
+          <div class="story-day">J+3</div>
+        </div>
+        <div class="story-highlight">
+          <h3>L'app est configurée — il n'a rien eu à faire</h3>
+          <p>72 heures après l'appel, Bernard reçoit un lien. Son camping s'appelle "Les Rives du Gard", les couleurs sont bleu-vert, le plan est intégré. Il y a déjà 3 animations créées en exemple. Il teste depuis son iPhone en 10 minutes.</p>
+          <div class="story-quote">"Mon nom, mes couleurs, mon plan. J'ai pensé qu'il y avait une erreur tellement c'était rapide."</div>
+        </div>
+      </div>
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">🎓</div>
+          <div class="story-day">J+5</div>
+        </div>
+        <div class="story-content">
+          <h3>La formation — 30 minutes en visio avec sa fille</h3>
+          <p>Bernard invite sa fille pour la visio. On lui montre 3 choses : comment publier une animation (45 secondes), comment envoyer une notification push, comment voir le nombre de personnes inscrites. Sa fille prend des notes. Lui regarde.</p>
+          <div class="story-quote">"Ma fille a compris en 10 minutes. Elle m'a dit 'Papa c'est plus simple que ton four'."</div>
+        </div>
+      </div>
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">🏕️</div>
+          <div class="story-day">1er juillet</div>
+        </div>
+        <div class="story-highlight">
+          <h3>Ouverture de saison — le QR code à la réception</h3>
+          <p>Bernard imprime le QR code et le colle sur le comptoir d'accueil, sur la barrière d'entrée, et sur le panneau des animations. Sa femme dit aux vacanciers à l'arrivée : <em>"On a une petite appli cette année si ça vous intéresse."</em> 40% téléchargent le premier week-end.</p>
+          <div class="story-quote">"Le premier samedi, une dame de 68 ans me montre son téléphone : elle avait rejoint un groupe de randonnée avec des gens qu'elle venait de rencontrer. J'ai rien eu à faire."</div>
+        </div>
+      </div>
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">📊</div>
+          <div class="story-day">Mi-saison</div>
+        </div>
+        <div class="story-content">
+          <h3>Le vrai changement — les animations enfin remplies</h3>
+          <p>Sa soirée "Tapas & Pétanque" du vendredi n'a jamais dépassé 8 personnes en 22 ans. Il publie l'animation sur l'app un mardi. Le vendredi : 31 inscrits. Il doit sortir des chaises supplémentaires.</p>
+          <div class="story-quote">"J'aurais dû faire ça bien avant. Mes vacanciers voulaient se retrouver, ils savaient juste pas comment."</div>
+        </div>
+      </div>
+
+      <div class="story-step reveal">
+        <div class="story-dot-col">
+          <div class="story-dot">⭐</div>
+          <div class="story-day">Octobre</div>
+        </div>
+        <div class="story-highlight">
+          <h3>Fin de saison — il renouvelle sans hésiter</h3>
+          <p>Bernard reçoit son bilan automatique : 847 vacanciers actifs sur l'app, 68% de taux d'adoption, 4 avis Google supplémentaires mentionnant "l'ambiance" et "les gens sympas". Il renouvelle pour l'année suivante au tarif préférentiel pilote.</p>
+          <div class="story-quote">"Mon fils m'a demandé comment j'avais fait pour améliorer mes avis Google. Je lui ai dit que j'avais juste arrêté de laisser mes vacanciers s'ennuyer."</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
