@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs — CampConnect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green-dark:#0d1f0d;--green-deep:#173404;--green-mid:#27500A;--green-main:#639922;--green-light:#97C459;--green-pale:#C0DD97;--green-bg:#EAF3DE;--cream:#f5f2eb;--text:#1c1c1c;--text-muted:#6b6b6b;--max:820px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;background:rgba(245,242,235,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(99,153,34,0.12)}
+.nav-inner{width:100%;max-width:calc(var(--max) + 80px);margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--green-mid);text-decoration:none;display:flex;align-items:center;gap:7px}
+.nav-logo span{color:var(--green-main)}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--green-main)}
+.nav-cta{background:var(--green-main);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:30px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--green-mid)}
+@media(max-width:600px){.nav-link{display:none}}
+.page-header{background:var(--green-dark);padding:120px clamp(20px,4vw,40px) 64px;text-align:center;position:relative;overflow:hidden}
+.page-header-trees{position:absolute;bottom:0;left:0;right:0;height:22%;background:var(--green-deep);clip-path:polygon(0% 80%,4% 40%,8% 72%,12% 20%,16% 60%,20% 28%,24% 65%,28% 18%,32% 55%,36% 25%,40% 62%,44% 20%,48% 58%,52% 22%,56% 60%,60% 28%,64% 65%,68% 20%,72% 58%,76% 32%,80% 66%,84% 28%,88% 60%,92% 35%,96% 68%,100% 45%,100% 100%,0% 100%)}
+.page-label{display:inline-block;font-size:11px;font-weight:600;color:var(--green-pale);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;opacity:0.6}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,54px);font-weight:900;color:white;line-height:1.12;margin-bottom:14px}
+.page-title span{color:var(--green-light);font-style:italic}
+.page-sub{font-size:clamp(14px,1.7vw,17px);color:rgba(192,221,151,0.55);max-width:480px;margin:0 auto;line-height:1.7}
+section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-label{display:inline-block;font-size:10px;font-weight:600;color:var(--green-main);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;line-height:1.18;margin-bottom:12px}
+.section-sub{font-size:15px;color:var(--text-muted);line-height:1.75;max-width:520px}
+.reveal{transition:opacity .6s ease,transform .6s ease}.reveal.ready{opacity:0;transform:translateY(20px)}.reveal.on{opacity:1!important;transform:none!important}
+.reveal.ready{opacity:0;transform:translateY(20px)}.reveal.on{opacity:1;transform:none}
+/* PRICING CARDS */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{background:white;border:1px solid rgba(0,0,0,0.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;transition:transform 0.2s}
+.price-card:hover{transform:translateY(-3px)}
+.price-card.featured{border:2px solid var(--green-main);position:relative}
+.featured-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--green-main);color:white;font-size:10px;font-weight:700;padding:3px 14px;border-radius:20px;white-space:nowrap;letter-spacing:0.3px}
+.price-tier{font-size:10px;font-weight:700;color:var(--green-main);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.price-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px}
+.price-target{font-size:12px;color:var(--text-muted);margin-bottom:20px;line-height:1.4}
+.price-amount{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--text);line-height:1}
+.price-amount sup{font-size:18px;vertical-align:top;margin-top:8px;font-family:'DM Sans',sans-serif;font-weight:500}
+.price-period{font-size:13px;color:var(--text-muted);margin-top:4px;margin-bottom:6px}
+.price-monthly{font-size:11px;color:var(--text-muted);background:var(--cream);padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:20px}
+.price-divider{height:1px;background:rgba(0,0,0,0.06);margin:16px 0}
+.price-features{display:flex;flex-direction:column;gap:9px;flex:1}
+.pf{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-muted);line-height:1.4}
+.pf-check{width:16px;height:16px;border-radius:50%;background:var(--green-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pf-check svg{width:9px;height:9px}
+.pf.muted .pf-check{background:#f0ede6}
+.pf.muted{opacity:0.4}
+.price-setup{margin-top:16px;font-size:11px;color:var(--text-muted);background:var(--cream);border-radius:8px;padding:8px 12px;text-align:center}
+.price-setup strong{color:var(--text);font-weight:600}
+.price-cta{margin-top:20px;width:100%;padding:12px;border-radius:30px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;text-align:center;display:block;transition:background 0.2s,transform 0.15s}
+.price-cta.primary{background:var(--green-main);color:white;border:none}
+.price-cta.primary:hover{background:var(--green-mid)}
+.price-cta.outline{background:transparent;color:var(--green-main);border:1.5px solid var(--green-main)}
+.price-cta.outline:hover{background:var(--green-bg)}
+/* SIMULATEUR */
+.simulator{background:var(--green-dark);padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
+.sim-inner{max-width:680px;margin:0 auto;text-align:center}
+.sim-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:white;margin-bottom:10px}
+.sim-sub{font-size:15px;color:rgba(192,221,151,0.5);margin-bottom:40px}
+.sim-box{background:rgba(255,255,255,0.04);border:1px solid rgba(99,153,34,0.2);border-radius:18px;padding:28px}
+.sim-sliders{display:flex;flex-direction:column;gap:20px;margin-bottom:28px}
+.sim-row{display:flex;align-items:center;gap:14px}
+.sim-label{font-size:13px;color:rgba(192,221,151,0.7);min-width:140px;text-align:left;font-weight:500}
+.sim-slider{flex:1;accent-color:var(--green-main)}
+.sim-val{font-size:15px;font-weight:600;color:var(--green-light);min-width:28px;text-align:right}
+.sim-results{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:500px){.sim-results{grid-template-columns:1fr}}
+.sim-stat{background:rgba(255,255,255,0.06);border-radius:12px;padding:16px;text-align:center}
+.sim-stat-label{font-size:11px;color:rgba(192,221,151,0.4);font-weight:500;margin-bottom:6px}
+.sim-stat-val{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green-light)}
+.sim-stat.highlight .sim-stat-val{color:#97C459;font-size:34px}
+/* FAQ */
+.faq-list{margin-top:40px;display:flex;flex-direction:column;gap:2px}
+.faq-item{background:white;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
+.faq-q{padding:18px 20px;font-size:15px;font-weight:500;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none}
+.faq-q:hover{background:var(--cream)}
+.faq-arrow{font-size:18px;color:var(--green-main);transition:transform 0.3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.3s}
+.faq-a-inner{padding:0 20px 18px;font-size:14px;color:var(--text-muted);line-height:1.7}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-item.open .faq-a{max-height:300px}
+/* COMPARE */
+.compare-table{width:100%;border-collapse:collapse;margin-top:36px;font-size:13px}
+.compare-table th{padding:12px 16px;text-align:center;font-weight:600;font-size:12px;color:var(--text-muted);background:var(--cream);border-bottom:2px solid rgba(0,0,0,0.08)}
+.compare-table th:first-child{text-align:left}
+.compare-table td{padding:12px 16px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text)}
+.compare-table td:first-child{text-align:left;font-weight:500;color:var(--text)}
+.compare-table tr:nth-child(even) td{background:rgba(0,0,0,0.02)}
+.check{color:var(--green-main);font-size:16px}
+.cross{color:#ccc;font-size:16px}
+.col-featured{background:rgba(99,153,34,0.05)}
+footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);margin-bottom:8px}
+.footer-sub{font-size:11px;color:rgba(192,221,151,0.3)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🌲 Camp<span>Connect</span></a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <a href="comment.html" class="nav-link">Comment ça marche</a>
+      <a href="tarifs.html" class="nav-link" style="color:var(--green-main)">Tarifs</a>
+      <a href="apropos.html" class="nav-link">À propos</a>
+      <a href="index.html#contact" class="nav-cta">Rejoindre le pilote</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Tarifs</div>
+  <h1 class="page-title">Simple, <span>transparent</span>,<br>sans mauvaises surprises.</h1>
+  <p class="page-sub">Un abonnement annuel tout compris. Pas de frais cachés, pas d'engagement long terme après la première année.</p>
+  <div class="page-header-trees"></div>
+</div>
+
+<!-- OFFRES -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="pricing-grid">
+
+      <div class="price-card reveal">
+        <div class="price-tier">Starter</div>
+        <div class="price-name">Essentiel</div>
+        <div class="price-target">Camping indépendant, 1 à 300 emplacements</div>
+        <div class="price-amount"><sup>€</sup>1 990</div>
+        <div class="price-period">par an, HT</div>
+        <div class="price-monthly">soit 166 € / mois</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>App mobile à votre marque (iOS + Android)</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Carte interactive du camping</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Groupes spontanés + chat vacanciers</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Agenda des animations</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Dashboard gérant basique</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Notifications push (100/mois)</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Support email</div>
+          <div class="pf muted"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg></div>Analytics avancés</div>
+          <div class="pf muted"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg></div>30+ langues</div>
+        </div>
+        <div class="price-setup">Configuration initiale : <strong>390 € HT</strong> (one-shot)</div>
+        <a href="index.html#contact" class="price-cta outline">Démarrer →</a>
+      </div>
+
+      <div class="price-card featured reveal">
+        <div class="featured-badge">Le plus choisi</div>
+        <div class="price-tier">Pro</div>
+        <div class="price-name">Complet</div>
+        <div class="price-target">Camping 3-5 étoiles, animations régulières</div>
+        <div class="price-amount"><sup>€</sup>3 490</div>
+        <div class="price-period">par an, HT</div>
+        <div class="price-monthly">soit 291 € / mois</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Tout le Starter</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Dashboard analytics avancé</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Notifications push illimitées</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>30+ langues</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Utilisateurs illimités</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Onboarding + formation équipe</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Support prioritaire (réponse &lt;4h)</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Mises à jour incluses</div>
+        </div>
+        <div class="price-setup">Configuration initiale : <strong>690 € HT</strong> (one-shot)</div>
+        <a href="index.html#contact" class="price-cta primary">Démarrer →</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-tier">Chaîne</div>
+        <div class="price-name">Multi-sites</div>
+        <div class="price-target">Groupes de 5 campings et plus</div>
+        <div class="price-amount" style="font-size:28px;padding-top:6px">Sur devis</div>
+        <div class="price-period">base 1 500 € / site / an</div>
+        <div class="price-monthly">remise volume dès 5 sites</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Tout le Pro, sur chaque site</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Dashboard centralisé multi-sites</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>API + intégration PMS existant</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Account manager dédié</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>SLA garanti 99.9% uptime</div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#639922" stroke-width="1.5" stroke-linecap="round"/></svg></div>Contrat sur mesure 1 à 3 ans</div>
+        </div>
+        <div class="price-setup">Ex. 10 sites : <strong>~18 000 € HT / an</strong></div>
+        <a href="index.html#contact" class="price-cta outline">Demander un devis →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATEUR -->
+<section class="simulator">
+  <div class="sim-inner">
+    <div class="section-label" style="color:var(--green-pale);opacity:0.6">Simulateur</div>
+    <h2 class="sim-title reveal">Estimez votre retour sur investissement</h2>
+    <p class="sim-sub reveal">Jouez avec les curseurs pour voir ce que CampConnect peut vous rapporter</p>
+    <div class="sim-box reveal">
+      <div class="sim-sliders">
+        <div class="sim-row">
+          <span class="sim-label">Emplacements</span>
+          <input type="range" class="sim-slider" min="50" max="500" value="150" step="10" id="empl" oninput="calcROI()">
+          <span class="sim-val" id="v-empl">150</span>
+        </div>
+        <div class="sim-row">
+          <span class="sim-label">Taux occupation moyen</span>
+          <input type="range" class="sim-slider" min="40" max="95" value="70" step="5" id="occ" oninput="calcROI()">
+          <span class="sim-val" id="v-occ">70%</span>
+        </div>
+        <div class="sim-row">
+          <span class="sim-label">Durée séjour moy. (j)</span>
+          <input type="range" class="sim-slider" min="3" max="14" value="7" step="1" id="dur" oninput="calcROI()">
+          <span class="sim-val" id="v-dur">7j</span>
+        </div>
+        <div class="sim-row">
+          <span class="sim-label">Saison ouverte (mois)</span>
+          <input type="range" class="sim-slider" min="3" max="12" value="6" step="1" id="mois" oninput="calcROI()">
+          <span class="sim-val" id="v-mois">6</span>
+        </div>
+      </div>
+      <div class="sim-results">
+        <div class="sim-stat">
+          <div class="sim-stat-label">Vacanciers / saison</div>
+          <div class="sim-stat-val" id="r-vac">5 400</div>
+        </div>
+        <div class="sim-stat">
+          <div class="sim-stat-label">Animations +42% fréquentation</div>
+          <div class="sim-stat-val" id="r-anim">+42%</div>
+        </div>
+        <div class="sim-stat highlight">
+          <div class="sim-stat-label">Coût / vacancier / an</div>
+          <div class="sim-stat-val" id="r-cout">0,65 €</div>
+        </div>
+        <div class="sim-stat highlight">
+          <div class="sim-stat-label">ROI estimé (fidélisation +5%)</div>
+          <div class="sim-stat-val" id="r-roi">×12</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIF -->
+<section style="background:white">
+  <div class="section-inner">
+    <div class="section-label reveal">Comparatif</div>
+    <h2 class="section-title reveal">Ce qui est inclus dans chaque offre</h2>
+    <div style="overflow-x:auto">
+    <table class="compare-table reveal">
+      <thead>
+        <tr>
+          <th style="width:40%">Fonctionnalité</th>
+          <th>Starter</th>
+          <th class="col-featured">Pro</th>
+          <th>Chaîne</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>App branded iOS + Android</td><td><span class="check">✓</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Carte interactive</td><td><span class="check">✓</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Groupes spontanés</td><td><span class="check">✓</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Chat vacanciers</td><td><span class="check">✓</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Agenda animations</td><td><span class="check">✓</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Notifications push illimitées</td><td><span class="cross">—</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Analytics avancés</td><td><span class="cross">—</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>30+ langues</td><td><span class="cross">—</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Utilisateurs illimités</td><td><span class="cross">—</span></td><td class="col-featured"><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Dashboard multi-sites</td><td><span class="cross">—</span></td><td class="col-featured"><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>API + intégration PMS</td><td><span class="cross">—</span></td><td class="col-featured"><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Account manager dédié</td><td><span class="cross">—</span></td><td class="col-featured"><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-label reveal">Questions fréquentes</div>
+    <h2 class="section-title reveal">Ce que vous nous demandez souvent</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Ça marche vraiment sans que mes vacanciers créent un compte ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Vos vacanciers scannent un QR code à l'accueil et accèdent à l'app en 10 secondes, sans inscription, sans mot de passe. On choisit cette approche délibérément — chaque friction supplémentaire divise le taux d'adoption par deux.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Que se passe-t-il si je ne renouvelle pas ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">L'app continue de fonctionner jusqu'à la fin de la période payée. Vous récupérez toutes vos données (export CSV). Aucun frais de résiliation.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">L'app est-elle conforme au RGPD ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Les données sont hébergées en France (OVH). Nous ne collectons aucune donnée personnelle nominative sans consentement. Un DPA (accord de traitement des données) est fourni avec chaque contrat.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Combien de temps pour déployer l'app ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">2 semaines en moyenne entre la signature et la mise en ligne. Vous nous fournissez votre logo, vos couleurs et votre plan du camping — on s'occupe du reste.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Et si j'ai déjà une app ou un logiciel de gestion ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">CampConnect est complémentaire, pas concurrent. Il ne remplace pas votre PMS (logiciel de réservation). L'offre Chaîne inclut une API pour l'intégrer à vos outils existants.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Le prix du pilote gratuit va-t-il changer ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Les 3 campings pilotes bénéficient d'un tarif préférentiel garanti à vie sur leur première année payante — minimum 20% de remise par rapport aux tarifs affichés ici.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="background:var(--green-deep);text-align:center">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--green-pale);opacity:0.6;margin-bottom:14px">Encore des questions ?</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;color:white;margin-bottom:14px;line-height:1.2" class="reveal">Pas de vendeur. Pas de démo imposée.<br><em style="color:var(--green-light)">Une vraie conversation.</em></h2>
+    <p style="font-size:15px;color:rgba(192,221,151,0.5);margin-bottom:28px" class="reveal">Répondez à ce formulaire — je vous rappelle ou vous écris selon votre préférence.</p>
+    <a href="index.html#contact" class="reveal" style="display:inline-block;background:var(--green-main);color:white;font-size:14px;font-weight:600;padding:13px 28px;border-radius:30px;text-decoration:none;transition:background 0.2s">Nous contacter →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🌲 CampConnect</div>
+  <div style="display:flex;gap:20px;justify-content:center;margin:12px 0">
+    <a href="tarifs.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Tarifs</a>
+    <a href="apropos.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">À propos</a>
+    <a href="comment.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Comment ça marche</a>
+    <a href="index.html#contact" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Contact</a>
+  </div>
+  <div class="footer-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f5c50514b5e5c4b7f5c5e524f5c5051515a5c4b11594d">[email&#160;protected]</a> · © 2025</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('.reveal').forEach(el=>el.classList.add('ready'));
+function revealAll(){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));}
+if('IntersectionObserver' in window){
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('ready'));
+function revealAll(){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));}
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  setTimeout(()=>{const h=document.querySelectorAll('.reveal:not(.on)');if(h.length>document.querySelectorAll('.reveal').length/2)revealAll();},1500);
+}else{revealAll();}
+  setTimeout(()=>{const h=document.querySelectorAll('.reveal:not(.on)');if(h.length>document.querySelectorAll('.reveal').length/2)revealAll();},1500);
+}else{revealAll();}
+function toggleFaq(el){const item=el.parentElement;item.classList.toggle('open');}
+function calcROI(){
+  const empl=+document.getElementById('empl').value;
+  const occ=+document.getElementById('occ').value/100;
+  const dur=+document.getElementById('dur').value;
+  const mois=+document.getElementById('mois').value;
+  document.getElementById('v-empl').textContent=empl;
+  document.getElementById('v-occ').textContent=Math.round(occ*100)+'%';
+  document.getElementById('v-dur').textContent=dur+'j';
+  document.getElementById('v-mois').textContent=mois;
+  const jours=mois*30;
+  const vac=Math.round(empl*occ*(jours/dur));
+  const cout=(3490/vac).toFixed(2).replace('.',',');
+  const roi=Math.round((vac*0.05*80)/3490);
