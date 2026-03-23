@@ -309,7 +309,7 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
           <div class="sim-stat-val" id="r-anim">+42%</div>
         </div>
         <div class="sim-stat highlight">
-          <div class="sim-stat-label">Coût / vacancier / an</div>
+          <div class="sim-stat-label">Coût / nuitée occupée</div>
           <div class="sim-stat-val" id="r-cout">0,65 €</div>
         </div>
         <div class="sim-stat highlight">
@@ -663,12 +663,13 @@ function calcROI(){
   document.getElementById('v-dur').textContent=dur+'j';
   document.getElementById('v-mois').textContent=mois;
   const jours=mois*30;
-  const vac=Math.round(empl*occ*(jours/dur));
-  const cout=(3490/vac).toFixed(2).replace('.',',');
+  const nuitees=Math.round(empl*occ*jours);
+  const vac=Math.round(nuitees/dur);
+  const coutNuitee=(3490/nuitees).toFixed(3).replace('.',',');
   const roi=Math.round((vac*0.05*80)/3490);
   document.getElementById('r-vac').textContent=vac.toLocaleString('fr-FR');
   document.getElementById('r-anim').textContent='+42%';
-  document.getElementById('r-cout').textContent=cout+' €';
+  document.getElementById('r-cout').textContent=coutNuitee+' €';
   document.getElementById('r-roi').textContent='×'+Math.max(1,roi);
 }
 calcROI();
