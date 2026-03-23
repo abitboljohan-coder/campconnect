@@ -1139,22 +1139,38 @@ document.getElementById('contactForm').addEventListener('submit',async function(
   var btn=document.getElementById('cfBtn');
   btn.textContent='Envoi en cours…';
   btn.disabled=true;
+  var f=this;
+  var data={
+    nom:      f.querySelector('[name=nom]').value.trim(),
+    email:    f.querySelector('[name=email]').value.trim(),
+    camping:  f.querySelector('[name=camping]').value.trim(),
+    emplacements: f.querySelector('[name=emplacements]').value,
+    message:  f.querySelector('[name=message]').value.trim()
+  };
   try{
-    var res=await fetch('https://formsubmit.co/ajax/contact@campconnect.fr',{
+    var res=await fetch('https://hsebtpliwimyidudajmi.supabase.co/rest/v1/candidatures',{
       method:'POST',
-      headers:{'Accept':'application/json'},
-      body:new FormData(this)
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzZWJ0cGxpd2lteWlkdWRham1pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2NzYzNTIsImV4cCI6MjA4OTI1MjM1Mn0.NgEhcGScIF39Qfi2HYpvDqe15o7Mw4T8bdx3yEs7Qqw',
+        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzZWJ0cGxpd2lteWlkdWRham1pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2NzYzNTIsImV4cCI6MjA4OTI1MjM1Mn0.NgEhcGScIF39Qfi2HYpvDqe15o7Mw4T8bdx3yEs7Qqw',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify(data)
     });
-    if(res.ok){
-      this.style.display='none';
+    if(res.ok||res.status===201){
+      f.style.display='none';
       var s=document.getElementById('cfSuccess');
       s.style.display='block';
       s.style.animation='fadeup .6s ease both';
     }else{
+      var err=await res.json().catch(function(){return{};});
+      console.error('Supabase error',res.status,err);
       btn.textContent='Erreur — réessayez';
       btn.disabled=false;
     }
   }catch(err){
+    console.error(err);
     btn.textContent='Erreur réseau — réessayez';
     btn.disabled=false;
   }
