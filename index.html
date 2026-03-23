@@ -351,142 +351,243 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
           </div>
 
           <!-- SC1 — CARTE SATELLITE -->
-          <div class="sc" id="sc1" style="background:#1a2a1a">
+          <div class="sc" id="sc1" style="background:#0f1f0f">
             <div style="position:relative;height:100%;overflow:hidden">
 
-              <!-- Base terrain satellite -->
-              <div style="position:absolute;inset:0;background:
-                linear-gradient(160deg,#1e3d0e 0%,#162e0a 25%,#1f4210 45%,#132606 60%,#1c3a0d 80%,#0f2207 100%)"></div>
+              <!-- Fond herbe satellite foncé -->
+              <div style="position:absolute;inset:0;background:linear-gradient(170deg,#183510 0%,#112a09 20%,#1c3d0e 40%,#102508 55%,#183311 70%,#0d2006 85%,#162e0d 100%)"></div>
 
-              <!-- Texture herbe / végétation -->
-              <div style="position:absolute;inset:0;opacity:.55;background:
-                radial-gradient(ellipse 80px 60px at 20% 30%,rgba(55,110,20,.7),transparent),
-                radial-gradient(ellipse 60px 80px at 75% 20%,rgba(40,90,15,.6),transparent),
-                radial-gradient(ellipse 100px 50px at 50% 65%,rgba(60,120,25,.5),transparent),
-                radial-gradient(ellipse 70px 90px at 85% 75%,rgba(45,95,18,.6),transparent),
-                radial-gradient(ellipse 90px 60px at 10% 80%,rgba(50,105,20,.5),transparent)"></div>
+              <!-- Grain texture overlay -->
+              <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.18" xmlns="http://www.w3.org/2000/svg">
+                <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+                <rect width="100%" height="100%" filter="url(#grain)"/>
+              </svg>
 
-              <!-- SVG : routes, parcelles, équipements -->
-              <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" viewBox="0 0 270 490">
+              <!-- Taches de végétation variées -->
+              <div style="position:absolute;inset:0;opacity:.5;background:
+                radial-gradient(ellipse 90px 55px at 18% 22%,rgba(38,90,14,.8),transparent),
+                radial-gradient(ellipse 55px 75px at 72% 15%,rgba(28,75,10,.7),transparent),
+                radial-gradient(ellipse 110px 45px at 48% 58%,rgba(42,100,18,.6),transparent),
+                radial-gradient(ellipse 65px 95px at 88% 70%,rgba(32,82,12,.7),transparent),
+                radial-gradient(ellipse 80px 50px at 8% 78%,rgba(36,88,14,.6),transparent),
+                radial-gradient(ellipse 45px 60px at 55% 88%,rgba(25,65,10,.5),transparent),
+                radial-gradient(ellipse 70px 40px at 92% 35%,rgba(35,85,13,.55),transparent)"></div>
 
-                <!-- Routes principales -->
-                <path d="M0,245 Q90,230 180,245 Q225,252 270,248" stroke="rgba(210,185,120,.45)" stroke-width="5" fill="none"/>
-                <path d="M130,0 Q126,245 128,490" stroke="rgba(210,185,120,.35)" stroke-width="4" fill="none"/>
-                <!-- Route secondaire -->
-                <path d="M0,340 L130,340" stroke="rgba(210,185,120,.25)" stroke-width="3" fill="none"/>
-                <path d="M130,340 Q200,340 270,330" stroke="rgba(210,185,120,.25)" stroke-width="3" fill="none"/>
+              <!-- SVG principal -->
+              <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 270 490" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.5)"/>
+                  </filter>
+                  <linearGradient id="poolGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2196F3" stop-opacity=".9"/>
+                    <stop offset="100%" stop-color="#0D47A1" stop-opacity=".85"/>
+                  </linearGradient>
+                  <linearGradient id="poolShimmer" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="rgba(255,255,255,.22)"/>
+                    <stop offset="100%" stop-color="rgba(255,255,255,.0)"/>
+                  </linearGradient>
+                </defs>
 
-                <!-- Parcelles zone A (haut gauche) -->
-                <rect x="18" y="60"  width="44" height="30" rx="2" fill="rgba(140,200,70,.14)" stroke="rgba(160,220,80,.35)" stroke-width=".8"/>
-                <rect x="66" y="60"  width="44" height="30" rx="2" fill="rgba(140,200,70,.14)" stroke="rgba(160,220,80,.35)" stroke-width=".8"/>
-                <rect x="18" y="95"  width="44" height="30" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.3)"  stroke-width=".8"/>
-                <rect x="66" y="95"  width="44" height="30" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.3)"  stroke-width=".8"/>
-                <rect x="18" y="130" width="44" height="30" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.25)" stroke-width=".8"/>
-                <rect x="66" y="130" width="44" height="30" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.25)" stroke-width=".8"/>
-                <text x="22" y="72" font-size="5" fill="rgba(200,230,130,.5)" font-family="sans-serif">A1</text>
-                <text x="70" y="72" font-size="5" fill="rgba(200,230,130,.5)" font-family="sans-serif">A2</text>
-                <text x="22" y="107" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">A3</text>
-                <text x="70" y="107" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">A4</text>
+                <!-- === ALLÉES / ROUTES === -->
+                <!-- Route principale horizontale (sinueuse) -->
+                <path d="M0,248 C40,242 80,254 128,248 C168,243 210,252 270,246" stroke="#c8a96e" stroke-width="7" fill="none" opacity=".6"/>
+                <path d="M0,248 C40,242 80,254 128,248 C168,243 210,252 270,246" stroke="#e8c98e" stroke-width="4" fill="none" opacity=".25"/>
+                <!-- Route principale verticale -->
+                <path d="M130,0 C128,80 132,160 130,248 C128,340 132,420 130,490" stroke="#c8a96e" stroke-width="6" fill="none" opacity=".55"/>
+                <path d="M130,0 C128,80 132,160 130,248 C128,340 132,420 130,490" stroke="#e8c98e" stroke-width="3" fill="none" opacity=".22"/>
+                <!-- Allée secondaire bas-gauche -->
+                <path d="M0,345 Q50,340 130,345" stroke="#b8996e" stroke-width="4" fill="none" opacity=".45"/>
+                <!-- Allée secondaire bas-droite -->
+                <path d="M130,345 Q190,338 270,342" stroke="#b8996e" stroke-width="4" fill="none" opacity=".4"/>
+                <!-- Allée secondaire haut -->
+                <path d="M0,140 Q65,135 130,140" stroke="#b8996e" stroke-width="3.5" fill="none" opacity=".38"/>
+                <!-- Petite allée diagonale piscine -->
+                <path d="M130,200 Q148,195 155,175" stroke="#b8996e" stroke-width="3" fill="none" opacity=".35"/>
 
-                <!-- Parcelles zone B (haut droite) -->
-                <rect x="155" y="55"  width="42" height="28" rx="2" fill="rgba(140,200,70,.13)" stroke="rgba(160,220,80,.32)" stroke-width=".8"/>
-                <rect x="202" y="55"  width="42" height="28" rx="2" fill="rgba(140,200,70,.13)" stroke="rgba(160,220,80,.32)" stroke-width=".8"/>
-                <rect x="155" y="88"  width="42" height="28" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
-                <rect x="202" y="88"  width="42" height="28" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
-                <text x="159" y="66" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">B1</text>
-                <text x="206" y="66" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">B2</text>
+                <!-- === ZONE RÉCEPTION / BÂTIMENTS === -->
+                <!-- Bâtiment réception (haut-centre) -->
+                <rect x="100" y="16" width="60" height="36" rx="4" fill="#5d4e37" filter="url(#shadow)" opacity=".9"/>
+                <rect x="100" y="16" width="60" height="36" rx="4" fill="none" stroke="#8B7355" stroke-width="1.2" opacity=".8"/>
+                <!-- Toit de la réception -->
+                <rect x="103" y="18" width="54" height="14" rx="3" fill="rgba(139,115,85,.4)"/>
+                <!-- Fenêtres -->
+                <rect x="107" y="26" width="10" height="9" rx="1.5" fill="rgba(255,220,140,.35)"/>
+                <rect x="122" y="26" width="10" height="9" rx="1.5" fill="rgba(255,220,140,.3)"/>
+                <rect x="143" y="26" width="10" height="9" rx="1.5" fill="rgba(255,220,140,.3)"/>
+                <!-- Porte -->
+                <rect x="125" y="42" width="10" height="10" rx="2" fill="rgba(80,55,30,.8)"/>
 
-                <!-- Parcelles zone C (bas) -->
-                <rect x="18"  y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
-                <rect x="62"  y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
-                <rect x="18"  y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
-                <rect x="62"  y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
-                <rect x="155" y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
-                <rect x="199" y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
-                <rect x="155" y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
-                <rect x="199" y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
+                <!-- Snack Bar -->
+                <rect x="155" y="220" width="50" height="32" rx="4" fill="#4a3d28" filter="url(#shadow)" opacity=".85"/>
+                <rect x="155" y="220" width="50" height="32" rx="4" fill="none" stroke="#7a6040" stroke-width="1"/>
+                <rect x="158" y="222" width="44" height="10" rx="2" fill="rgba(255,100,50,.25)"/>
+                <!-- Parasol snack -->
+                <circle cx="180" cy="218" r="12" fill="rgba(220,120,40,.35)" stroke="rgba(240,150,60,.4)" stroke-width="1"/>
+                <line x1="180" y1="206" x2="180" y2="222" stroke="rgba(200,150,80,.5)" stroke-width="1"/>
 
-                <!-- PISCINE — rectangle bleu arrondi avec reflet -->
-                <rect x="155" y="155" width="80" height="52" rx="8" fill="rgba(32,120,200,.65)" stroke="rgba(80,180,255,.5)" stroke-width="1.5"/>
-                <rect x="160" y="160" width="70" height="18" rx="4" fill="rgba(100,200,255,.15)"/>
-                <!-- lignes de nage -->
-                <line x1="175" y1="157" x2="175" y2="205" stroke="rgba(255,255,255,.15)" stroke-width=".8"/>
-                <line x1="195" y1="157" x2="195" y2="205" stroke="rgba(255,255,255,.15)" stroke-width=".8"/>
-                <line x1="215" y1="157" x2="215" y2="205" stroke="rgba(255,255,255,.15)" stroke-width=".8"/>
-                <!-- reflet lumière -->
-                <ellipse cx="185" cy="168" rx="12" ry="4" fill="rgba(255,255,255,.12)"/>
+                <!-- Sanitaires -->
+                <rect x="18" y="20" width="34" height="28" rx="3" fill="#3a3a4a" opacity=".8"/>
+                <rect x="18" y="20" width="34" height="28" rx="3" fill="none" stroke="rgba(150,150,180,.4)" stroke-width=".9"/>
+                <rect x="22" y="24" width="10" height="12" rx="1.5" fill="rgba(100,180,255,.2)"/>
+                <rect x="36" y="24" width="10" height="12" rx="1.5" fill="rgba(255,120,120,.2)"/>
 
-                <!-- PÉTANQUE — rectangle sable -->
-                <rect x="18" y="195" width="85" height="38" rx="4" fill="rgba(195,165,100,.35)" stroke="rgba(210,180,120,.5)" stroke-width="1.2"/>
-                <rect x="21" y="198" width="79" height="32" rx="3" fill="rgba(195,165,100,.18)"/>
-                <!-- lignes terrain pétanque -->
-                <line x1="60" y1="197" x2="60" y2="231" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
-                <circle cx="40" cy="214" r="3" fill="rgba(255,255,255,.25)"/>
-                <circle cx="80" cy="214" r="3" fill="rgba(255,255,255,.25)"/>
+                <!-- === EMPLACEMENTS ZONE A (haut-gauche) === -->
+                <rect x="18" y="56"  width="42" height="26" rx="2" fill="rgba(130,190,65,.16)" stroke="rgba(160,215,75,.4)" stroke-width=".9"/>
+                <rect x="64" y="56"  width="42" height="26" rx="2" fill="rgba(130,190,65,.16)" stroke="rgba(160,215,75,.4)" stroke-width=".9"/>
+                <rect x="18" y="86"  width="42" height="26" rx="2" fill="rgba(130,190,65,.13)" stroke="rgba(160,215,75,.35)" stroke-width=".9"/>
+                <rect x="64" y="86"  width="42" height="26" rx="2" fill="rgba(130,190,65,.13)" stroke="rgba(160,215,75,.35)" stroke-width=".9"/>
+                <rect x="18" y="116" width="42" height="26" rx="2" fill="rgba(130,190,65,.11)" stroke="rgba(160,215,75,.3)"  stroke-width=".9"/>
+                <rect x="64" y="116" width="42" height="26" rx="2" fill="rgba(130,190,65,.11)" stroke="rgba(160,215,75,.3)"  stroke-width=".9"/>
+                <text x="22" y="67"  font-size="5.5" fill="rgba(210,240,140,.6)" font-family="monospace" font-weight="600">A1</text>
+                <text x="68" y="67"  font-size="5.5" fill="rgba(210,240,140,.6)" font-family="monospace" font-weight="600">A2</text>
+                <text x="22" y="97"  font-size="5.5" fill="rgba(210,240,140,.55)" font-family="monospace" font-weight="600">A3</text>
+                <text x="68" y="97"  font-size="5.5" fill="rgba(210,240,140,.55)" font-family="monospace" font-weight="600">A4</text>
+                <text x="22" y="127" font-size="5.5" fill="rgba(210,240,140,.5)"  font-family="monospace" font-weight="600">A5</text>
+                <text x="68" y="127" font-size="5.5" fill="rgba(210,240,140,.5)"  font-family="monospace" font-weight="600">A6</text>
 
-                <!-- BBQ / espace commun — zone avec tables -->
-                <rect x="18" y="265" width="95" height="55" rx="5" fill="rgba(80,60,30,.4)" stroke="rgba(120,90,45,.4)" stroke-width="1"/>
-                <!-- tables de pique-nique -->
-                <rect x="25" y="272" width="18" height="12" rx="2" fill="rgba(139,90,43,.55)" stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
-                <rect x="50" y="272" width="18" height="12" rx="2" fill="rgba(139,90,43,.55)" stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
-                <rect x="75" y="272" width="18" height="12" rx="2" fill="rgba(139,90,43,.55)" stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
-                <rect x="25" y="295" width="18" height="12" rx="2" fill="rgba(139,90,43,.5)"  stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
-                <rect x="50" y="295" width="18" height="12" rx="2" fill="rgba(139,90,43,.5)"  stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
-                <!-- BBQ rond -->
-                <circle cx="90" cy="302" r="7" fill="rgba(50,40,25,.7)" stroke="rgba(100,80,40,.5)" stroke-width="1"/>
-                <circle cx="90" cy="302" r="4" fill="rgba(200,100,20,.4)"/>
+                <!-- === EMPLACEMENTS ZONE B (haut-droite) === -->
+                <rect x="148" y="56"  width="40" height="26" rx="2" fill="rgba(130,190,65,.15)" stroke="rgba(160,215,75,.38)" stroke-width=".9"/>
+                <rect x="192" y="56"  width="40" height="26" rx="2" fill="rgba(130,190,65,.15)" stroke="rgba(160,215,75,.38)" stroke-width=".9"/>
+                <rect x="148" y="86"  width="40" height="26" rx="2" fill="rgba(130,190,65,.12)" stroke="rgba(160,215,75,.32)" stroke-width=".9"/>
+                <rect x="192" y="86"  width="40" height="26" rx="2" fill="rgba(130,190,65,.12)" stroke="rgba(160,215,75,.32)" stroke-width=".9"/>
+                <rect x="148" y="116" width="40" height="26" rx="2" fill="rgba(130,190,65,.10)" stroke="rgba(160,215,75,.28)" stroke-width=".9"/>
+                <rect x="192" y="116" width="40" height="26" rx="2" fill="rgba(130,190,65,.10)" stroke="rgba(160,215,75,.28)" stroke-width=".9"/>
+                <text x="152" y="67"  font-size="5.5" fill="rgba(210,240,140,.55)" font-family="monospace" font-weight="600">B1</text>
+                <text x="196" y="67"  font-size="5.5" fill="rgba(210,240,140,.55)" font-family="monospace" font-weight="600">B2</text>
+                <text x="152" y="97"  font-size="5.5" fill="rgba(210,240,140,.5)"  font-family="monospace" font-weight="600">B3</text>
+                <text x="196" y="97"  font-size="5.5" fill="rgba(210,240,140,.5)"  font-family="monospace" font-weight="600">B4</text>
 
-                <!-- Arbre groupe 1 -->
-                <circle cx="108" cy="78"  r="9" fill="rgba(30,80,15,.7)"/>
-                <circle cx="120" cy="72"  r="7" fill="rgba(35,90,18,.65)"/>
-                <circle cx="115" cy="85"  r="8" fill="rgba(25,70,12,.7)"/>
-                <!-- Arbre groupe 2 -->
-                <circle cx="240" cy="135" r="8" fill="rgba(30,80,15,.65)"/>
-                <circle cx="252" cy="128" r="6" fill="rgba(35,90,18,.6)"/>
-                <!-- Arbres bordure -->
-                <circle cx="12"  cy="200" r="7" fill="rgba(25,70,12,.6)"/>
-                <circle cx="258" cy="260" r="8" fill="rgba(30,80,15,.6)"/>
-                <circle cx="265" cy="275" r="6" fill="rgba(35,90,18,.55)"/>
-                <circle cx="20"  cy="430" r="7" fill="rgba(25,70,12,.55)"/>
-                <circle cx="255" cy="430" r="9" fill="rgba(30,80,15,.55)"/>
+                <!-- === EMPLACEMENTS ZONE C (bas-gauche) === -->
+                <rect x="18"  y="358" width="38" height="24" rx="2" fill="rgba(130,190,65,.14)" stroke="rgba(160,215,75,.35)" stroke-width=".9"/>
+                <rect x="60"  y="358" width="38" height="24" rx="2" fill="rgba(130,190,65,.14)" stroke="rgba(160,215,75,.35)" stroke-width=".9"/>
+                <rect x="18"  y="386" width="38" height="24" rx="2" fill="rgba(130,190,65,.11)" stroke="rgba(160,215,75,.28)" stroke-width=".9"/>
+                <rect x="60"  y="386" width="38" height="24" rx="2" fill="rgba(130,190,65,.11)" stroke="rgba(160,215,75,.28)" stroke-width=".9"/>
+                <rect x="18"  y="414" width="38" height="24" rx="2" fill="rgba(130,190,65,.09)" stroke="rgba(160,215,75,.22)" stroke-width=".9"/>
+                <rect x="60"  y="414" width="38" height="24" rx="2" fill="rgba(130,190,65,.09)" stroke="rgba(160,215,75,.22)" stroke-width=".9"/>
+                <text x="22"  y="368" font-size="5.5" fill="rgba(210,240,140,.52)" font-family="monospace" font-weight="600">C1</text>
+                <text x="64"  y="368" font-size="5.5" fill="rgba(210,240,140,.52)" font-family="monospace" font-weight="600">C2</text>
+                <text x="22"  y="396" font-size="5.5" fill="rgba(210,240,140,.48)" font-family="monospace" font-weight="600">C3</text>
+                <text x="64"  y="396" font-size="5.5" fill="rgba(210,240,140,.48)" font-family="monospace" font-weight="600">C4</text>
+
+                <!-- === EMPLACEMENTS ZONE D (bas-droite) === -->
+                <rect x="148" y="358" width="38" height="24" rx="2" fill="rgba(130,190,65,.14)" stroke="rgba(160,215,75,.35)" stroke-width=".9"/>
+                <rect x="190" y="358" width="38" height="24" rx="2" fill="rgba(130,190,65,.14)" stroke="rgba(160,215,75,.35)" stroke-width=".9"/>
+                <rect x="233" y="358" width="28" height="24" rx="2" fill="rgba(130,190,65,.12)" stroke="rgba(160,215,75,.3)"  stroke-width=".9"/>
+                <rect x="148" y="386" width="38" height="24" rx="2" fill="rgba(130,190,65,.11)" stroke="rgba(160,215,75,.28)" stroke-width=".9"/>
+                <rect x="190" y="386" width="38" height="24" rx="2" fill="rgba(130,190,65,.11)" stroke="rgba(160,215,75,.28)" stroke-width=".9"/>
+                <text x="152" y="368" font-size="5.5" fill="rgba(210,240,140,.5)"  font-family="monospace" font-weight="600">D1</text>
+                <text x="194" y="368" font-size="5.5" fill="rgba(210,240,140,.5)"  font-family="monospace" font-weight="600">D2</text>
+                <text x="152" y="396" font-size="5.5" fill="rgba(210,240,140,.45)" font-family="monospace" font-weight="600">D3</text>
+                <text x="194" y="396" font-size="5.5" fill="rgba(210,240,140,.45)" font-family="monospace" font-weight="600">D4</text>
+
+                <!-- === PISCINE === -->
+                <!-- Bord béton -->
+                <rect x="152" y="152" width="88" height="58" rx="10" fill="#546E7A" opacity=".6"/>
+                <!-- Eau -->
+                <rect x="155" y="155" width="82" height="52" rx="9" fill="url(#poolGrad)"/>
+                <!-- Shimmer diagonal -->
+                <rect x="155" y="155" width="82" height="52" rx="9" fill="url(#poolShimmer)"/>
+                <!-- Lignes de nage -->
+                <line x1="172" y1="157" x2="172" y2="205" stroke="rgba(255,255,255,.2)" stroke-width=".9" stroke-dasharray="4,3"/>
+                <line x1="190" y1="157" x2="190" y2="205" stroke="rgba(255,255,255,.2)" stroke-width=".9" stroke-dasharray="4,3"/>
+                <line x1="208" y1="157" x2="208" y2="205" stroke="rgba(255,255,255,.2)" stroke-width=".9" stroke-dasharray="4,3"/>
+                <line x1="226" y1="157" x2="226" y2="205" stroke="rgba(255,255,255,.2)" stroke-width=".9" stroke-dasharray="4,3"/>
+                <!-- Reflets lumière -->
+                <ellipse cx="178" cy="164" rx="15" ry="4" fill="rgba(255,255,255,.18)" transform="rotate(-15,178,164)"/>
+                <ellipse cx="215" cy="175" rx="10" ry="3" fill="rgba(255,255,255,.12)" transform="rotate(-10,215,175)"/>
+                <!-- Bord piscine lumineux -->
+                <rect x="155" y="155" width="82" height="52" rx="9" fill="none" stroke="rgba(100,200,255,.55)" stroke-width="1.5"/>
+
+                <!-- === PÉTANQUE === -->
+                <rect x="16" y="196" width="88" height="40" rx="5" fill="rgba(180,150,90,.3)" stroke="rgba(200,175,115,.5)" stroke-width="1.2"/>
+                <rect x="19" y="199" width="82" height="34" rx="4" fill="rgba(195,165,100,.15)"/>
+                <line x1="60" y1="197" x2="60" y2="234" stroke="rgba(255,255,255,.22)" stroke-width=".8"/>
+                <circle cx="35" cy="216" r="3.5" fill="rgba(255,255,255,.28)"/>
+                <circle cx="85" cy="216" r="3.5" fill="rgba(255,255,255,.28)"/>
+                <circle cx="60" cy="213" r="2" fill="rgba(255,220,100,.5)"/>
+
+                <!-- === ESPACE BBQ / COMMUN === -->
+                <rect x="16" y="268" width="98" height="58" rx="6" fill="rgba(60,45,22,.38)" stroke="rgba(100,78,38,.4)" stroke-width="1"/>
+                <!-- Tables pique-nique (vue dessus) -->
+                <rect x="23" y="276" width="20" height="13" rx="2" fill="rgba(120,80,35,.6)" stroke="rgba(150,105,55,.4)" stroke-width=".7"/>
+                <rect x="50" y="276" width="20" height="13" rx="2" fill="rgba(120,80,35,.55)" stroke="rgba(150,105,55,.4)" stroke-width=".7"/>
+                <rect x="77" y="276" width="20" height="13" rx="2" fill="rgba(120,80,35,.55)" stroke="rgba(150,105,55,.4)" stroke-width=".7"/>
+                <rect x="23" y="298" width="20" height="13" rx="2" fill="rgba(120,80,35,.5)" stroke="rgba(150,105,55,.35)" stroke-width=".7"/>
+                <rect x="50" y="298" width="20" height="13" rx="2" fill="rgba(120,80,35,.5)" stroke="rgba(150,105,55,.35)" stroke-width=".7"/>
+                <!-- BBQ grille -->
+                <circle cx="98" cy="295" r="9" fill="rgba(40,30,15,.75)" stroke="rgba(90,65,30,.5)" stroke-width="1"/>
+                <circle cx="98" cy="295" r="5.5" fill="rgba(180,80,15,.5)"/>
+                <circle cx="98" cy="295" r="2.5" fill="rgba(255,140,0,.6)"/>
+
+                <!-- === ARBRES (nombreux, variés) === -->
+                <!-- Bosquet entre A et réception -->
+                <circle cx="106" cy="42"  r="8"   fill="rgba(22,65,10,.82)"/>
+                <circle cx="118" cy="36"  r="6"   fill="rgba(28,78,12,.75)"/>
+                <circle cx="112" cy="52"  r="7"   fill="rgba(18,58,8,.8)"/>
+                <!-- Arbres bordure gauche -->
+                <circle cx="8"   cy="168" r="7"   fill="rgba(22,62,10,.72)"/>
+                <circle cx="10"  cy="185" r="5"   fill="rgba(28,75,12,.65)"/>
+                <circle cx="6"   cy="455" r="8"   fill="rgba(20,58,9,.7)"/>
+                <circle cx="15"  cy="468" r="5.5" fill="rgba(26,70,11,.65)"/>
+                <!-- Arbres bordure droite -->
+                <circle cx="255" cy="145" r="8"   fill="rgba(22,65,10,.72)"/>
+                <circle cx="263" cy="158" r="6"   fill="rgba(28,78,12,.65)"/>
+                <circle cx="258" cy="268" r="7"   fill="rgba(20,60,9,.7)"/>
+                <circle cx="265" cy="280" r="5"   fill="rgba(26,72,11,.65)"/>
+                <circle cx="262" cy="455" r="9"   fill="rgba(22,65,10,.68)"/>
+                <circle cx="252" cy="467" r="6"   fill="rgba(28,75,12,.62)"/>
+                <!-- Arbres entre zones C et D -->
+                <circle cx="115" cy="378" r="7"   fill="rgba(22,65,10,.72)"/>
+                <circle cx="125" cy="368" r="5.5" fill="rgba(28,78,12,.65)"/>
+                <circle cx="118" cy="395" r="6"   fill="rgba(18,58,8,.7)"/>
+                <!-- Arbres haut-droite -->
+                <circle cx="245" cy="15"  r="7"   fill="rgba(22,65,10,.7)"/>
+                <circle cx="258" cy="22"  r="5"   fill="rgba(28,78,12,.65)"/>
+                <!-- Arbres milieu-droite zone piscine -->
+                <circle cx="252" cy="200" r="6"   fill="rgba(22,65,10,.65)"/>
+                <circle cx="262" cy="212" r="4.5" fill="rgba(28,78,12,.6)"/>
 
               </svg>
 
               <!-- Pins flottants avec labels -->
+              <!-- Réception -->
+              <div style="position:absolute;top:4%;left:36%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:26px;height:26px;border-radius:50%;background:#27500A;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.55)">🏠</div>
+                <div style="margin-top:2px;font-size:7.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.65);padding:1px 5px;border-radius:4px;white-space:nowrap">Réception</div>
+              </div>
               <!-- Piscine -->
-              <div style="position:absolute;top:28%;left:58%;display:flex;flex-direction:column;align-items:center">
-                <div style="width:28px;height:28px;border-radius:50%;background:#3b82f6;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🏊</div>
+              <div style="position:absolute;top:29.5%;left:58%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:28px;height:28px;border-radius:50%;background:#1565C0;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 10px rgba(21,101,192,.6)">🏊</div>
                 <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Piscine</div>
               </div>
               <!-- Pétanque -->
-              <div style="position:absolute;top:39%;left:6%;display:flex;flex-direction:column;align-items:center">
-                <div style="width:28px;height:28px;border-radius:50%;background:#f59e0b;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🎯</div>
-                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Pétanque</div>
+              <div style="position:absolute;top:39%;left:5%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:26px;height:26px;border-radius:50%;background:#F57F17;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🎯</div>
+                <div style="margin-top:2px;font-size:7.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Pétanque</div>
               </div>
               <!-- BBQ -->
-              <div style="position:absolute;top:52%;left:14%;display:flex;flex-direction:column;align-items:center">
-                <div style="width:28px;height:28px;border-radius:50%;background:#ef4444;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🔥</div>
-                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">BBQ</div>
+              <div style="position:absolute;top:52%;left:12%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:26px;height:26px;border-radius:50%;background:#BF360C;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🔥</div>
+                <div style="margin-top:2px;font-size:7.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">BBQ</div>
               </div>
               <!-- Animation soirée -->
-              <div style="position:absolute;top:18%;left:66%;display:flex;flex-direction:column;align-items:center">
-                <div style="width:28px;height:28px;border-radius:50%;background:#f472b6;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🎸</div>
-                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Concert 21h</div>
+              <div style="position:absolute;top:16%;left:65%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:28px;height:28px;border-radius:50%;background:#880E4F;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.5)">🎸</div>
+                <div style="margin-top:2px;font-size:7.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Concert 21h</div>
               </div>
 
-              <!-- GPS dot animé — position utilisateur -->
-              <div style="position:absolute;top:47%;left:49%;transform:translate(-50%,-50%)">
-                <!-- halo pulsant -->
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:rgba(151,196,89,.18);animation:gpsPulse 2.2s ease-out infinite"></div>
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:rgba(151,196,89,.22);animation:gpsPulse 2.2s ease-out infinite .4s"></div>
-                <!-- point central -->
-                <div style="position:relative;width:14px;height:14px;background:var(--gl);border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.5);z-index:1"></div>
+              <!-- GPS dot animé -->
+              <div style="position:absolute;top:46%;left:48%;transform:translate(-50%,-50%)">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:rgba(151,196,89,.18);animation:gpsPulse 2.2s ease-out infinite"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:rgba(151,196,89,.22);animation:gpsPulse 2.2s ease-out infinite .4s"></div>
+                <div style="position:relative;width:14px;height:14px;background:#97C459;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.5);z-index:1"></div>
               </div>
 
               <!-- Toggle Satellite / Plan -->
-              <div style="position:absolute;top:36px;left:50%;transform:translateX(-50%);background:rgba(10,18,10,.82);backdrop-filter:blur(10px);border-radius:20px;padding:3px;display:flex;gap:2px;z-index:10">
+              <div style="position:absolute;top:36px;left:50%;transform:translateX(-50%);background:rgba(6,12,6,.85);backdrop-filter:blur(10px);border-radius:20px;padding:3px;display:flex;gap:2px;z-index:10">
                 <span style="padding:4px 11px;border-radius:16px;font-size:9px;font-weight:700;background:var(--gn);color:#fff">🛰️ Satellite</span>
-                <span style="padding:4px 11px;font-size:9px;font-weight:600;color:rgba(255,255,255,.45)">🗺️ Plan</span>
+                <span style="padding:4px 11px;font-size:9px;font-weight:600;color:rgba(255,255,255,.4)">🗺️ Plan</span>
               </div>
 
               <!-- Bouton recentrer -->
