@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de confidentialité — CampConnect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green-dark:#0d1f0d;--green-deep:#173404;--green-mid:#27500A;--green-main:#639922;--green-light:#97C459;--green-pale:#C0DD97;--green-bg:#EAF3DE;--cream:#f5f2eb;--text:#1c1c1c;--text-muted:#6b6b6b;--max:780px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;background:rgba(245,242,235,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(99,153,34,0.12)}
+.nav-inner{width:100%;max-width:calc(var(--max) + 80px);margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--green-mid);text-decoration:none;display:flex;align-items:center;gap:7px}
+.nav-logo span{color:var(--green-main)}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--green-main)}
+.nav-cta{background:var(--green-main);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--green-mid)}
+@media(max-width:600px){.nav-link{display:none}}
+.page-header{background:var(--green-dark);padding:120px clamp(20px,4vw,40px) 80px;position:relative;overflow:hidden}
+.page-header-inner{max-width:var(--max);margin:0 auto}
+.page-header-trees{position:absolute;bottom:0;left:0;right:0;height:22%;background:var(--green-deep);clip-path:polygon(0% 80%,4% 40%,8% 72%,12% 20%,16% 60%,20% 28%,24% 65%,28% 18%,32% 55%,36% 25%,40% 62%,44% 20%,48% 58%,52% 22%,56% 60%,60% 28%,64% 65%,68% 20%,72% 58%,76% 32%,80% 66%,84% 28%,88% 60%,92% 35%,96% 68%,100% 45%,100% 100%,0% 100%)}
+.page-label{font-size:11px;font-weight:600;color:var(--green-pale);letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:14px}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:900;color:white;line-height:1.12;margin-bottom:16px}
+section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
+.section-inner{max-width:var(--max);margin:0 auto}
+h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--green-mid);margin:40px 0 12px}
+h2:first-child{margin-top:0}
+p{font-size:15px;line-height:1.75;color:var(--text-muted);margin-bottom:14px}
+ul{margin:0 0 14px 20px}
+li{font-size:15px;line-height:1.75;color:var(--text-muted);margin-bottom:6px}
+a{color:var(--green-main)}
+footer{background:var(--green-dark);padding:clamp(32px,4vw,48px) clamp(20px,4vw,40px);text-align:center}
+.fi{max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+.flogo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:rgba(255,255,255,0.85);text-decoration:none}
+.flogo span{color:var(--green-light)}
+.flinks{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:center}
+.fl{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
+.fl:hover{color:var(--green-light)}
+.fcopy{font-size:12px;color:rgba(255,255,255,0.25)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🌲 Camp<span>Connect</span></a>
+    <div style="display:flex;align-items:center;gap:24px">
+      <a href="pour-les-campings.html" class="nav-link">Pour les campings</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="https://app.campconnect.fr" class="nav-cta">Essayer gratuitement</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-trees"></div>
+  <div class="page-header-inner">
+    <div class="page-label">Légal</div>
+    <h1 class="page-title">Politique de confidentialité</h1>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+
+    <h2>Données collectées</h2>
+    <p>CampConnect collecte uniquement les données nécessaires au fonctionnement du service :</p>
+    <ul>
+      <li>Un pseudo choisi par l'utilisateur (aucun nom réel requis)</li>
+      <li>L'emplacement de camping déclaré par l'utilisateur</li>
+      <li>Les groupes rejoints et les animations auxquelles l'utilisateur s'inscrit</li>
+      <li>Les messages envoyés dans les groupes</li>
+    </ul>
+    <p><strong>Nous ne collectons pas</strong> d'adresse email, de numéro de téléphone, de données bancaires, ni de localisation GPS en dehors de la vérification d'accès au camping.</p>
+
+    <h2>Utilisation des données</h2>
+    <p>Les données collectées sont utilisées exclusivement pour :</p>
+    <ul>
+      <li>Permettre la mise en relation entre vacanciers d'un même camping</li>
+      <li>Afficher les animations et permettre les inscriptions</li>
+      <li>Fournir au gérant des statistiques agrégées et anonymisées sur la fréquentation</li>
+    </ul>
+    <p>Nous ne vendons, ne louons et ne partageons aucune donnée personnelle avec des tiers à des fins commerciales.</p>
+
+    <h2>Hébergement et sécurité</h2>
+    <p>Toutes les données sont hébergées sur des serveurs situés en Europe (Supabase, région EU West). Les communications sont chiffrées via HTTPS/TLS. L'accès à l'application est restreint aux vacanciers présents physiquement dans le camping (vérification QR code ou GPS).</p>
+
+    <h2>Durée de conservation</h2>
+    <p>Les données sont conservées pendant la durée du séjour et jusqu'à 90 jours après la fin de saison. Les données de statistiques agrégées peuvent être conservées plus longtemps sous forme anonymisée.</p>
+
+    <h2>Vos droits (RGPD)</h2>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+    <ul>
+      <li>Droit d'accès à vos données</li>
+      <li>Droit de rectification</li>
+      <li>Droit à l'effacement (droit à l'oubli)</li>
+      <li>Droit à la portabilité</li>
+      <li>Droit d'opposition au traitement</li>
+    </ul>
+    <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@campconnect.fr">contact@campconnect.fr</a></p>
+
+    <h2>Cookies</h2>
+    <p>Le site vitrine campconnect.fr n'utilise pas de cookies de tracking ou publicitaires. L'application app.campconnect.fr utilise uniquement des cookies techniques nécessaires à l'authentification et au maintien de session.</p>
+
+    <h2>Contact</h2>
+    <p>Pour toute question relative à la protection de vos données : <a href="mailto:contact@campconnect.fr">contact@campconnect.fr</a></p>
+    <p>Dernière mise à jour : mars 2025</p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <a href="index.html" class="flogo">🌲 Camp<span>Connect</span></a>
+    <div class="flinks">
+      <a href="pour-les-campings.html" class="fl">Pour les campings</a>
+      <a href="tarifs.html" class="fl">Tarifs</a>
+      <a href="comment.html" class="fl">Comment ça marche</a>
+      <a href="apropos.html" class="fl">À propos</a>
+      <a href="mentions-legales.html" class="fl">Mentions légales</a>
+      <a href="confidentialite.html" class="fl">Confidentialité</a>
+    </div>
+    <span class="fcopy">© 2025 CampConnect</span>
+  </div>
+</footer>
+
+</body>
+</html>
