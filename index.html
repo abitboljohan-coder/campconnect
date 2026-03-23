@@ -973,33 +973,36 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
     </div>
     <div class="contact-form rv">
       <form id="contactForm">
+        <input type="hidden" name="_subject" value="Nouvelle candidature pilote CampConnect">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         <div class="cf-field">
           <label>Prénom &amp; Nom</label>
-          <input type="text" placeholder="Marie Dupont" required>
+          <input type="text" name="nom" placeholder="Marie Dupont" required>
         </div>
         <div class="cf-field">
           <label>Email professionnel</label>
-          <input type="email" placeholder="marie@camping-les-pins.fr" required>
+          <input type="email" name="email" placeholder="marie@camping-les-pins.fr" required>
         </div>
         <div class="cf-field">
           <label>Nom du camping</label>
-          <input type="text" placeholder="Camping Les Pins Dorés" required>
+          <input type="text" name="camping" placeholder="Camping Les Pins Dorés" required>
         </div>
         <div class="cf-field">
           <label>Nombre d'emplacements</label>
-          <select>
+          <select name="emplacements">
             <option>Moins de 50</option>
             <option>50 – 150</option>
             <option>150 – 300</option>
-            <option selected>300 – 600</option>
+            <option>300 – 600</option>
             <option>Plus de 600</option>
           </select>
         </div>
         <div class="cf-field">
           <label>Message (optionnel)</label>
-          <textarea rows="3" placeholder="Dites-nous en plus sur votre camping ou vos besoins…"></textarea>
+          <textarea name="message" rows="3" placeholder="Dites-nous en plus sur votre camping ou vos besoins…"></textarea>
         </div>
-        <button type="submit" class="bp" style="width:100%;margin-top:8px;font-size:14px">Envoyer ma candidature →</button>
+        <button type="submit" id="cfBtn" class="bp" style="width:100%;margin-top:8px;font-size:14px">Envoyer ma candidature →</button>
       </form>
       <div class="cf-success" id="cfSuccess">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9,12 11,14 15,10"/></svg>
@@ -1131,12 +1134,30 @@ var rvObs=new IntersectionObserver(function(entries){
 rvEls.forEach(function(el){rvObs.observe(el);});
 
 /* ── CONTACT FORM ── */
-document.getElementById('contactForm').addEventListener('submit',function(e){
+document.getElementById('contactForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  this.style.display='none';
-  var s=document.getElementById('cfSuccess');
-  s.style.display='block';
-  s.style.animation='fadeup .6s ease both';
+  var btn=document.getElementById('cfBtn');
+  btn.textContent='Envoi en cours…';
+  btn.disabled=true;
+  try{
+    var res=await fetch('https://formsubmit.co/ajax/contact@campconnect.fr',{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(this)
+    });
+    if(res.ok){
+      this.style.display='none';
+      var s=document.getElementById('cfSuccess');
+      s.style.display='block';
+      s.style.animation='fadeup .6s ease both';
+    }else{
+      btn.textContent='Erreur — réessayez';
+      btn.disabled=false;
+    }
+  }catch(err){
+    btn.textContent='Erreur réseau — réessayez';
+    btn.disabled=false;
+  }
 });
 </script>
 </body>
