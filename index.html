@@ -3,480 +3,1039 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CampConnect — L'app qui réunit vos vacanciers</title>
-<meta name="description" content="Application PWA white label pour campings. Carte satellite GPS, groupes, chat, agenda animations. Déployée en 48h, aucun App Store requis.">
+<title>CampConnect — L'app native qui réunit vos vacanciers</title>
+<meta name="description" content="Application native iOS & Android pour campings. Carte satellite GPS, groupes, chat, agenda. Disponible sur App Store et Google Play.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--gd:#0d1f0d;--gdp:#173404;--gm:#27500A;--gn:#639922;--gl:#97C459;--gp:#C0DD97;--gb:#EAF3DE;--cr:#f5f2eb;--tx:#1c1c1c;--mu:#6b6b6b;--mx:800px}
+:root{
+  --gd:#0d1f0d;--gdp:#173404;--gm:#27500A;--gn:#639922;
+  --gl:#97C459;--gp:#C0DD97;--gb:#EAF3DE;--cr:#f5f2eb;
+  --tx:#1c1c1c;--mu:#6b6b6b;--mx:1100px
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:rgba(13,31,13,0);backdrop-filter:blur(0px);border-bottom:1px solid rgba(99,153,34,0);transition:background .4s,backdrop-filter .4s,border-color .4s}
-nav.scrolled{background:rgba(13,31,13,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(99,153,34,0.18)}
-.ni{max-width:calc(var(--mx) + 80px);margin:0 auto;padding:0 clamp(20px,4vw,40px);height:60px;display:flex;align-items:center;justify-content:space-between}
-.nl{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;
+  background:rgba(13,31,13,0);backdrop-filter:blur(0px);
+  border-bottom:1px solid rgba(99,153,34,0);
+  transition:background .4s,backdrop-filter .4s,border-color .4s}
+nav.scrolled{background:rgba(13,31,13,0.88);backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(99,153,34,0.18)}
+.ni{max-width:var(--mx);margin:0 auto;padding:0 clamp(20px,4vw,44px);
+  height:62px;display:flex;align-items:center;justify-content:space-between}
+.nl{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px}
 .nl span{color:var(--gl)}
-.nk{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s}
+.nlinks{display:flex;align-items:center;gap:28px}
+.nk{font-size:13px;font-weight:500;color:rgba(255,255,255,0.62);
+  text-decoration:none;transition:color .2s}
 .nk:hover{color:#fff}
-.nc{background:var(--gn);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;transition:background .2s,transform .15s}
+.nc{background:var(--gn);color:#fff;font-size:12px;font-weight:700;
+  padding:9px 20px;border-radius:30px;text-decoration:none;
+  transition:background .2s,transform .15s}
 .nc:hover{background:var(--gm);transform:translateY(-1px)}
-@media(max-width:600px){.nk{display:none}}
+@media(max-width:640px){.nk{display:none}}
 
-/* HERO */
-.hero{min-height:100vh;background:var(--gd);display:flex;align-items:center;justify-content:center;text-align:center;padding:120px clamp(20px,4vw,40px) 80px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,153,34,0.18) 0%,transparent 70%)}
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--gd);display:flex;align-items:center;
+  padding:110px clamp(20px,4vw,44px) 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,153,34,0.16) 0%,transparent 70%);
+  pointer-events:none}
 .hero-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
-.hero-trees{position:absolute;bottom:0;left:0;right:0;height:28%;background:var(--gdp);clip-path:polygon(0% 80%,3% 45%,6% 72%,9% 25%,12% 58%,15% 30%,18% 66%,21% 18%,24% 55%,27% 28%,30% 62%,33% 20%,36% 58%,39% 30%,42% 65%,45% 22%,48% 60%,51% 25%,54% 62%,57% 28%,60% 65%,63% 18%,66% 58%,69% 30%,72% 66%,75% 22%,78% 60%,81% 35%,84% 68%,87% 28%,90% 62%,100% 50%,100% 100%,0% 100%);z-index:1}
-.hi{max-width:680px;margin:0 auto;position:relative;z-index:2}
+.hero-inner{max-width:var(--mx);margin:0 auto;width:100%;position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 480px;gap:60px;align-items:center}
+@media(max-width:960px){.hero-inner{grid-template-columns:1fr;text-align:center}}
 
-.hbadge{display:inline-flex;align-items:center;gap:7px;background:rgba(99,153,34,0.15);border:1px solid rgba(99,153,34,0.35);border-radius:30px;padding:6px 16px;font-size:11px;font-weight:600;color:var(--gp);margin-bottom:28px;letter-spacing:.3px;animation:fadedown .8s ease both}
-.hbdot{width:6px;height:6px;border-radius:50%;background:var(--gl);flex-shrink:0;animation:pulse 2s infinite}
+.hbadge{display:inline-flex;align-items:center;gap:7px;
+  background:rgba(99,153,34,0.15);border:1px solid rgba(99,153,34,0.35);
+  border-radius:30px;padding:6px 16px;font-size:11px;font-weight:600;
+  color:var(--gp);margin-bottom:24px;letter-spacing:.3px;animation:fadedown .8s ease both}
+.hbdot{width:6px;height:6px;border-radius:50%;background:var(--gl);
+  flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
 @keyframes fadedown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-h1.htitle{font-family:'Playfair Display',serif;font-size:clamp(36px,6.5vw,72px);font-weight:900;color:#fff;line-height:1.08;margin-bottom:20px;letter-spacing:-.5px;animation:fadeup .9s .15s ease both}
+h1.htitle{font-family:'Playfair Display',serif;font-size:clamp(34px,5.2vw,64px);
+  font-weight:900;color:#fff;line-height:1.08;margin-bottom:18px;letter-spacing:-.5px;
+  animation:fadeup .9s .15s ease both}
 h1.htitle em{color:var(--gl);font-style:italic}
-.hsub{font-size:clamp(15px,1.8vw,18px);color:rgba(192,221,151,.55);max-width:500px;line-height:1.75;margin:0 auto 36px;animation:fadeup .9s .3s ease both}
-.hbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;animation:fadeup .9s .45s ease both}
-.bp{background:var(--gn);color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:30px;border:none;font-family:'DM Sans',sans-serif;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;cursor:pointer;box-shadow:0 4px 20px rgba(99,153,34,0.4)}
-.bp:hover{background:var(--gm);transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,153,34,0.5)}
-.bg{background:transparent;color:rgba(192,221,151,.85);font-size:14px;font-weight:600;padding:14px 28px;border-radius:30px;border:1px solid rgba(99,153,34,.35);font-family:'DM Sans',sans-serif;text-decoration:none;transition:border-color .2s,transform .15s,color .2s;cursor:pointer}
+.hsub{font-size:clamp(14px,1.6vw,17px);color:rgba(192,221,151,.6);
+  max-width:480px;line-height:1.8;margin-bottom:36px;animation:fadeup .9s .3s ease both}
+@media(max-width:960px){.hsub{margin:0 auto 36px}}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap;animation:fadeup .9s .45s ease both}
+@media(max-width:960px){.hbtns{justify-content:center}}
+.bp{background:var(--gn);color:#fff;font-size:14px;font-weight:700;
+  padding:14px 28px;border-radius:30px;border:none;font-family:'DM Sans',sans-serif;
+  text-decoration:none;cursor:pointer;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 4px 20px rgba(99,153,34,0.38)}
+.bp:hover{background:var(--gm);transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(99,153,34,0.5)}
+.bg{background:transparent;color:rgba(192,221,151,.85);font-size:14px;font-weight:600;
+  padding:14px 28px;border-radius:30px;border:1px solid rgba(99,153,34,.35);
+  font-family:'DM Sans',sans-serif;text-decoration:none;cursor:pointer;
+  transition:border-color .2s,transform .15s,color .2s}
 .bg:hover{border-color:var(--gn);color:#fff;transform:translateY(-2px)}
-.hstats{display:flex;gap:clamp(28px,5vw,60px);margin-top:60px;flex-wrap:wrap;justify-content:center;animation:fadeup .9s .6s ease both}
-.hn{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--gl);line-height:1}
-.hlb{font-size:11px;font-weight:500;color:rgba(192,221,151,.4);margin-top:4px}
 
-/* PHONE DEMO */
-.demo-section{background:var(--gd);padding:0 clamp(20px,4vw,40px) clamp(60px,8vw,96px)}
-.demo-inner{max-width:var(--mx);margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:clamp(32px,5vw,60px);align-items:center}
-@media(max-width:760px){.demo-inner{grid-template-columns:1fr;text-align:center}}
-.demo-text .sl{display:inline-block;font-size:10px;font-weight:600;color:var(--gl);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
-.demo-text h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;color:#fff;line-height:1.18;margin-bottom:16px}
-.demo-text h2 em{color:var(--gl);font-style:italic}
-.demo-text p{font-size:15px;color:rgba(192,221,151,.5);line-height:1.8;max-width:420px}
-@media(max-width:760px){.demo-text p{margin:0 auto}}
-.demo-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-@media(max-width:760px){.demo-pills{justify-content:center}}
-.demo-pill{font-size:11px;font-weight:600;color:var(--gp);background:rgba(99,153,34,0.15);border:1px solid rgba(99,153,34,0.3);padding:5px 14px;border-radius:20px}
-.phone-wrap{position:relative;display:flex;justify-content:center}
-.phone{width:260px;height:520px;background:var(--gdp);border-radius:36px;border:6px solid rgba(255,255,255,0.12);box-shadow:0 32px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(99,153,34,0.2);overflow:hidden;position:relative;flex-shrink:0}
-.phone-status{height:36px;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:rgba(255,255,255,0.5)}
-.phone-map{flex:1;background:var(--gm);position:relative;height:300px;overflow:hidden}
-.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,153,34,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(99,153,34,0.08) 1px,transparent 1px);background-size:40px 40px}
-.map-road{position:absolute;background:rgba(99,153,34,0.25)}
-.map-road-h{height:3px;left:0;right:0;top:45%}
-.map-road-v{width:3px;top:0;bottom:0;left:35%}
-.map-poi{position:absolute;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 3px 10px rgba(0,0,0,0.4);cursor:default}
-.poi-pool{background:#1a6fa8;top:32%;left:55%}
-.poi-bar{background:#c67c1c;top:55%;left:68%}
-.poi-wc{background:#555;top:65%;left:25%}
-.map-user{position:absolute;top:42%;left:33%;transform:translate(-50%,-50%)}
-.map-user-pulse{position:absolute;width:36px;height:36px;border-radius:50%;background:rgba(99,153,34,0.25);top:50%;left:50%;transform:translate(-50%,-50%);animation:mapPulse 2s ease-out infinite}
-.map-user-dot{width:14px;height:14px;border-radius:50%;background:var(--gn);border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.4);position:relative;z-index:1}
-@keyframes mapPulse{0%{width:14px;height:14px;opacity:.7}100%{width:50px;height:50px;opacity:0}}
-.map-label{background:rgba(0,0,0,0.7);color:#fff;font-size:9px;font-weight:600;padding:2px 7px;border-radius:10px;position:absolute;white-space:nowrap}
-.phone-nav{height:52px;background:rgba(13,31,13,0.95);display:flex;justify-content:space-around;align-items:center;padding:0 8px}
-.pn-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:7px;color:rgba(192,221,151,0.4);flex:1}
-.pn-item.active{color:var(--gl)}
-.pn-item span{font-size:16px;line-height:1}
-.pn-bar{width:14px;height:2px;background:var(--gn);border-radius:1px;margin-top:1px}
-.phone-ping{position:absolute;top:12px;right:12px;background:var(--gn);color:#fff;font-size:8px;font-weight:700;padding:3px 8px;border-radius:10px;animation:ping 3s ease 1.5s infinite}
-@keyframes ping{0%,100%{opacity:0;transform:translateY(0)}10%,90%{opacity:1}50%{transform:translateY(2px)}}
-.phone-info{position:absolute;top:12px;left:12px;background:rgba(13,31,13,0.85);border:1px solid rgba(99,153,34,0.3);border-radius:12px;padding:7px 10px}
-.pi-title{font-size:9px;font-weight:700;color:#fff;margin-bottom:1px}
-.pi-sub{font-size:8px;color:rgba(192,221,151,0.5)}
+.hstore-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;animation:fadeup .9s .55s ease both}
+@media(max-width:960px){.hstore-badges{justify-content:center}}
+.store-badge{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 16px;
+  text-decoration:none;transition:background .2s,border-color .2s,transform .15s}
+.store-badge:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.28);transform:translateY(-2px)}
+.store-badge svg{width:22px;height:22px;flex-shrink:0}
+.store-badge-text{display:flex;flex-direction:column;line-height:1.2}
+.store-badge-sub{font-size:9px;font-weight:500;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.5px}
+.store-badge-name{font-size:13px;font-weight:700;color:#fff}
 
-/* STATS */
-.genz{background:var(--gdp);padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
-.genz .si{text-align:center;max-width:var(--mx);margin:0 auto}
-.genz h2.st{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;color:#fff;line-height:1.18;margin-bottom:10px}
-.genz h2.st em{color:var(--gl);font-style:italic}
-.genz .ss{font-size:15px;color:rgba(192,221,151,.45);margin:0 auto 40px;max-width:500px;line-height:1.75}
-.gstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:560px){.gstats{grid-template-columns:1fr}}
-.gstat{background:rgba(255,255,255,.04);border:1px solid rgba(99,153,34,.15);border-radius:16px;padding:clamp(20px,2.5vw,32px) 16px;text-align:center}
-.gnum{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,48px);font-weight:700;color:var(--gl);line-height:1}
-.gdesc{font-size:12px;font-weight:500;color:rgba(192,221,151,.38);margin-top:8px;line-height:1.5}
+/* ── PHONE SIMULATOR ── */
+.phone-wrap{display:flex;justify-content:center;align-items:center;
+  animation:fadeup .9s .3s ease both}
+.phone{width:270px;height:560px;background:#0a0a0a;border-radius:44px;
+  position:relative;box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 30px 80px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+  overflow:hidden}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:100px;height:30px;background:#0a0a0a;border-radius:0 0 20px 20px;z-index:10}
+.phone-screen{position:absolute;inset:0;overflow:hidden;border-radius:44px}
 
-/* PROBLEM */
-.prob{background:#fff;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
-.probi{max-width:var(--mx);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:center}
-@media(max-width:640px){.probi{grid-template-columns:1fr}}
-.sl{display:inline-block;font-size:10px;font-weight:600;color:var(--gn);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
-h2.st{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;line-height:1.18;margin-bottom:14px;letter-spacing:-.3px}
-.ss{font-size:15px;color:var(--mu);line-height:1.75;max-width:500px}
-.pcards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pc{background:var(--cr);border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,.05)}
-.pi{font-size:22px;margin-bottom:8px}
-.pt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:4px}
-.pd{font-size:12px;color:var(--mu);line-height:1.6}
+/* screen slides */
+.sc{position:absolute;inset:0;opacity:0;transform:translateX(28px);
+  transition:opacity .42s cubic-bezier(.4,0,.2,1),transform .42s cubic-bezier(.4,0,.2,1);
+  pointer-events:none}
+.sc.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.sc.out{opacity:0;transform:translateX(-28px)}
 
-/* FEATURES */
-.feats{background:var(--cr);padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
-.feats .si{max-width:var(--mx);margin:0 auto}
-.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
-@media(max-width:680px){.fgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:420px){.fgrid{grid-template-columns:1fr}}
-.fc{background:#fff;border-radius:16px;padding:22px;border:1px solid rgba(0,0,0,.05);transition:transform .2s,box-shadow .2s}
-.fc:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
-.fe{font-size:24px;margin-bottom:14px;display:block}
-.fn{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:6px}
-.fd{font-size:12px;color:var(--mu);line-height:1.65}
-.ftag{display:inline-block;margin-top:12px;font-size:10px;font-weight:600;color:var(--gn);background:var(--gb);padding:3px 10px;border-radius:20px}
-.fnew{display:inline-block;margin-top:12px;margin-left:4px;font-size:10px;font-weight:700;color:#fff;background:var(--gn);padding:3px 10px;border-radius:20px}
+/* bottom nav */
+.phone-nav{position:absolute;bottom:0;left:0;right:0;height:64px;
+  background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-around;
+  z-index:20;padding:0 6px 8px}
+.pn-tab{display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:none;border:none;cursor:pointer;padding:6px 10px;
+  border-radius:10px;transition:background .15s}
+.pn-tab:hover{background:rgba(255,255,255,0.06)}
+.pn-tab svg{width:20px;height:20px;transition:stroke .2s}
+.pn-tab span{font-size:9px;font-weight:600;letter-spacing:.2px;
+  transition:color .2s;font-family:'DM Sans',sans-serif}
+.pn-tab.act svg{stroke:var(--gl)}
+.pn-tab.act span{color:var(--gl)}
+.pn-tab:not(.act) svg{stroke:rgba(255,255,255,0.38)}
+.pn-tab:not(.act) span{color:rgba(255,255,255,0.38)}
 
-/* HOW IT WORKS */
-.how{background:#fff;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
-.how .si{max-width:var(--mx);margin:0 auto}
-.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,32px);margin-top:40px;position:relative}
-@media(max-width:680px){.how-steps{grid-template-columns:1fr;gap:0}}
-.how-step{text-align:center;padding:24px 16px;position:relative}
-@media(max-width:680px){.how-step{text-align:left;display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start;padding:20px 0;border-bottom:1px solid rgba(0,0,0,0.06)}}
-@media(max-width:680px){.how-step:last-child{border:none}}
-.how-num{width:56px;height:56px;border-radius:50%;background:var(--gd);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gl);margin:0 auto 16px;flex-shrink:0}
-@media(max-width:680px){.how-num{margin:0}}
-.how-conn{position:absolute;top:50px;left:calc(50% + 28px);right:calc(-50% + 28px);height:2px;background:linear-gradient(90deg,var(--gn),rgba(99,153,34,0.2));display:block}
-@media(max-width:680px){.how-conn{display:none}}
-.how-step:last-child .how-conn{display:none}
-.how-title{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:8px}
-.how-desc{font-size:13px;color:var(--mu);line-height:1.65}
-.how-time{display:inline-block;margin-top:10px;font-size:10px;font-weight:700;color:var(--gn);background:var(--gb);padding:3px 10px;border-radius:20px}
+/* progress dots */
+.phone-dots{position:absolute;bottom:72px;left:0;right:0;
+  display:flex;justify-content:center;gap:5px;z-index:21}
+.pdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);
+  transition:background .3s,width .3s}
+.pdot.act{background:var(--gl);width:14px;border-radius:3px}
 
-/* PILOT */
-.pilot{background:var(--gdp);padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
-.piloti{max-width:520px;margin:0 auto;text-align:center}
-.pbadge{display:inline-block;background:var(--gn);color:#fff;font-size:10px;font-weight:700;padding:5px 16px;border-radius:30px;margin-bottom:20px;letter-spacing:.8px}
-.ptitle{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,46px);font-weight:700;color:#fff;margin-bottom:8px}
-.pprice{font-family:'Playfair Display',serif;font-size:clamp(64px,10vw,96px);font-weight:900;color:var(--gl);line-height:1}
-.ppsub{font-size:clamp(13px,1.5vw,15px);color:rgba(192,221,151,.45);margin-bottom:32px}
-.plist{display:flex;flex-direction:column;gap:12px;text-align:left;max-width:380px;margin:0 auto 28px;background:rgba(255,255,255,.04);border:1px solid rgba(99,153,34,.15);border-radius:16px;padding:24px 26px}
-.pitem{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:rgba(192,221,151,.8)}
-.pcheck{width:18px;height:18px;border-radius:50%;background:rgba(99,153,34,.25);display:flex;align-items:center;justify-content:center;color:var(--gl);font-size:10px;flex-shrink:0}
-.pscar{font-size:12px;color:rgba(192,221,151,.4);margin-bottom:22px}
-.pscar strong{color:var(--gl)}
+/* ── SECTIONS COMMON ── */
+section{padding:clamp(72px,10vw,120px) clamp(20px,4vw,44px)}
+.sec-inner{max-width:var(--mx);margin:0 auto}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--gn);margin-bottom:12px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);
+  font-weight:900;color:var(--tx);line-height:1.1;margin-bottom:16px}
+.sec-title em{color:var(--gn);font-style:italic}
+.sec-sub{font-size:clamp(14px,1.5vw,16px);color:var(--mu);
+  max-width:560px;line-height:1.75}
 
-/* CONTACT */
-.contact{background:var(--cr);padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)}
-.contacti{max-width:520px;margin:0 auto;text-align:center}
-.cform{display:flex;flex-direction:column;gap:12px;margin-top:32px;text-align:left}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:500px){.frow{grid-template-columns:1fr}}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fl{font-size:11px;font-weight:700;color:var(--tx);letter-spacing:.4px;text-transform:uppercase}
-.fi{padding:12px 15px;border-radius:10px;border:1.5px solid rgba(0,0,0,.09);font-size:14px;font-family:'DM Sans',sans-serif;color:var(--tx);background:#fff;outline:none;transition:border-color .2s;width:100%}
-.fi:focus{border-color:var(--gn)}
-textarea.fi{resize:vertical;min-height:90px}
-.fsub{background:var(--gn);color:#fff;font-size:14px;font-weight:700;padding:14px;border-radius:30px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,box-shadow .2s;margin-top:4px;width:100%;box-shadow:0 4px 16px rgba(99,153,34,0.35)}
-.fsub:hover{background:var(--gm);box-shadow:0 6px 24px rgba(99,153,34,0.45)}
-.fnote{font-size:11px;color:var(--mu);text-align:center;margin-top:8px}
+/* ── STATS BAND ── */
+.stats-band{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px)}
+.stats-inner{max-width:var(--mx);margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:600px){.stats-inner{grid-template-columns:1fr}}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:32px 20px;
+  border-right:1px solid rgba(99,153,34,0.15)}
+.stat-item:last-child{border-right:none}
+@media(max-width:600px){.stat-item{border-right:none;border-bottom:1px solid rgba(99,153,34,0.15)}}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,58px);
+  font-weight:700;color:var(--gl);line-height:1}
+.stat-label{font-size:13px;font-weight:500;color:rgba(192,221,151,.5);margin-top:8px;text-align:center}
+.stat-desc{font-size:12px;color:rgba(192,221,151,.3);margin-top:4px;text-align:center}
 
-footer{background:var(--gd);padding:36px clamp(20px,4vw,40px);text-align:center}
-.flogo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gl);margin-bottom:10px}
-.flinks{display:flex;gap:20px;justify-content:center;margin:10px 0 6px;flex-wrap:wrap}
-.flinks a{font-size:12px;color:rgba(192,221,151,.4);text-decoration:none;transition:color .2s}
-.flinks a:hover{color:var(--gl)}
-.fsub2{font-size:11px;color:rgba(192,221,151,.2)}
+/* ── PROBLEM ── */
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:20px;margin-top:52px}
+.prob-card{background:#fff;border:1px solid rgba(0,0,0,0.07);
+  border-radius:18px;padding:28px 24px;
+  transition:transform .25s,box-shadow .25s}
+.prob-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.09)}
+.prob-icon{font-size:26px;margin-bottom:14px}
+.prob-card h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--tx)}
+.prob-card p{font-size:13px;color:var(--mu);line-height:1.65}
 
-/* REVEALS */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-.rv.on{opacity:1;transform:none}
-.rv2{opacity:0;transform:translateY(22px);transition:opacity .7s .12s ease,transform .7s .12s ease}
-.rv2.on{opacity:1;transform:none}
-.rv3{opacity:0;transform:translateY(22px);transition:opacity .7s .24s ease,transform .7s .24s ease}
-.rv3.on{opacity:1;transform:none}
+/* ── FEATURES ── */
+.feat-sect{background:var(--gd)}
+.feat-sect .sec-title{color:#fff}
+.feat-sect .sec-sub{color:rgba(192,221,151,.55)}
+.feat-sect .sec-label{color:var(--gl)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:20px;margin-top:52px}
+.feat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(99,153,34,0.14);
+  border-radius:18px;padding:28px 24px;
+  transition:background .25s,border-color .25s,transform .25s}
+.feat-card:hover{background:rgba(99,153,34,0.1);border-color:rgba(99,153,34,0.35);transform:translateY(-3px)}
+.feat-icon{width:44px;height:44px;border-radius:14px;background:rgba(99,153,34,0.18);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
+.feat-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
+.feat-card p{font-size:13px;color:rgba(192,221,151,.55);line-height:1.65}
+
+/* ── STEPS ── */
+.steps-sect{background:var(--gdp)}
+.steps-sect .sec-title{color:#fff}
+.steps-sect .sec-sub{color:rgba(192,221,151,.55)}
+.steps-sect .sec-label{color:var(--gl)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:52px}
+@media(max-width:720px){.steps-grid{grid-template-columns:1fr;gap:24px}}
+.step-card{display:flex;flex-direction:column;gap:16px}
+.step-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;
+  color:rgba(99,153,34,0.22);line-height:1}
+.step-card h3{font-size:16px;font-weight:700;color:#fff}
+.step-card p{font-size:13px;color:rgba(192,221,151,.5);line-height:1.7}
+
+/* ── PILOT ── */
+.pilot-box{background:var(--gd);border:1px solid rgba(99,153,34,0.25);
+  border-radius:24px;padding:clamp(40px,6vw,64px);max-width:660px;
+  margin:48px auto 0;position:relative;overflow:hidden}
+.pilot-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gm),var(--gl),var(--gm))}
+.pilot-price{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;
+  color:var(--gl);line-height:1;margin-bottom:4px}
+.pilot-price-sub{font-size:14px;color:rgba(192,221,151,.5);margin-bottom:28px}
+.pilot-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.pilot-list li{display:flex;align-items:flex-start;gap:12px;
+  font-size:14px;color:rgba(192,221,151,.8);line-height:1.5}
+.pilot-list li::before{content:'✓';color:var(--gl);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ── CONTACT ── */
+.contact-form{max-width:560px;margin:48px auto 0;
+  background:#fff;border-radius:20px;padding:clamp(32px,5vw,52px);
+  box-shadow:0 8px 40px rgba(0,0,0,0.08)}
+.cf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.cf-field label{font-size:12px;font-weight:700;color:var(--mu);letter-spacing:.3px;text-transform:uppercase}
+.cf-field input,.cf-field select,.cf-field textarea{
+  font-family:'DM Sans',sans-serif;font-size:14px;color:var(--tx);
+  background:var(--cr);border:1px solid rgba(0,0,0,0.1);border-radius:10px;
+  padding:12px 14px;outline:none;transition:border-color .2s,box-shadow .2s;resize:vertical}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{
+  border-color:var(--gn);box-shadow:0 0 0 3px rgba(99,153,34,0.15)}
+.cf-success{display:none;text-align:center;padding:32px 20px;
+  color:var(--gm);font-weight:600}
+.cf-success svg{display:block;margin:0 auto 12px;width:44px;height:44px;stroke:var(--gn)}
+
+/* ── FOOTER ── */
+footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) clamp(28px,4vw,40px)}
+.foot-inner{max-width:var(--mx);margin:0 auto}
+.foot-top{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;
+  margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid rgba(99,153,34,0.12)}
+@media(max-width:800px){.foot-top{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.foot-top{grid-template-columns:1fr}}
+.foot-brand p{font-size:13px;color:rgba(192,221,151,.4);margin-top:10px;line-height:1.65;max-width:220px}
+.foot-col h4{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  color:rgba(192,221,151,.4);margin-bottom:14px}
+.foot-col a{display:block;font-size:13px;color:rgba(192,221,151,.6);text-decoration:none;
+  margin-bottom:8px;transition:color .2s}
+.foot-col a:hover{color:var(--gl)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-bottom p{font-size:12px;color:rgba(192,221,151,.25)}
+
+/* ── SCROLL REVEAL ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.visible{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+.rv-d4{transition-delay:.4s}.rv-d5{transition-delay:.5s}.rv-d6{transition-delay:.55s}
+
+/* ── UTIL ── */
+.text-center{text-align:center}
+.mt-8{margin-top:8px}
 </style>
 </head>
 <body>
 
+<!-- ══════════════ NAV ══════════════ -->
 <nav id="nav">
   <div class="ni">
-    <a href="index.html" class="nl">🌲 Camp<span>Connect</span></a>
-    <div style="display:flex;align-items:center;gap:20px">
-      <a href="comment.html" class="nk">Comment ça marche</a>
-      <a href="tarifs.html" class="nk">Tarifs</a>
-      <a href="apropos.html" class="nk">À propos</a>
+    <a href="#" class="nl">Camp<span>Connect</span></a>
+    <div class="nlinks">
+      <a href="#how" class="nk">Comment ça marche</a>
+      <a href="#tarifs" class="nk">Tarifs</a>
+      <a href="#about" class="nk">À propos</a>
       <a href="#contact" class="nc">Rejoindre le pilote</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="hero-stars" id="stars"></div>
-  <div class="hi">
-    <div class="hbadge"><div class="hbdot"></div>PWA — Aucune installation requise · Saison 2026 · 3 places disponibles</div>
-    <h1 class="htitle">L'app qui réunit vos vacanciers<br><em>autour du feu</em></h1>
-    <p class="hsub">Application mobile à vos couleurs, déployée en 48h. Carte satellite GPS, groupes spontanés, chat, agenda animations — sans passer par l'App Store.</p>
-    <div class="hbtns">
-      <a href="#contact" class="bp">Rejoindre le pilote gratuit</a>
-      <a href="#features" class="bg">Voir les fonctionnalités</a>
-    </div>
-    <div class="hstats">
-      <div><div class="hn">48h</div><div class="hlb">Déploiement chrono</div></div>
-      <div><div class="hn">+42%</div><div class="hlb">Participation animations</div></div>
-      <div><div class="hn">8 800</div><div class="hlb">Campings en France</div></div>
-    </div>
-  </div>
-  <div class="hero-trees"></div>
-</section>
+  <canvas class="hero-stars" id="starsCanvas"></canvas>
 
-<!-- PHONE DEMO -->
-<section class="demo-section">
-  <div class="demo-inner">
-    <div class="demo-text rv">
-      <div class="sl">Carte satellite interactive</div>
-      <h2>GPS en temps réel.<br><em>Zéro configuration.</em></h2>
-      <p>L'app ouvre la carte satellite de votre camping. Vos vacanciers se voient dessus. La carte les suit automatiquement. Ils tapent un marqueur — piscine, bar, terrain de sport — et voient la direction et la distance exacte.</p>
-      <div class="demo-pills">
-        <span class="demo-pill">🛰️ Satellite ESRI</span>
-        <span class="demo-pill">🎯 Auto-suivi GPS</span>
-        <span class="demo-pill">📍 POIs admin</span>
-        <span class="demo-pill">🗺️ Plan du camping</span>
+  <div class="hero-inner">
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hbadge"><span class="hbdot"></span> Disponible sur App Store &amp; Google Play</div>
+      <h1 class="htitle">L'app native qui <em>réunit</em> vos vacanciers</h1>
+      <p class="hsub">CampConnect est une application iOS &amp; Android construite sur Capacitor — carte satellite GPS, groupes, chat et agenda dans une expérience fluide, directement sur le téléphone de vos hôtes.</p>
+      <div class="hbtns">
+        <a href="#contact" class="bp">Rejoindre le pilote →</a>
+        <a href="#how" class="bg">Voir comment ça marche</a>
+      </div>
+      <div class="hstore-badges">
+        <!-- App Store -->
+        <a href="#contact" class="store-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M8 12l4-4 4 4M12 8v8"/></svg>
+          <div class="store-badge-text">
+            <span class="store-badge-sub">Télécharger sur</span>
+            <span class="store-badge-name">App Store</span>
+          </div>
+        </a>
+        <!-- Google Play -->
+        <a href="#contact" class="store-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5,3 19,12 5,21"/></svg>
+          <div class="store-badge-text">
+            <span class="store-badge-sub">Disponible sur</span>
+            <span class="store-badge-name">Google Play</span>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="phone-wrap rv2">
-      <div class="phone">
-        <div class="phone-status"><span>9:41</span><span>●●●</span></div>
-        <div class="phone-map">
-          <div class="map-grid"></div>
-          <div class="map-road map-road-h"></div>
-          <div class="map-road map-road-v"></div>
-          <div class="map-poi poi-pool"><div style="font-size:14px">🏊</div></div>
-          <div class="map-label" style="top:26%;left:58%">Piscine</div>
-          <div class="map-poi poi-bar"><div style="font-size:14px">🍺</div></div>
-          <div class="map-label" style="top:49%;left:72%">Bar</div>
-          <div class="map-poi poi-wc"><div style="font-size:14px">🚿</div></div>
-          <div class="map-user">
-            <div class="map-user-pulse"></div>
-            <div class="map-user-dot"></div>
+
+    <!-- RIGHT — PHONE SIMULATOR -->
+    <div class="phone-wrap">
+      <div class="phone" id="phoneRoot">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+
+          <!-- SC0 — ACCUEIL -->
+          <div class="sc active" id="sc0" style="background:linear-gradient(175deg,#0d1f0d 0%,#173404 100%)">
+            <div style="padding:48px 18px 80px;color:#fff">
+              <div style="font-size:10px;font-weight:600;letter-spacing:.8px;color:rgba(151,196,89,.6);text-transform:uppercase;margin-bottom:4px">Vendredi 21 juin</div>
+              <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:900;margin-bottom:18px">Bonjour, Marie 👋</div>
+              <!-- weather card -->
+              <div style="background:rgba(99,153,34,0.18);border:1px solid rgba(99,153,34,0.3);border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+                <div>
+                  <div style="font-size:11px;color:rgba(192,221,151,.5);margin-bottom:2px">Météo du camping</div>
+                  <div style="font-size:24px;font-weight:700;color:var(--gl)">26°C</div>
+                  <div style="font-size:10px;color:rgba(192,221,151,.5)">Ensoleillé · UV 6</div>
+                </div>
+                <div style="font-size:36px">☀️</div>
+              </div>
+              <!-- event pill -->
+              <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+                <div style="font-size:10px;color:rgba(192,221,151,.4);margin-bottom:4px">PROCHAIN ÉVÉNEMENT</div>
+                <div style="font-size:13px;font-weight:600">🏐 Tournoi de pétanque</div>
+                <div style="font-size:11px;color:rgba(192,221,151,.5);margin-top:2px">Aujourd'hui · 17h00 · Place centrale</div>
+              </div>
+              <!-- quick actions -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="background:rgba(99,153,34,0.15);border-radius:12px;padding:12px;text-align:center">
+                  <div style="font-size:18px;margin-bottom:4px">🗺️</div>
+                  <div style="font-size:10px;font-weight:600;color:rgba(192,221,151,.7)">Carte</div>
+                </div>
+                <div style="background:rgba(99,153,34,0.15);border-radius:12px;padding:12px;text-align:center">
+                  <div style="font-size:18px;margin-bottom:4px">👥</div>
+                  <div style="font-size:10px;font-weight:600;color:rgba(192,221,151,.7)">Groupes</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="phone-info">
-            <div class="pi-title">🏊 Piscine</div>
-            <div class="pi-sub">↗ Nord-Est · 85m</div>
+
+          <!-- SC1 — CARTE SATELLITE -->
+          <div class="sc" id="sc1" style="background:#1a2a1a">
+            <div style="position:relative;height:100%;overflow:hidden">
+
+              <!-- Base terrain satellite -->
+              <div style="position:absolute;inset:0;background:
+                linear-gradient(160deg,#1e3d0e 0%,#162e0a 25%,#1f4210 45%,#132606 60%,#1c3a0d 80%,#0f2207 100%)"></div>
+
+              <!-- Texture herbe / végétation -->
+              <div style="position:absolute;inset:0;opacity:.55;background:
+                radial-gradient(ellipse 80px 60px at 20% 30%,rgba(55,110,20,.7),transparent),
+                radial-gradient(ellipse 60px 80px at 75% 20%,rgba(40,90,15,.6),transparent),
+                radial-gradient(ellipse 100px 50px at 50% 65%,rgba(60,120,25,.5),transparent),
+                radial-gradient(ellipse 70px 90px at 85% 75%,rgba(45,95,18,.6),transparent),
+                radial-gradient(ellipse 90px 60px at 10% 80%,rgba(50,105,20,.5),transparent)"></div>
+
+              <!-- SVG : routes, parcelles, équipements -->
+              <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" viewBox="0 0 270 490">
+
+                <!-- Routes principales -->
+                <path d="M0,245 Q90,230 180,245 Q225,252 270,248" stroke="rgba(210,185,120,.45)" stroke-width="5" fill="none"/>
+                <path d="M130,0 Q126,245 128,490" stroke="rgba(210,185,120,.35)" stroke-width="4" fill="none"/>
+                <!-- Route secondaire -->
+                <path d="M0,340 L130,340" stroke="rgba(210,185,120,.25)" stroke-width="3" fill="none"/>
+                <path d="M130,340 Q200,340 270,330" stroke="rgba(210,185,120,.25)" stroke-width="3" fill="none"/>
+
+                <!-- Parcelles zone A (haut gauche) -->
+                <rect x="18" y="60"  width="44" height="30" rx="2" fill="rgba(140,200,70,.14)" stroke="rgba(160,220,80,.35)" stroke-width=".8"/>
+                <rect x="66" y="60"  width="44" height="30" rx="2" fill="rgba(140,200,70,.14)" stroke="rgba(160,220,80,.35)" stroke-width=".8"/>
+                <rect x="18" y="95"  width="44" height="30" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.3)"  stroke-width=".8"/>
+                <rect x="66" y="95"  width="44" height="30" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.3)"  stroke-width=".8"/>
+                <rect x="18" y="130" width="44" height="30" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.25)" stroke-width=".8"/>
+                <rect x="66" y="130" width="44" height="30" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.25)" stroke-width=".8"/>
+                <text x="22" y="72" font-size="5" fill="rgba(200,230,130,.5)" font-family="sans-serif">A1</text>
+                <text x="70" y="72" font-size="5" fill="rgba(200,230,130,.5)" font-family="sans-serif">A2</text>
+                <text x="22" y="107" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">A3</text>
+                <text x="70" y="107" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">A4</text>
+
+                <!-- Parcelles zone B (haut droite) -->
+                <rect x="155" y="55"  width="42" height="28" rx="2" fill="rgba(140,200,70,.13)" stroke="rgba(160,220,80,.32)" stroke-width=".8"/>
+                <rect x="202" y="55"  width="42" height="28" rx="2" fill="rgba(140,200,70,.13)" stroke="rgba(160,220,80,.32)" stroke-width=".8"/>
+                <rect x="155" y="88"  width="42" height="28" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
+                <rect x="202" y="88"  width="42" height="28" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
+                <text x="159" y="66" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">B1</text>
+                <text x="206" y="66" font-size="5" fill="rgba(200,230,130,.45)" font-family="sans-serif">B2</text>
+
+                <!-- Parcelles zone C (bas) -->
+                <rect x="18"  y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
+                <rect x="62"  y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
+                <rect x="18"  y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
+                <rect x="62"  y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
+                <rect x="155" y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
+                <rect x="199" y="360" width="40" height="26" rx="2" fill="rgba(140,200,70,.12)" stroke="rgba(160,220,80,.28)" stroke-width=".8"/>
+                <rect x="155" y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
+                <rect x="199" y="390" width="40" height="26" rx="2" fill="rgba(140,200,70,.1)"  stroke="rgba(160,220,80,.22)" stroke-width=".8"/>
+
+                <!-- PISCINE — rectangle bleu arrondi avec reflet -->
+                <rect x="155" y="155" width="80" height="52" rx="8" fill="rgba(32,120,200,.65)" stroke="rgba(80,180,255,.5)" stroke-width="1.5"/>
+                <rect x="160" y="160" width="70" height="18" rx="4" fill="rgba(100,200,255,.15)"/>
+                <!-- lignes de nage -->
+                <line x1="175" y1="157" x2="175" y2="205" stroke="rgba(255,255,255,.15)" stroke-width=".8"/>
+                <line x1="195" y1="157" x2="195" y2="205" stroke="rgba(255,255,255,.15)" stroke-width=".8"/>
+                <line x1="215" y1="157" x2="215" y2="205" stroke="rgba(255,255,255,.15)" stroke-width=".8"/>
+                <!-- reflet lumière -->
+                <ellipse cx="185" cy="168" rx="12" ry="4" fill="rgba(255,255,255,.12)"/>
+
+                <!-- PÉTANQUE — rectangle sable -->
+                <rect x="18" y="195" width="85" height="38" rx="4" fill="rgba(195,165,100,.35)" stroke="rgba(210,180,120,.5)" stroke-width="1.2"/>
+                <rect x="21" y="198" width="79" height="32" rx="3" fill="rgba(195,165,100,.18)"/>
+                <!-- lignes terrain pétanque -->
+                <line x1="60" y1="197" x2="60" y2="231" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+                <circle cx="40" cy="214" r="3" fill="rgba(255,255,255,.25)"/>
+                <circle cx="80" cy="214" r="3" fill="rgba(255,255,255,.25)"/>
+
+                <!-- BBQ / espace commun — zone avec tables -->
+                <rect x="18" y="265" width="95" height="55" rx="5" fill="rgba(80,60,30,.4)" stroke="rgba(120,90,45,.4)" stroke-width="1"/>
+                <!-- tables de pique-nique -->
+                <rect x="25" y="272" width="18" height="12" rx="2" fill="rgba(139,90,43,.55)" stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
+                <rect x="50" y="272" width="18" height="12" rx="2" fill="rgba(139,90,43,.55)" stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
+                <rect x="75" y="272" width="18" height="12" rx="2" fill="rgba(139,90,43,.55)" stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
+                <rect x="25" y="295" width="18" height="12" rx="2" fill="rgba(139,90,43,.5)"  stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
+                <rect x="50" y="295" width="18" height="12" rx="2" fill="rgba(139,90,43,.5)"  stroke="rgba(160,110,60,.4)" stroke-width=".7"/>
+                <!-- BBQ rond -->
+                <circle cx="90" cy="302" r="7" fill="rgba(50,40,25,.7)" stroke="rgba(100,80,40,.5)" stroke-width="1"/>
+                <circle cx="90" cy="302" r="4" fill="rgba(200,100,20,.4)"/>
+
+                <!-- Arbre groupe 1 -->
+                <circle cx="108" cy="78"  r="9" fill="rgba(30,80,15,.7)"/>
+                <circle cx="120" cy="72"  r="7" fill="rgba(35,90,18,.65)"/>
+                <circle cx="115" cy="85"  r="8" fill="rgba(25,70,12,.7)"/>
+                <!-- Arbre groupe 2 -->
+                <circle cx="240" cy="135" r="8" fill="rgba(30,80,15,.65)"/>
+                <circle cx="252" cy="128" r="6" fill="rgba(35,90,18,.6)"/>
+                <!-- Arbres bordure -->
+                <circle cx="12"  cy="200" r="7" fill="rgba(25,70,12,.6)"/>
+                <circle cx="258" cy="260" r="8" fill="rgba(30,80,15,.6)"/>
+                <circle cx="265" cy="275" r="6" fill="rgba(35,90,18,.55)"/>
+                <circle cx="20"  cy="430" r="7" fill="rgba(25,70,12,.55)"/>
+                <circle cx="255" cy="430" r="9" fill="rgba(30,80,15,.55)"/>
+
+              </svg>
+
+              <!-- Pins flottants avec labels -->
+              <!-- Piscine -->
+              <div style="position:absolute;top:28%;left:58%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:28px;height:28px;border-radius:50%;background:#3b82f6;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🏊</div>
+                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Piscine</div>
+              </div>
+              <!-- Pétanque -->
+              <div style="position:absolute;top:39%;left:6%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:28px;height:28px;border-radius:50%;background:#f59e0b;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🎯</div>
+                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Pétanque</div>
+              </div>
+              <!-- BBQ -->
+              <div style="position:absolute;top:52%;left:14%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:28px;height:28px;border-radius:50%;background:#ef4444;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🔥</div>
+                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">BBQ</div>
+              </div>
+              <!-- Animation soirée -->
+              <div style="position:absolute;top:18%;left:66%;display:flex;flex-direction:column;align-items:center">
+                <div style="width:28px;height:28px;border-radius:50%;background:#f472b6;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🎸</div>
+                <div style="margin-top:2px;font-size:8px;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:4px;white-space:nowrap">Concert 21h</div>
+              </div>
+
+              <!-- GPS dot animé — position utilisateur -->
+              <div style="position:absolute;top:47%;left:49%;transform:translate(-50%,-50%)">
+                <!-- halo pulsant -->
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:rgba(151,196,89,.18);animation:gpsPulse 2.2s ease-out infinite"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:rgba(151,196,89,.22);animation:gpsPulse 2.2s ease-out infinite .4s"></div>
+                <!-- point central -->
+                <div style="position:relative;width:14px;height:14px;background:var(--gl);border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.5);z-index:1"></div>
+              </div>
+
+              <!-- Toggle Satellite / Plan -->
+              <div style="position:absolute;top:36px;left:50%;transform:translateX(-50%);background:rgba(10,18,10,.82);backdrop-filter:blur(10px);border-radius:20px;padding:3px;display:flex;gap:2px;z-index:10">
+                <span style="padding:4px 11px;border-radius:16px;font-size:9px;font-weight:700;background:var(--gn);color:#fff">🛰️ Satellite</span>
+                <span style="padding:4px 11px;font-size:9px;font-weight:600;color:rgba(255,255,255,.45)">🗺️ Plan</span>
+              </div>
+
+              <!-- Bouton recentrer -->
+              <div style="position:absolute;bottom:62px;right:10px;width:32px;height:32px;border-radius:9px;background:var(--gn);display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 10px rgba(99,153,34,.5);z-index:10">🎯</div>
+
+            </div>
           </div>
-          <div class="phone-ping">+1 groupe</div>
+
+          <!-- SC2 — GROUPES -->
+          <div class="sc" id="sc2" style="background:#f7f3ec">
+            <div style="padding:48px 14px 80px">
+              <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#1c1c1c;margin-bottom:4px">Groupes</div>
+              <div style="font-size:11px;color:#6b6b6b;margin-bottom:18px">4 groupes actifs</div>
+              <!-- group items -->
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="background:#fff;border-radius:14px;padding:13px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px">
+                  <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#639922,#97C459);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏕️</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13px;font-weight:700;color:#1c1c1c">Emplacements A</div>
+                    <div style="font-size:11px;color:#6b6b6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Lucas: "On se rejoint à 18h ?"</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div style="font-size:10px;color:#6b6b6b">14:32</div>
+                    <div style="width:18px;height:18px;background:#639922;border-radius:50%;font-size:10px;color:#fff;display:flex;align-items:center;justify-content:center;margin-top:4px;margin-left:auto">3</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border-radius:14px;padding:13px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px">
+                  <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#1a5276,#2e86c1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏊</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13px;font-weight:700;color:#1c1c1c">Piscine &amp; Activités</div>
+                    <div style="font-size:11px;color:#6b6b6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sophie: "Cours d'aquagym à 10h !"</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div style="font-size:10px;color:#6b6b6b">11:15</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border-radius:14px;padding:13px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px">
+                  <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#884ea0,#a569bd);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🎮</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13px;font-weight:700;color:#1c1c1c">Ados 13-17 ans</div>
+                    <div style="font-size:11px;color:#6b6b6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Tom: "Soirée jeux ce soir 👾"</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div style="font-size:10px;color:#6b6b6b">09:44</div>
+                    <div style="width:18px;height:18px;background:#639922;border-radius:50%;font-size:10px;color:#fff;display:flex;align-items:center;justify-content:center;margin-top:4px;margin-left:auto">1</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border-radius:14px;padding:13px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px">
+                  <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#b7770d,#d4a017);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🍳</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13px;font-weight:700;color:#1c1c1c">Barbecue &amp; Repas</div>
+                    <div style="font-size:11px;color:#6b6b6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Anna: "Menu de ce soir partagé ✨"</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div style="font-size:10px;color:#6b6b6b">Hier</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SC3 — CHAT -->
+          <div class="sc" id="sc3" style="background:#f7f3ec">
+            <div style="display:flex;flex-direction:column;height:100%">
+              <!-- chat header -->
+              <div style="padding:46px 14px 12px;background:#fff;border-bottom:1px solid rgba(0,0,0,0.07)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#639922,#97C459);display:flex;align-items:center;justify-content:center;font-size:16px">🏕️</div>
+                  <div>
+                    <div style="font-size:13px;font-weight:700;color:#1c1c1c">Emplacements A</div>
+                    <div style="font-size:10px;color:#6b6b6b">8 membres · En ligne</div>
+                  </div>
+                </div>
+              </div>
+              <!-- messages -->
+              <div style="flex:1;overflow:hidden;padding:12px 12px 0">
+                <!-- received -->
+                <div style="display:flex;gap:8px;margin-bottom:10px;align-items:flex-end">
+                  <div style="width:26px;height:26px;border-radius:50%;background:#97C459;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff">L</div>
+                  <div>
+                    <div style="font-size:9px;color:#6b6b6b;margin-bottom:2px">Lucas · 14:28</div>
+                    <div style="background:#fff;border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:12px;color:#1c1c1c;max-width:160px;box-shadow:0 1px 4px rgba(0,0,0,0.06)">On se rejoint à 18h pour l'apéro ? 🍻</div>
+                  </div>
+                </div>
+                <!-- sent -->
+                <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+                  <div style="background:linear-gradient(135deg,#639922,#97C459);border-radius:14px 14px 4px 14px;padding:9px 12px;font-size:12px;color:#fff;max-width:160px">Oui ! On amène les olives 😄</div>
+                </div>
+                <!-- received -->
+                <div style="display:flex;gap:8px;margin-bottom:10px;align-items:flex-end">
+                  <div style="width:26px;height:26px;border-radius:50%;background:#e67e22;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff">S</div>
+                  <div>
+                    <div style="font-size:9px;color:#6b6b6b;margin-bottom:2px">Sophie · 14:30</div>
+                    <div style="background:#fff;border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:12px;color:#1c1c1c;max-width:160px;box-shadow:0 1px 4px rgba(0,0,0,0.06)">Parfait ! On est 6 en tout 🎉</div>
+                  </div>
+                </div>
+                <!-- received -->
+                <div style="display:flex;gap:8px;margin-bottom:10px;align-items:flex-end">
+                  <div style="width:26px;height:26px;border-radius:50%;background:#639922;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff">L</div>
+                  <div>
+                    <div style="background:#fff;border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:12px;color:#1c1c1c;max-width:160px;box-shadow:0 1px 4px rgba(0,0,0,0.06)">Emplacement A12, à tout à l'heure ! 📍</div>
+                  </div>
+                </div>
+              </div>
+              <!-- input -->
+              <div style="padding:10px 12px 76px;background:#fff;border-top:1px solid rgba(0,0,0,0.07)">
+                <div style="background:#f0ebe3;border-radius:24px;padding:10px 14px;font-size:12px;color:#6b6b6b;display:flex;align-items:center;justify-content:space-between">
+                  <span>Message…</span>
+                  <span style="font-size:16px">➤</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SC4 — AGENDA -->
+          <div class="sc" id="sc4" style="background:#f7f3ec">
+            <div style="padding:48px 14px 80px">
+              <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#1c1c1c;margin-bottom:4px">Agenda</div>
+              <div style="font-size:11px;color:#6b6b6b;margin-bottom:14px">Semaine du 19 au 25 juin</div>
+              <!-- calendar row -->
+              <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:16px">
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Lun</div>
+                  <div style="width:28px;height:28px;border-radius:50%;background:rgba(99,153,34,0.15);font-size:11px;font-weight:600;color:#639922;display:flex;align-items:center;justify-content:center;margin:0 auto">19</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Mar</div>
+                  <div style="width:28px;height:28px;border-radius:50%;font-size:11px;font-weight:600;color:#6b6b6b;display:flex;align-items:center;justify-content:center;margin:0 auto">20</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Mer</div>
+                  <div style="width:28px;height:28px;border-radius:50%;background:#639922;font-size:11px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto">21</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Jeu</div>
+                  <div style="width:28px;height:28px;border-radius:50%;font-size:11px;font-weight:600;color:#6b6b6b;display:flex;align-items:center;justify-content:center;margin:0 auto">22</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Ven</div>
+                  <div style="width:28px;height:28px;border-radius:50%;font-size:11px;font-weight:600;color:#6b6b6b;display:flex;align-items:center;justify-content:center;margin:0 auto">23</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Sam</div>
+                  <div style="width:28px;height:28px;border-radius:50%;background:rgba(99,153,34,0.1);font-size:11px;font-weight:600;color:#639922;display:flex;align-items:center;justify-content:center;margin:0 auto">24</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:9px;color:#6b6b6b;margin-bottom:4px">Dim</div>
+                  <div style="width:28px;height:28px;border-radius:50%;font-size:11px;font-weight:600;color:#6b6b6b;display:flex;align-items:center;justify-content:center;margin:0 auto">25</div>
+                </div>
+              </div>
+              <!-- events -->
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="background:#fff;border-radius:13px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,0.06);border-left:3px solid #639922">
+                  <div style="font-size:10px;font-weight:700;color:#639922;margin-bottom:3px">AUJOURD'HUI · 10:00</div>
+                  <div style="font-size:13px;font-weight:700;color:#1c1c1c">🏊 Cours d'aquagym</div>
+                  <div style="font-size:11px;color:#6b6b6b;margin-top:2px">Piscine principale · 45 min</div>
+                </div>
+                <div style="background:#fff;border-radius:13px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,0.06);border-left:3px solid #639922">
+                  <div style="font-size:10px;font-weight:700;color:#639922;margin-bottom:3px">AUJOURD'HUI · 17:00</div>
+                  <div style="font-size:13px;font-weight:700;color:#1c1c1c">🏐 Tournoi de pétanque</div>
+                  <div style="font-size:11px;color:#6b6b6b;margin-top:2px">Place centrale · 2h</div>
+                </div>
+                <div style="background:#fff;border-radius:13px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,0.06);border-left:3px solid rgba(0,0,0,0.1)">
+                  <div style="font-size:10px;font-weight:700;color:#6b6b6b;margin-bottom:3px">DEMAIN · 21:00</div>
+                  <div style="font-size:13px;font-weight:700;color:#1c1c1c">🎵 Concert acoustique</div>
+                  <div style="font-size:11px;color:#6b6b6b;margin-top:2px">Scène principale · 1h30</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /phone-screen -->
+
+        <!-- progress dots -->
+        <div class="phone-dots">
+          <div class="pdot act" id="pd0"></div>
+          <div class="pdot" id="pd1"></div>
+          <div class="pdot" id="pd2"></div>
+          <div class="pdot" id="pd3"></div>
+          <div class="pdot" id="pd4"></div>
         </div>
+
+        <!-- bottom nav -->
         <div class="phone-nav">
-          <div class="pn-item"><span>🏠</span><div style="font-size:6px;opacity:.4">Accueil</div></div>
-          <div class="pn-item"><span>👥</span><div style="font-size:6px;opacity:.4">Groupes</div></div>
-          <div class="pn-item active"><span>🗺️</span><div style="font-size:6px">Carte</div><div class="pn-bar"></div></div>
-          <div class="pn-item"><span>📅</span><div style="font-size:6px;opacity:.4">Agenda</div></div>
-          <div class="pn-item"><span>👤</span><div style="font-size:6px;opacity:.4">Profil</div></div>
+          <button class="pn-tab act" id="nt0" onclick="goScreen(0)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+            <span>Accueil</span>
+          </button>
+          <button class="pn-tab" id="nt1" onclick="goScreen(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3,11 22,2 13,21 11,13 3,11"/></svg>
+            <span>Carte</span>
+          </button>
+          <button class="pn-tab" id="nt2" onclick="goScreen(2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Groupes</span>
+          </button>
+          <button class="pn-tab" id="nt3" onclick="goScreen(3)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Chat</span>
+          </button>
+          <button class="pn-tab" id="nt4" onclick="goScreen(4)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Agenda</span>
+          </button>
         </div>
+
+      </div><!-- /phone -->
+    </div><!-- /phone-wrap -->
+  </div><!-- /hero-inner -->
+</section>
+
+<!-- ══════════════ STATS BAND ══════════════ -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item rv">
+      <div class="stat-num">3h20</div>
+      <div class="stat-label">Temps de session moyen</div>
+      <div class="stat-desc">par vacancier et par jour</div>
+    </div>
+    <div class="stat-item rv rv-d1">
+      <div class="stat-num">72%</div>
+      <div class="stat-label">Taux d'adoption</div>
+      <div class="stat-desc">des vacanciers activent l'app</div>
+    </div>
+    <div class="stat-item rv rv-d2">
+      <div class="stat-num">68%</div>
+      <div class="stat-label">Réduction des appels</div>
+      <div class="stat-desc">à la réception du camping</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PROBLEM ══════════════ -->
+<section id="problem">
+  <div class="sec-inner">
+    <div class="rv">
+      <div class="sec-label">Le problème</div>
+      <h2 class="sec-title">Les campings perdent leurs vacanciers <em>dans le bruit</em></h2>
+      <p class="sec-sub">Groupes WhatsApp incontrôlables, affiches papier ignorées, informations éparpillées. Résultat : des vacanciers frustrés et une équipe débordée.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card rv rv-d1">
+        <div class="prob-icon">📣</div>
+        <h3>Communication fragmentée</h3>
+        <p>Chaque famille utilise son groupe WhatsApp personnel. Les annonces officielles se noient dans le bruit.</p>
+      </div>
+      <div class="prob-card rv rv-d2">
+        <div class="prob-icon">🗺️</div>
+        <h3>Orientation impossible</h3>
+        <p>Les plans papier sont illisibles et les vacanciers appellent la réception pour localiser les sanitaires.</p>
+      </div>
+      <div class="prob-card rv rv-d3">
+        <div class="prob-icon">📅</div>
+        <h3>Agenda inaccessible</h3>
+        <p>Les événements sont sur le tableau d'affichage. Les vacanciers les ratent systématiquement.</p>
+      </div>
+      <div class="prob-card rv rv-d4">
+        <div class="prob-icon">🔇</div>
+        <h3>Lien social absent</h3>
+        <p>Les vacanciers ne se rencontrent plus. L'esprit de convivialité du camping disparaît.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="genz">
-  <div class="si">
-    <div class="sl rv" style="color:var(--gl)">La réalité de vos vacanciers</div>
-    <h2 class="st rv">Vos 18-35 ans sont sur leur téléphone.<br><em>Même sous la tente.</em></h2>
-    <p class="ss rv">Cette génération représente la majorité de vos vacanciers. Elle ne va pas décrocher — mais vous pouvez transformer ce comportement en votre plus grand atout.</p>
-    <div class="gstats">
-      <div class="gstat rv"><div class="gnum">3h20</div><div class="gdesc">passées sur les réseaux par vacancier et par jour</div></div>
-      <div class="gstat rv2"><div class="gnum">72%</div><div class="gdesc">des 18-35 ans partagent leurs vacances en story</div></div>
-      <div class="gstat rv3"><div class="gnum">68%</div><div class="gdesc">des vacanciers souhaitent rencontrer d'autres campeurs</div></div>
+<!-- ══════════════ FEATURES ══════════════ -->
+<section class="feat-sect" id="features">
+  <div class="sec-inner">
+    <div class="rv">
+      <div class="sec-label">Fonctionnalités</div>
+      <h2 class="sec-title" style="color:#fff">Tout ce dont vos vacanciers <em>ont besoin</em></h2>
+      <p class="sec-sub">Une app native Capacitor, fluide comme une app Apple, disponible sur App Store et Google Play en marque blanche.</p>
     </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="prob">
-  <div class="probi">
-    <div>
-      <div class="sl rv">Le problème</div>
-      <h2 class="st rv">Vous connaissez<br>ce scénario.</h2>
-      <p class="ss rv">Des animations organisées avec soin, une saison chargée… mais les vacanciers ne se rencontrent jamais vraiment. Et ils ne reviennent pas.</p>
-    </div>
-    <div class="pcards">
-      <div class="pc rv"><div class="pi">📋</div><div class="pt">Tableau papier dépassé</div><div class="pd">Vos clients sont sur Instagram. Votre programme est sur un panneau.</div></div>
-      <div class="pc rv2"><div class="pi">🏐</div><div class="pt">Animations vides</div><div class="pd">Les vacanciers ne voient pas votre programme. Ils ne viennent pas.</div></div>
-      <div class="pc rv"><div class="pi">👥</div><div class="pt">Aucun lien créé</div><div class="pd">Chaque vacancier repart seul. Sans souvenir collectif. Sans raison de revenir.</div></div>
-      <div class="pc rv2"><div class="pi">📊</div><div class="pt">Zéro donnée</div><div class="pd">Qui sont vos vacanciers ? Ce qu'ils aiment ? Impossible à savoir.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="feats" id="features">
-  <div class="si">
-    <div class="sl rv">La solution</div>
-    <h2 class="st rv">Une app à votre nom,<br>à vos couleurs.</h2>
-    <p class="ss rv">Vos vacanciers ouvrent l'app de <em>votre</em> camping depuis un QR code. Pas de téléchargement App Store. Pas de compte à créer.</p>
-    <div class="fgrid">
-      <div class="fc rv">
-        <span class="fe">🛰️</span>
-        <div class="fn">Carte satellite GPS</div>
-        <div class="fd">Carte satellite de votre camping avec suivi GPS automatique. La carte suit le vacancier, il peut la désynchroniser et se recentrer d'un tap.</div>
-        <span class="ftag">Vacanciers</span><span class="fnew">Nouveau</span>
+    <div class="feat-grid">
+      <div class="feat-card rv rv-d1">
+        <div class="feat-icon">🛰️</div>
+        <h3>Carte satellite GPS</h3>
+        <p>Vue satellite haute résolution avec position GPS en temps réel. Les vacanciers se repèrent instantanément et trouvent chaque équipement.</p>
       </div>
-      <div class="fc rv2">
-        <span class="fe">📍</span>
-        <div class="fn">POIs & Plan du camping</div>
-        <div class="fd">Admin place piscine, bar, sanitaires sur la carte satellite. L'IA analyse votre plan et détecte les numéros d'emplacements automatiquement.</div>
-        <span class="ftag">Admin + Vacanciers</span>
+      <div class="feat-card rv rv-d2">
+        <div class="feat-icon">👥</div>
+        <h3>Groupes thématiques</h3>
+        <p>Piscine, barbecue, ados, emplacements A… Créez les groupes adaptés à votre camping. Les vacanciers rejoignent ceux qui les intéressent.</p>
       </div>
-      <div class="fc rv3">
-        <span class="fe">👥</span>
-        <div class="fn">Groupes spontanés</div>
-        <div class="fd">Volley, feu de camp, rando, soirée jeux. Créer et rejoindre en un tap. Visible sur la carte en temps réel.</div>
-        <span class="ftag">Vacanciers</span>
+      <div class="feat-card rv rv-d3">
+        <div class="feat-icon">💬</div>
+        <h3>Chat en temps réel</h3>
+        <p>Messagerie native dans chaque groupe. Notifications push, partage de photos, réactions. Sans quitter l'app, sans WhatsApp.</p>
       </div>
-      <div class="fc rv">
-        <span class="fe">💬</span>
-        <div class="fn">Chat vacanciers</div>
-        <div class="fd">Messagerie instantanée au sein de votre camping uniquement. Les familles se trouvent, les jeunes s'organisent.</div>
-        <span class="ftag">Vacanciers</span>
+      <div class="feat-card rv rv-d4">
+        <div class="feat-icon">📅</div>
+        <h3>Agenda interactif</h3>
+        <p>Publiez vos animations en quelques secondes. Les vacanciers reçoivent une notification et ajoutent l'événement à leur calendrier.</p>
       </div>
-      <div class="fc rv2">
-        <span class="fe">📅</span>
-        <div class="fn">Agenda animations</div>
-        <div class="fd">Toutes vos activités notifiées en push. Inscriptions en un clic. Fini les animations vides faute de communication.</div>
-        <span class="ftag">Vacanciers + Admin</span>
+      <div class="feat-card rv rv-d5">
+        <div class="feat-icon">📊</div>
+        <h3>Dashboard gérant</h3>
+        <p>Interface web dédiée pour gérer l'app : créer des groupes, publier des annonces, voir l'engagement en temps réel.</p>
       </div>
-      <div class="fc rv3">
-        <span class="fe">🎨</span>
-        <div class="fn">100% à vos couleurs</div>
-        <div class="fd">Logo, couleurs, nom de votre camping. L'app est la vôtre. Dashboard admin pour tout configurer en temps réel.</div>
-        <span class="ftag">Admin</span>
+      <div class="feat-card rv rv-d6">
+        <div class="feat-icon">🔐</div>
+        <h3>Accès sécurisé</h3>
+        <p>Seuls vos vacanciers actuels accèdent à l'app. Code d'accès lié à la réservation. Données hébergées en Europe.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how">
-  <div class="si">
-    <div class="sl rv">Déploiement</div>
-    <h2 class="st rv">Opérationnel en 48h.<br>Sans App Store.</h2>
-    <p class="ss rv">C'est une PWA — Progressive Web App. Vos vacanciers l'installent depuis leur navigateur en un tap. Vous la déployez en 48h sans aucune soumission store.</p>
-    <div class="how-steps">
-      <div class="how-step rv">
-        <div class="how-num">1</div>
-        <div class="how-conn"></div>
-        <div>
-          <div class="how-title">Vous envoyez 3 éléments</div>
-          <div class="how-desc">Logo, couleurs (ou charte graphique), plan du camping — une photo suffit. 15 minutes de votre temps.</div>
-          <span class="how-time">Jour 1 · 15 min</span>
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section class="steps-sect" id="how">
+  <div class="sec-inner">
+    <div class="rv text-center">
+      <div class="sec-label">Comment ça marche</div>
+      <h2 class="sec-title">Déployé en <em>48 heures</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Pas de développement, pas d'équipe technique. Vous configurez, vos vacanciers téléchargent.</p>
+    </div>
+    <div class="steps-grid" style="margin-top:56px">
+      <div class="step-card rv rv-d1">
+        <div class="step-num">01</div>
+        <h3>Vous configurez votre camping</h3>
+        <p>Logo, couleurs, groupes, carte, événements récurrents. Notre équipe vous accompagne lors d'un appel de 30 minutes.</p>
+      </div>
+      <div class="step-card rv rv-d2">
+        <div class="step-num">02</div>
+        <h3>L'app est publiée sur les stores</h3>
+        <p>Votre version marque blanche est soumise sur App Store et Google Play sous votre nom. Délai moyen : 48h.</p>
+      </div>
+      <div class="step-card rv rv-d3">
+        <div class="step-num">03</div>
+        <h3>Vos vacanciers téléchargent</h3>
+        <p>À l'arrivée, ils reçoivent un code d'accès. Ils téléchargent l'app, s'identifient et rejoignent les groupes de leur choix.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PILOT ══════════════ -->
+<section id="tarifs">
+  <div class="sec-inner text-center">
+    <div class="rv">
+      <div class="sec-label">Programme pilote</div>
+      <h2 class="sec-title">Rejoignez les <em>premiers campings</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Nous sélectionnons 10 campings partenaires pour la saison 2025. Accès complet, accompagnement personnel.</p>
+    </div>
+    <div class="pilot-box rv">
+      <div class="pilot-price">0€</div>
+      <div class="pilot-price-sub">pendant toute la phase pilote (saison 2025)</div>
+      <ul class="pilot-list" style="text-align:left">
+        <li>App iOS &amp; Android marque blanche publiée sur vos comptes stores</li>
+        <li>Carte satellite GPS personnalisée avec vos équipements</li>
+        <li>Groupes, chat temps réel et agenda illimités</li>
+        <li>Dashboard gérant web avec analytics</li>
+        <li>Accompagnement &amp; onboarding par notre équipe</li>
+        <li>Accès prioritaire aux futures fonctionnalités</li>
+      </ul>
+      <a href="#contact" class="bp" style="display:inline-block;text-decoration:none">Candidater au programme pilote →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section style="background:var(--gd)" id="about">
+  <div class="sec-inner text-center">
+    <div class="rv">
+      <div class="sec-label" style="color:var(--gl)">À propos</div>
+      <h2 class="sec-title" style="color:#fff;margin:0 auto 16px">Construit par des gens <em>qui aiment le camping</em></h2>
+      <p class="sec-sub" style="color:rgba(192,221,151,.55);margin:0 auto 28px;max-width:600px">CampConnect est un projet indépendant né d'un constat simple : les campings méritent les mêmes outils digitaux que les hôtels 5 étoiles. Nous construisons une app native Capacitor, pas un simple site web déguisé.</p>
+      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(99,153,34,0.12);border:1px solid rgba(99,153,34,0.25);border-radius:14px;padding:14px 20px">
+        <span style="font-size:18px">⚡</span>
+        <span style="font-size:13px;color:rgba(192,221,151,.7)">Construit avec <strong style="color:var(--gl)">Capacitor</strong> · Natif iOS &amp; Android · Publié sur les stores officiels</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+  <div class="sec-inner text-center">
+    <div class="rv">
+      <div class="sec-label">Contact</div>
+      <h2 class="sec-title">Candidatez au <em>programme pilote</em></h2>
+      <p class="sec-sub" style="margin:0 auto">10 places disponibles. Remplissez ce formulaire et nous vous recontactons sous 48h.</p>
+    </div>
+    <div class="contact-form rv">
+      <form id="contactForm">
+        <div class="cf-field">
+          <label>Prénom &amp; Nom</label>
+          <input type="text" placeholder="Marie Dupont" required>
         </div>
-      </div>
-      <div class="how-step rv2">
-        <div class="how-num">2</div>
-        <div class="how-conn"></div>
-        <div>
-          <div class="how-title">On configure votre app</div>
-          <div class="how-desc">On intègre votre identité visuelle, on configure la carte satellite de votre camping. Vous recevez votre URL en 48h.</div>
-          <span class="how-time">48h · 100% pris en charge</span>
+        <div class="cf-field">
+          <label>Email professionnel</label>
+          <input type="email" placeholder="marie@camping-les-pins.fr" required>
         </div>
-      </div>
-      <div class="how-step rv3">
-        <div class="how-num">3</div>
-        <div>
-          <div class="how-title">Vos vacanciers scannent</div>
-          <div class="how-desc">Kit d'affichage QR fourni. Scan → installation en 3 secondes. Pas d'App Store, pas de compte, zéro friction.</div>
-          <span class="how-time">Dès J+2 · Zéro friction</span>
+        <div class="cf-field">
+          <label>Nom du camping</label>
+          <input type="text" placeholder="Camping Les Pins Dorés" required>
         </div>
+        <div class="cf-field">
+          <label>Nombre d'emplacements</label>
+          <select>
+            <option>Moins de 50</option>
+            <option>50 – 150</option>
+            <option>150 – 300</option>
+            <option selected>300 – 600</option>
+            <option>Plus de 600</option>
+          </select>
+        </div>
+        <div class="cf-field">
+          <label>Message (optionnel)</label>
+          <textarea rows="3" placeholder="Dites-nous en plus sur votre camping ou vos besoins…"></textarea>
+        </div>
+        <button type="submit" class="bp" style="width:100%;margin-top:8px;font-size:14px">Envoyer ma candidature →</button>
+      </form>
+      <div class="cf-success" id="cfSuccess">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9,12 11,14 15,10"/></svg>
+        <p style="font-size:16px;font-weight:700;color:var(--gm);margin-bottom:6px">Candidature envoyée !</p>
+        <p style="font-size:13px;color:var(--mu)">Merci ! Nous vous recontactons dans les 48 heures pour discuter de votre camping.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PILOT -->
-<section class="pilot">
-  <div class="piloti">
-    <div class="pbadge rv">OFFRE PILOTE — SAISON 2026</div>
-    <h2 class="ptitle rv">Déployez CampConnect</h2>
-    <div class="pprice rv">0 €</div>
-    <p class="ppsub rv">100% gratuit pour 3 campings pionniers</p>
-    <div class="plist rv">
-      <div class="pitem"><div class="pcheck">✓</div>App PWA à votre marque (iOS + Android, sans App Store)</div>
-      <div class="pitem"><div class="pcheck">✓</div>Déploiement en 48h, configuration prise en charge</div>
-      <div class="pitem"><div class="pcheck">✓</div>Carte satellite GPS + plan du camping avec IA</div>
-      <div class="pitem"><div class="pcheck">✓</div>Dashboard admin avec analytics en temps réel</div>
-      <div class="pitem"><div class="pcheck">✓</div>Support personnel dédié toute la saison</div>
-      <div class="pitem"><div class="pcheck">✓</div>Tarif préférentiel garanti pour 2027</div>
-    </div>
-    <p class="pscar rv"><strong>3 places disponibles</strong> · Premier arrivé, premier servi.</p>
-    <a href="#contact" class="bp rv" style="display:inline-block">Réserver ma place gratuite →</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contacti">
-    <div class="sl rv">Contact</div>
-    <h2 class="st rv">Intéressé par le pilote ?</h2>
-    <p class="ss rv" style="margin:0 auto;text-align:center">Une réponse suffit. Je vous envoie une démo vidéo dans la foulée.</p>
-    <form class="cform rv" onsubmit="submitForm(event)">
-      <div class="frow">
-        <div class="fg"><label class="fl">Nom du camping</label><input type="text" class="fi" placeholder="Camping du Lac" required></div>
-        <div class="fg"><label class="fl">Votre nom</label><input type="text" class="fi" placeholder="Jean Dupont" required></div>
-      </div>
-      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="contact@moncamping.fr" required></div>
-      <div class="fg"><label class="fl">Votre camping (optionnel)</label><textarea class="fi" placeholder="Nombre d'emplacements, région, type de clientèle..."></textarea></div>
-      <button type="submit" class="fsub">Envoyer ma candidature →</button>
-      <p class="fnote">Aucun engagement. Réponse sous 24h.</p>
-    </form>
-    <div id="ok" style="display:none;text-align:center;padding:36px;background:var(--gb);border-radius:18px;margin-top:24px">
-      <div style="font-size:40px;margin-bottom:14px">🌲</div>
-      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gm);margin-bottom:8px">Message reçu !</div>
-      <div style="font-size:14px;color:var(--mu)">Je reviens vers vous sous 24h avec la démo vidéo.</div>
-    </div>
-  </div>
-</section>
-
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-  <div class="flogo">🌲 CampConnect</div>
-  <div class="flinks">
-    <a href="tarifs.html">Tarifs</a>
-    <a href="apropos.html">À propos</a>
-    <a href="comment.html">Comment ça marche</a>
-    <a href="#contact">Contact</a>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff">Camp<span style="color:var(--gl)">Connect</span></div>
+        <p>L'app native iOS &amp; Android qui réunit les vacanciers de votre camping.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Produit</h4>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#how">Comment ça marche</a>
+        <a href="#tarifs">Tarifs</a>
+      </div>
+      <div class="foot-col">
+        <h4>Télécharger</h4>
+        <a href="#contact">App Store</a>
+        <a href="#contact">Google Play</a>
+      </div>
+      <div class="foot-col">
+        <h4>Entreprise</h4>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2025 CampConnect. Tous droits réservés.</p>
+      <p>App native Capacitor · iOS &amp; Android · Fait avec ♥ en France</p>
+    </div>
   </div>
-  <div class="fsub2">La couche sociale manquante dans les campings · contact@campconnect.fr · © 2026</div>
 </footer>
 
 <script>
-// Nav scroll effect
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)},{ passive:true });
+/* ── STARS ── */
+(function(){
+  var c=document.getElementById('starsCanvas');
+  if(!c)return;
+  var ctx=c.getContext('2d');
+  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  var stars=[];
+  for(var i=0;i<120;i++){
+    stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.2+0.2,a:Math.random()});
+  }
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    stars.forEach(function(s){
+      s.a+=0.003+Math.random()*0.002;
+      var op=0.15+0.25*Math.abs(Math.sin(s.a));
+      ctx.beginPath();
+      ctx.arc(s.x*c.width,s.y*c.height,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+op+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-// Stars
-const se=document.getElementById('stars');
-for(let i=0;i<32;i++){
-  const s=document.createElement('div');
-  const sz=(Math.random()*2+.8).toFixed(1);
-  s.style.cssText='position:absolute;border-radius:50%;background:rgba(192,221,151,'+((Math.random()*.45+.15).toFixed(2))+');width:'+sz+'px;height:'+sz+'px;top:'+(Math.random()*85)+'%;left:'+(Math.random()*100)+'%;animation:twinkle '+(Math.random()*3+2).toFixed(1)+'s '+(Math.random()*3).toFixed(1)+'s infinite';
-  se.appendChild(s);
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30);
+},{ passive:true });
+
+/* ── PHONE SIMULATOR ── */
+var currentScreen=0;
+var autoTimer=null;
+var phoneRoot=document.getElementById('phoneRoot');
+
+function goScreen(n){
+  if(n===currentScreen)return;
+  var prev=currentScreen;
+  currentScreen=n;
+
+  // screens
+  var oldSc=document.getElementById('sc'+prev);
+  var newSc=document.getElementById('sc'+n);
+  oldSc.classList.remove('active');
+  oldSc.classList.add('out');
+  setTimeout(function(){oldSc.classList.remove('out');},420);
+  newSc.classList.add('active');
+
+  // nav tabs
+  for(var i=0;i<5;i++){
+    var tab=document.getElementById('nt'+i);
+    if(tab){tab.classList.toggle('act',i===n);}
+    var dot=document.getElementById('pd'+i);
+    if(dot){dot.classList.toggle('act',i===n);}
+  }
 }
-const st=document.createElement('style');
-st.textContent='@keyframes twinkle{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.9;transform:scale(1.6)}}';
-document.head.appendChild(st);
 
-// Reveal
-function revealAll(){document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>el.classList.add('on'))}
-if('IntersectionObserver' in window){
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});
-  },{threshold:0.07,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
-  setTimeout(()=>{
-    const hidden=document.querySelectorAll('.rv:not(.on),.rv2:not(.on),.rv3:not(.on)');
-    if(hidden.length>document.querySelectorAll('.rv,.rv2,.rv3').length/2)revealAll();
-  },1500);
-}else{revealAll()}
+function startAuto(){
+  clearInterval(autoTimer);
+  autoTimer=setInterval(function(){
+    goScreen((currentScreen+1)%5);
+  },3400);
+}
 
-function submitForm(e){
+startAuto();
+
+if(phoneRoot){
+  phoneRoot.addEventListener('mouseenter',function(){clearInterval(autoTimer);});
+  phoneRoot.addEventListener('mouseleave',startAuto);
+  // touch support
+  phoneRoot.addEventListener('touchstart',function(){clearInterval(autoTimer);},{passive:true});
+  phoneRoot.addEventListener('touchend',startAuto,{passive:true});
+}
+
+/* ── SCROLL REVEAL ── */
+var rvEls=document.querySelectorAll('.rv');
+var rvObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');rvObs.unobserve(e.target);}
+  });
+},{threshold:0.12});
+rvEls.forEach(function(el){rvObs.observe(el);});
+
+/* ── CONTACT FORM ── */
+document.getElementById('contactForm').addEventListener('submit',function(e){
   e.preventDefault();
-  document.querySelector('.cform').style.display='none';
-  document.getElementById('ok').style.display='block';
-}
+  this.style.display='none';
+  var s=document.getElementById('cfSuccess');
+  s.style.display='block';
+  s.style.animation='fadeup .6s ease both';
+});
 </script>
 </body>
 </html>
