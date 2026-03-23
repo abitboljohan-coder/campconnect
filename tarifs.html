@@ -100,6 +100,7 @@ section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
 footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align:center}
 .footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);margin-bottom:8px}
 .footer-sub{font-size:11px;color:rgba(192,221,151,0.3)}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.5)}}
 </style>
 </head>
 <body>
@@ -125,6 +126,26 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 <!-- OFFRES -->
 <section style="background:var(--cream)">
   <div class="section-inner">
+    <!-- PILOTE BANNER -->
+    <div style="background:linear-gradient(135deg,#0d1f0d,#173404);border:1.5px solid rgba(99,153,34,0.4);border-radius:20px;padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(99,153,34,0.2);border:1px solid rgba(99,153,34,0.4);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#C0DD97;letter-spacing:.5px;margin-bottom:10px">
+          <span style="width:6px;height:6px;border-radius:50%;background:#97C459;display:inline-block;animation:blink 1.4s ease-in-out infinite"></span>
+          PROGRAMME PILOTE — SAISON 2025
+        </div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px">10 campings sélectionnés · <em style="color:#97C459">0 € la première saison</em></div>
+        <div style="font-size:14px;color:rgba(192,221,151,0.6);max-width:500px;line-height:1.6">En échange d'un retour terrain honnête, vous bénéficiez de l'application complète gratuitement jusqu'en octobre 2025. Puis tarif préférentiel garanti à vie.</div>
+      </div>
+      <div style="text-align:center;flex-shrink:0">
+        <div style="background:rgba(239,68,68,0.15);border:1.5px solid rgba(239,68,68,0.4);border-radius:14px;padding:14px 20px;margin-bottom:10px">
+          <div style="font-size:11px;font-weight:700;color:#fca5a5;letter-spacing:.5px;margin-bottom:4px">PLACES RESTANTES</div>
+          <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:#ef4444;line-height:1">3</div>
+          <div style="font-size:11px;color:rgba(252,165,165,0.7)">sur 10 campings</div>
+        </div>
+        <a href="index.html#contact" style="display:block;background:#639922;color:#fff;font-size:13px;font-weight:700;padding:10px 20px;border-radius:30px;text-decoration:none">Rejoindre le pilote →</a>
+      </div>
+    </div>
+
     <div class="pricing-grid">
 
       <div class="price-card reveal">
@@ -285,32 +306,36 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 <!-- FAQ -->
 <section style="background:var(--cream)">
   <div class="section-inner">
-    <div class="section-label reveal">Questions fréquentes</div>
-    <h2 class="section-title reveal">Ce que vous nous demandez souvent</h2>
+    <div class="section-label reveal">Questions pratiques</div>
+    <h2 class="section-title reveal">Ce que vous nous demandez avant de signer</h2>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Ça marche vraiment sans que mes vacanciers créent un compte ? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Oui. Vos vacanciers scannent un QR code à l'accueil et accèdent à l'app en 10 secondes, sans inscription, sans mot de passe. On choisit cette approche délibérément — chaque friction supplémentaire divise le taux d'adoption par deux.</div></div>
+        <div class="faq-q">Qu'est-ce qu'une PWA — c'est vraiment une app mobile ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">CampConnect est une application native iOS et Android, téléchargeable sur l'App Store et Google Play comme n'importe quelle app. Vos vacanciers l'installent depuis leur store habituel — pas de lien, pas de navigateur. L'expérience est identique à WhatsApp ou Instagram.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Que se passe-t-il si je ne renouvelle pas ? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a"><div class="faq-a-inner">L'app continue de fonctionner jusqu'à la fin de la période payée. Vous récupérez toutes vos données (export CSV). Aucun frais de résiliation.</div></div>
+        <div class="faq-q">Que se passe-t-il si peu de vacanciers installent l'app ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Le taux d'adoption moyen sur nos campings pilotes dépasse 65% dès la première saison. Le secret : un QR code bien placé à l'accueil, un message de bienvenue du gérant, et une app qui apporte une vraie valeur dès les 30 premières secondes. On vous accompagne sur ce point.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">L'app est-elle conforme au RGPD ? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Oui. Les données sont hébergées en France (OVH). Nous ne collectons aucune donnée personnelle nominative sans consentement. Un DPA (accord de traitement des données) est fourni avec chaque contrat.</div></div>
+        <div class="faq-q">Mon équipe n'est pas à l'aise avec la technologie. C'est un problème ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Pas du tout. Le dashboard gérant est conçu pour être utilisé par quelqu'un qui n'a jamais touché un outil SaaS. Publier une animation prend 45 secondes. On réalise une formation de 30 minutes avec votre équipe à la mise en place, et le support est disponible 7j/7 en saison.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Combien de temps pour déployer l'app ? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a"><div class="faq-a-inner">2 semaines en moyenne entre la signature et la mise en ligne. Vous nous fournissez votre logo, vos couleurs et votre plan du camping — on s'occupe du reste.</div></div>
+        <div class="faq-q">Peut-on modifier le contenu de l'app en cours de saison ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oui, en temps réel depuis votre dashboard. Ajout d'animations, modification du plan, envoi de notifications push, changement des couleurs — tout est modifiable instantanément sans passer par nous. C'est votre outil, vous en avez le contrôle total.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Et si j'ai déjà une app ou un logiciel de gestion ? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a"><div class="faq-a-inner">CampConnect est complémentaire, pas concurrent. Il ne remplace pas votre PMS (logiciel de réservation). L'offre Chaîne inclut une API pour l'intégrer à vos outils existants.</div></div>
+        <div class="faq-q">L'app est-elle conforme au RGPD ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Les données sont hébergées en Europe. Nous ne collectons aucune donnée personnelle nominative sans consentement explicite. Un DPA (accord de traitement des données) est fourni avec chaque contrat. Vos vacanciers s'inscrivent avec un pseudo — pas d'email, pas de numéro de téléphone.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Le prix du pilote gratuit va-t-il changer ? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Les 3 campings pilotes bénéficient d'un tarif préférentiel garanti à vie sur leur première année payante — minimum 20% de remise par rapport aux tarifs affichés ici.</div></div>
+        <div class="faq-q">Combien de temps pour déployer l'app sur mon camping ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">48h pour le pilote. En configuration standard, comptez 2 semaines entre le premier contact et la mise en ligne. Vous nous fournissez votre logo, vos couleurs et idéalement un plan du camping — on s'occupe de tout le reste.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Que se passe-t-il après la saison pilote gratuite ? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Vous choisissez librement de continuer ou non. Si vous continuez, vous bénéficiez d'un tarif préférentiel garanti à vie (minimum -20% sur les tarifs affichés) en remerciement de votre participation au pilote. Aucun engagement, aucune clause automatique.</div></div>
       </div>
     </div>
   </div>
@@ -350,7 +375,15 @@ if('IntersectionObserver' in window){
 }else{revealAll();}
   setTimeout(()=>{const h=document.querySelectorAll('.reveal:not(.on)');if(h.length>document.querySelectorAll('.reveal').length/2)revealAll();},1500);
 }else{revealAll();}
-function toggleFaq(el){const item=el.parentElement;item.classList.toggle('open');}
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
 function calcROI(){
   const empl=+document.getElementById('empl').value;
   const occ=+document.getElementById('occ').value/100;
