@@ -67,14 +67,29 @@ section{padding:80px clamp(20px,4vw,44px)}
 .ba-before .ba-item{color:#7f1d1d}
 .ba-after .ba-item{color:rgba(192,221,151,0.85)}
 .ba-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-@media(max-width:860px){.features-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.features-grid{grid-template-columns:1fr}}
-.feat-card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform .2s,box-shadow .2s;border:1.5px solid transparent}
-.feat-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);border-color:rgba(99,153,34,0.2)}
-.feat-icon{width:48px;height:48px;border-radius:14px;background:var(--gb);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
-.feat-title{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:8px}
-.feat-desc{font-size:13px;color:var(--mu);line-height:1.65}
+.bento-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:48px}
+.bc{border-radius:20px;padding:28px;position:relative;overflow:hidden;opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease;transition-delay:calc(var(--d,0)*70ms)}
+.bc.visible{opacity:1;transform:none}
+.bc.visible:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.13)}
+.bc-light{background:#fff;border:1.5px solid #ebebeb}
+.bc-dark{background:var(--gd);border:1.5px solid rgba(99,153,34,0.18)}
+.bc-green{background:linear-gradient(135deg,#1e4207,#639922);border:none}
+.bc-tint{background:var(--gb);border:1.5px solid #d4e8b8}
+.bc-wide{grid-column:span 4}
+.bc-std{grid-column:span 2}
+.bc-half{grid-column:span 3}
+.bc-full{grid-column:span 6}
+.bc-emoji{font-size:34px;margin-bottom:14px;display:block;line-height:1}
+.bc-title{font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.bc-desc{font-size:13px;line-height:1.65}
+.bc-light .bc-title,.bc-tint .bc-title{color:var(--tx)}
+.bc-light .bc-desc,.bc-tint .bc-desc{color:var(--mu)}
+.bc-dark .bc-title,.bc-green .bc-title{color:#fff}
+.bc-dark .bc-desc{color:rgba(192,221,151,0.65)}
+.bc-green .bc-desc{color:rgba(255,255,255,0.8)}
+.bc-deco{position:absolute;right:-16px;bottom:-16px;font-size:110px;opacity:.07;pointer-events:none;line-height:1}
+@media(max-width:860px){.bento-grid{grid-template-columns:repeat(2,1fr)}.bc-wide,.bc-std,.bc-full,.bc-half{grid-column:span 2}}
+@media(max-width:560px){.bento-grid{grid-template-columns:1fr}.bc-wide,.bc-std,.bc-full,.bc-half{grid-column:span 1}}
 .testi-section{background:var(--gd)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
 @media(max-width:860px){.testi-grid{grid-template-columns:1fr}}
@@ -194,17 +209,73 @@ footer{background:var(--gd);border-top:1px solid rgba(99,153,34,0.12);padding:32
     <div class="stag" style="display:block;text-align:center">Fonctionnalités</div>
     <h2 class="stitle" style="text-align:center">Tout ce dont votre camping a besoin</h2>
     <p class="sdesc" style="text-align:center;margin:0 auto 0">Un outil unique qui couvre tous les aspects de la vie du camping.</p>
-    <div class="features-grid">
-      <div class="feat-card"><div class="feat-icon">🗺️</div><div class="feat-title">Carte interactive GPS</div><div class="feat-desc">Les vacanciers se repèrent sur votre plan personnalisé. Points d'intérêt, groupes actifs et animations visibles.</div></div>
-      <div class="feat-card"><div class="feat-icon">👥</div><div class="feat-title">Groupes spontanes</div><div class="feat-desc">Randonnée, pétanque, soirée barbecue. Vos vacanciers créent des groupes et s'organisent entre eux.</div></div>
-      <div class="feat-card"><div class="feat-icon">💬</div><div class="feat-title">Chat en temps reel</div><div class="feat-desc">Une messagerie instantanée par groupe. Fini les numéros échangés maladroitement sur le bord de la piscine.</div></div>
-      <div class="feat-card"><div class="feat-icon">📅</div><div class="feat-title">Agenda des animations</div><div class="feat-desc">Publiez vos animations, gérez les inscriptions et voyez les compteurs en temps réel depuis votre dashboard.</div></div>
-      <div class="feat-card"><div class="feat-icon">📲</div><div class="feat-title">App native iOS et Android</div><div class="feat-desc">Une vraie application téléchargeable sur l'App Store et Google Play. Rapide, fluide, disponible hors ligne.</div></div>
-      <div class="feat-card"><div class="feat-icon">🎨</div><div class="feat-title">White label complet</div><div class="feat-desc">Votre logo, vos couleurs, votre plan de camping. Vos vacanciers vivent une expérience à votre image.</div></div>
-      <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title">Dashboard gérant</div><div class="feat-desc">Statistiques temps réel, gestion des animations, upload du plan. Tout se pilote depuis une interface simple.</div></div>
-      <div class="feat-card"><div class="feat-icon">🔒</div><div class="feat-title">Acces securise</div><div class="feat-desc">QR code a l'accueil ou verification GPS a 800m. Seuls vos vrais vacanciers accèdent à l'application.</div></div>
-      <div class="feat-card"><div class="feat-icon">📖</div><div class="feat-title">Livret d'accueil numérique</div><div class="feat-desc">Horaires piscine, code Wi-Fi, règlement, snack, laverie — tout dans l'app. Vos vacanciers trouvent tout sans déranger la réception.</div></div>
-      <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title">Installation en 10 min</div><div class="feat-desc">Aucun développement nécessaire. On configure tout pour vous : plan, couleurs, animations de demo.</div></div>
+    <div class="bento-grid">
+
+      <!-- Ligne 1 : GPS large + Groupes -->
+      <div class="bc bc-dark bc-wide" style="--d:0">
+        <span class="bc-emoji">🗺️</span>
+        <div class="bc-title">Carte interactive GPS</div>
+        <div class="bc-desc">Les vacanciers se repèrent sur votre plan personnalisé. Points d'intérêt, groupes actifs et animations visibles en temps réel.</div>
+        <div class="bc-deco">🗺️</div>
+      </div>
+      <div class="bc bc-tint bc-std" style="--d:1">
+        <span class="bc-emoji">👥</span>
+        <div class="bc-title">Groupes spontanés</div>
+        <div class="bc-desc">Randonnée, pétanque, soirée barbecue — vos vacanciers créent des groupes et s'organisent entre eux en quelques secondes.</div>
+      </div>
+
+      <!-- Ligne 2 : Chat + Agenda large -->
+      <div class="bc bc-light bc-std" style="--d:2">
+        <span class="bc-emoji">💬</span>
+        <div class="bc-title">Chat en temps réel</div>
+        <div class="bc-desc">Messagerie instantanée par groupe. Fini les numéros échangés maladroitement sur le bord de la piscine.</div>
+      </div>
+      <div class="bc bc-green bc-wide" style="--d:3">
+        <span class="bc-emoji">📅</span>
+        <div class="bc-title">Agenda des animations</div>
+        <div class="bc-desc">Publiez vos animations, gérez les inscriptions et voyez les compteurs en temps réel depuis votre dashboard gérant.</div>
+        <div class="bc-deco">📅</div>
+      </div>
+
+      <!-- Ligne 3 : 3 cards égales -->
+      <div class="bc bc-light bc-std" style="--d:4">
+        <span class="bc-emoji">📲</span>
+        <div class="bc-title">App native iOS &amp; Android</div>
+        <div class="bc-desc">Téléchargeable sur l'App Store et Google Play. Rapide, fluide, disponible hors ligne.</div>
+      </div>
+      <div class="bc bc-tint bc-std" style="--d:5">
+        <span class="bc-emoji">🎨</span>
+        <div class="bc-title">White label complet</div>
+        <div class="bc-desc">Votre logo, vos couleurs, votre plan de camping. Vos vacanciers vivent une expérience à votre image.</div>
+      </div>
+      <div class="bc bc-dark bc-std" style="--d:6">
+        <span class="bc-emoji">📊</span>
+        <div class="bc-title">Dashboard gérant</div>
+        <div class="bc-desc">Statistiques temps réel, gestion des animations, upload du plan. Tout se pilote depuis une interface simple.</div>
+      </div>
+
+      <!-- Ligne 4 : Sécurité + Livret -->
+      <div class="bc bc-light bc-half" style="--d:7">
+        <span class="bc-emoji">🔒</span>
+        <div class="bc-title">Accès sécurisé</div>
+        <div class="bc-desc">QR code à l'accueil ou vérification GPS à 800 m. Seuls vos vrais vacanciers accèdent à l'application.</div>
+      </div>
+      <div class="bc bc-tint bc-half" style="--d:8">
+        <span class="bc-emoji">📖</span>
+        <div class="bc-title">Livret d'accueil numérique</div>
+        <div class="bc-desc">Horaires piscine, code Wi-Fi, règlement, snack, laverie — tout dans l'app. Vos vacanciers trouvent tout sans déranger la réception.</div>
+      </div>
+
+      <!-- Ligne 5 : CTA pleine largeur -->
+      <div class="bc bc-dark bc-full" style="--d:9;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-color:rgba(99,153,34,0.3)">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--gl);margin-bottom:8px">⚡ Installation en 10 minutes</div>
+          <div style="font-size:19px;font-weight:700;color:#fff;margin-bottom:6px">Aucun développement nécessaire</div>
+          <div style="font-size:13px;color:rgba(192,221,151,0.6)">On configure tout pour vous : plan, couleurs, animations de démo. Opérationnel en 24 h.</div>
+        </div>
+        <a href="https://app.campconnect.fr" style="background:var(--gn);color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:30px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s">Démarrer gratuitement →</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -276,6 +347,12 @@ const nav = document.getElementById('nav')
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 30)
 }, { passive: true })
+
+// Scroll reveal for bento cards
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) } })
+}, { threshold: 0.1 })
+document.querySelectorAll('.bc').forEach(el => io.observe(el))
 </script>
 </body>
 </html>
