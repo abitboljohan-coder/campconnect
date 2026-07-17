@@ -317,7 +317,7 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
       <p class="hsub">CampConnect est une application mobile (iOS &amp; Android) construite sur Capacitor — carte satellite GPS, groupes, chat et agenda dans une expérience fluide. Vos vacanciers y accèdent en scannant un QR code, sans compte ni téléchargement compliqué.</p>
       <div class="hbtns">
         <a href="#contact" class="bp">Rejoindre le pilote →</a>
-        <a href="#how" class="bg">Voir comment ça marche</a>
+        <a href="https://app.campconnect.fr" target="_blank" rel="noopener" class="bg">Voir l'app en vrai ↗</a>
       </div>
     </div>
 
@@ -331,6 +331,7 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
           <div class="sc" id="sc2"><img src="screenshots/app-agenda.png" alt="Agenda des animations du camping" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top" loading="lazy"></div>
           <div class="sc" id="sc3"><img src="screenshots/app-chat.png" alt="Chat de groupe entre vacanciers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top" loading="lazy"></div>
           <div class="sc" id="sc4"><img src="screenshots/app-infos.png" alt="Livret d'accueil numérique" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top" loading="lazy"></div>
+          <div class="sc" id="sc5"><img src="screenshots/app-carte.png" alt="Carte satellite du camping avec points d'intérêt" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top" loading="lazy"></div>
         </div><!-- /phone-screen -->
 
       </div><!-- /phone -->
@@ -474,6 +475,38 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
     </div>
     <div class="rv" style="max-width:1000px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.18);border:1px solid rgba(0,0,0,0.08)">
       <img src="screenshots/app-dashboard.png" alt="Tableau de bord gérant CampConnect en temps réel" style="display:block;width:100%;height:auto" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SÉCURITÉ / RGPD ══════════════ -->
+<section style="background:#0d1f0d;padding:46px 0">
+  <div class="sec-inner">
+    <div class="rv" style="text-align:center;margin-bottom:26px">
+      <div style="color:#97C459;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Confiance &amp; conformité</div>
+      <h2 style="color:#fff;font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,30px);font-weight:700;margin-top:8px">Les données de vos vacanciers, protégées</h2>
+    </div>
+    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;max-width:920px;margin:0 auto">
+      <div style="background:rgba(99,153,34,0.1);border:1px solid rgba(99,153,34,0.22);border-radius:14px;padding:18px 20px">
+        <div style="font-size:26px;margin-bottom:8px">🇪🇺</div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Hébergement en Europe</div>
+        <div style="color:rgba(192,221,151,0.6);font-size:13px;line-height:1.5">Infrastructure et base de données hébergées dans l'Union européenne.</div>
+      </div>
+      <div style="background:rgba(99,153,34,0.1);border:1px solid rgba(99,153,34,0.22);border-radius:14px;padding:18px 20px">
+        <div style="font-size:26px;margin-bottom:8px">🔒</div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Cloisonné par camping</div>
+        <div style="color:rgba(192,221,151,0.6);font-size:13px;line-height:1.5">Chaque camping ne voit que ses propres vacanciers. Isolation garantie côté serveur.</div>
+      </div>
+      <div style="background:rgba(99,153,34,0.1);border:1px solid rgba(99,153,34,0.22);border-radius:14px;padding:18px 20px">
+        <div style="font-size:26px;margin-bottom:8px">🗓️</div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Effacé en fin de séjour</div>
+        <div style="color:rgba(192,221,151,0.6);font-size:13px;line-height:1.5">Les données des vacanciers sont supprimées automatiquement après leur départ.</div>
+      </div>
+      <div style="background:rgba(99,153,34,0.1);border:1px solid rgba(99,153,34,0.22);border-radius:14px;padding:18px 20px">
+        <div style="font-size:26px;margin-bottom:8px">🚫</div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Aucun pistage publicitaire</div>
+        <div style="color:rgba(192,221,151,0.6);font-size:13px;line-height:1.5">Pas de revente de données, pas de traceurs tiers. Conforme RGPD.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -640,7 +673,7 @@ function goScreen(n){
 function startAuto(){
   clearInterval(autoTimer);
   autoTimer=setInterval(function(){
-    goScreen((currentScreen+1)%5);
+    goScreen((currentScreen+1)%6);
   },3400);
 }
 
