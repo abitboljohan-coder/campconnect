@@ -7,4 +7,10 @@
   <url><loc>https://www.campconnect.fr/apropos.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.campconnect.fr/mentions-legales.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://www.campconnect.fr/confidentialite.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.campconnect.fr/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.campconnect.fr/blog/pourquoi-creer-application-camping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.campconnect.fr/blog/reduire-appels-reception-camping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.campconnect.fr/blog/fideliser-vacanciers-camping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.campconnect.fr/blog/remplir-animations-camping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.campconnect.fr/blog/tendances-hotellerie-plein-air-2026.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
