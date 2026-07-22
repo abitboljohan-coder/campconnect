@@ -30,9 +30,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gd:#0d1f0d;--gdp:#173404;--gm:#27500A;--gn:#639922;
-  --gl:#97C459;--gp:#C0DD97;--gb:#EAF3DE;--cr:#f5f2eb;
-  --tx:#1c1c1c;--mu:#6b6b6b;--mx:1100px
+  /* Charte CampConnect : forêt (base) · saumon (action) · lagon + sauge (accents) */
+  --gd:#23423A;--gdp:#1a332b;--gm:#d9604a;--gn:#FA8072;
+  --gl:#FA8072;--gp:#9BB98F;--gb:#eaf5f0;--cr:#F8F8F4;
+  --tx:#1d2a26;--mu:#68766f;--mx:1100px;
+  --forest:#23423A;--salmon:#FA8072;--lagoon:#79DBDC;--sage:#9BB98F
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -64,7 +66,7 @@ nav.scrolled{background:rgba(13,31,13,0.88);backdrop-filter:blur(22px);
 .hero{min-height:100vh;background:var(--gd);display:flex;align-items:center;
   padding:110px clamp(20px,4vw,44px) 80px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,153,34,0.16) 0%,transparent 70%);
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(155,185,143,0.14) 0%,transparent 70%);
   pointer-events:none}
 .hero-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
 .hero-inner{max-width:var(--mx);margin:0 auto;width:100%;position:relative;z-index:2;
@@ -94,9 +96,9 @@ h1.htitle em{color:var(--gl);font-style:italic}
   padding:14px 28px;border-radius:30px;border:none;font-family:'DM Sans',sans-serif;
   text-decoration:none;cursor:pointer;
   transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 4px 20px rgba(99,153,34,0.38)}
+  box-shadow:0 4px 20px rgba(250,128,114,0.42)}
 .bp:hover{background:var(--gm);transform:translateY(-2px);
-  box-shadow:0 8px 28px rgba(99,153,34,0.5)}
+  box-shadow:0 8px 28px rgba(250,128,114,0.55)}
 .bg{background:transparent;color:rgba(192,221,151,.85);font-size:14px;font-weight:600;
   padding:14px 28px;border-radius:30px;border:1px solid rgba(99,153,34,.35);
   font-family:'DM Sans',sans-serif;text-decoration:none;cursor:pointer;
@@ -118,7 +120,7 @@ h1.htitle em{color:var(--gl);font-style:italic}
 .phone-wrap{display:flex;justify-content:center;align-items:center;
   position:relative;animation:fadeup .9s .3s ease both}
 .phone-wrap::before{content:'';position:absolute;width:440px;height:440px;
-  background:radial-gradient(circle,rgba(151,196,89,0.20),transparent 65%);
+  background:radial-gradient(circle,rgba(121,219,220,0.16),transparent 65%);
   border-radius:50%;filter:blur(18px);z-index:0;pointer-events:none}
 .phone{width:270px;height:560px;background:#0a0a0a;border-radius:44px;
   position:relative;z-index:1;box-shadow:
@@ -192,7 +194,7 @@ section{padding:clamp(72px,10vw,120px) clamp(20px,4vw,44px)}
 .stat-item:last-child{border-right:none}
 @media(max-width:600px){.stat-item{border-right:none;border-bottom:1px solid rgba(99,153,34,0.15)}}
 .stat-num{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,58px);
-  font-weight:700;color:var(--gl);line-height:1}
+  font-weight:700;color:var(--lagoon);line-height:1}
 .stat-label{font-size:13px;font-weight:500;color:rgba(192,221,151,.5);margin-top:8px;text-align:center}
 .stat-desc{font-size:12px;color:rgba(192,221,151,.3);margin-top:4px;text-align:center}
 
@@ -504,10 +506,10 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
 </section>
 
 <!-- ══════════════ SÉCURITÉ / RGPD ══════════════ -->
-<section style="background:#0d1f0d;padding:46px 0">
+<section style="background:#23423A;padding:46px 0">
   <div class="sec-inner">
     <div class="rv" style="text-align:center;margin-bottom:26px">
-      <div style="color:#97C459;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Confiance &amp; conformité</div>
+      <div style="color:#FA8072;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Confiance &amp; conformité</div>
       <h2 style="color:#fff;font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,30px);font-weight:700;margin-top:8px">Les données de vos vacanciers, protégées</h2>
     </div>
     <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;max-width:920px;margin:0 auto">
@@ -624,7 +626,7 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
       <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a1a1a;margin-top:10px">Et les données de vos vacanciers ?</h3>
       <p>Une <strong>application mobile camping</strong> manipule des données personnelles : pseudos, emplacements, messages. CampConnect a été conçu pour la conformité RGPD dès le départ : hébergement dans l'Union européenne, cloisonnement strict par camping (chaque établissement ne voit que ses propres vacanciers, garanti côté serveur), suppression automatique des données à la fin du séjour, et aucun traceur publicitaire. Vos vacanciers profitent, personne ne les piste.</p>
 
-      <p style="background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:14px;padding:18px 22px;font-size:14.5px">💡 <strong>En résumé :</strong> une application pour camping moderne, c'est trois promesses — des vacanciers mieux informés, des animations qui se remplissent, et une équipe déchargée des questions répétitives. Le tout sans compétence technique et sans engagement. <a href="#contact" style="color:#639922;font-weight:600">Rejoignez le programme pilote 2026 →</a></p>
+      <p style="background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:14px;padding:18px 22px;font-size:14.5px">💡 <strong>En résumé :</strong> une application pour camping moderne, c'est trois promesses — des vacanciers mieux informés, des animations qui se remplissent, et une équipe déchargée des questions répétitives. Le tout sans compétence technique et sans engagement. <a href="#contact" style="color:#FA8072;font-weight:600">Rejoignez le programme pilote 2026 →</a></p>
     </div>
   </div>
 </section>

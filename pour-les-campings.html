@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--gd:#0d1f0d;--gdp:#173404;--gm:#27500A;--gn:#639922;--gl:#97C459;--gp:#C0DD97;--gb:#EAF3DE;--cr:#f5f2eb;--tx:#1c1c1c;--mu:#6b6b6b;--mx:1100px}
+:root{--gd:#23423A;--gdp:#1a332b;--gm:#d9604a;--gn:#FA8072;--gl:#FA8072;--gp:#9BB98F;--gb:#eaf5f0;--cr:#F8F8F4;--tx:#1c1c1c;--mu:#6b6b6b;--mx:1100px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden}
@@ -55,8 +55,8 @@ h1.htitle{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,60px);fo
 h1.htitle em{color:var(--gl);font-style:italic}
 .hsub{font-size:clamp(14px,1.6vw,18px);color:rgba(192,221,151,.6);max-width:600px;line-height:1.8;margin:0 auto 36px;animation:fadeup .9s .3s ease both}
 .hbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;animation:fadeup .9s .45s ease both}
-.bp{background:var(--gn);color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:30px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(99,153,34,0.38)}
-.bp:hover{background:var(--gm);transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,153,34,0.5)}
+.bp{background:var(--gn);color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:30px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(250,128,114,0.42)}
+.bp:hover{background:var(--gm);transform:translateY(-2px);box-shadow:0 8px 28px rgba(250,128,114,0.55)}
 .bg{background:transparent;color:rgba(192,221,151,.85);font-size:14px;font-weight:600;padding:14px 28px;border-radius:30px;border:1px solid rgba(99,153,34,.35);text-decoration:none;transition:border-color .2s,transform .15s,color .2s}
 .bg:hover{border-color:var(--gn);color:#fff;transform:translateY(-2px)}
 section{padding:80px clamp(20px,4vw,44px)}
@@ -91,7 +91,7 @@ section{padding:80px clamp(20px,4vw,44px)}
 .bc.visible:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.13)}
 .bc-light{background:#fff;border:1.5px solid #ebebeb}
 .bc-dark{background:var(--gd);border:1.5px solid rgba(99,153,34,0.18)}
-.bc-green{background:linear-gradient(135deg,#1e4207,#639922);border:none}
+.bc-green{background:linear-gradient(135deg,#1e4207,#FA8072);border:none}
 .bc-tint{background:var(--gb);border:1.5px solid #d4e8b8}
 .bc-wide{grid-column:span 4}
 .bc-std{grid-column:span 2}
@@ -130,7 +130,7 @@ section{padding:80px clamp(20px,4vw,44px)}
 .roi-bar-item{display:flex;flex-direction:column;gap:6px}
 .roi-bar-label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:rgba(192,221,151,0.8)}
 .roi-bar-track{height:10px;border-radius:6px;background:rgba(255,255,255,0.08);overflow:hidden}
-.roi-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#27500A,#97C459)}
+.roi-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#d9604a,#FA8072)}
 .roi-list{display:flex;flex-direction:column;gap:14px;margin-top:12px}
 .roi-item{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--tx)}
 .roi-check{width:28px;height:28px;border-radius:50%;background:var(--gb);display:flex;align-items:center;justify-content:center;color:var(--gn);font-weight:700;flex-shrink:0}
@@ -339,14 +339,14 @@ footer{background:var(--gd);border-top:1px solid rgba(99,153,34,0.12);padding:32
 .plc-faq{margin-top:40px;display:flex;flex-direction:column;gap:2px}
 .plc-fi{background:white;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
 .plc-fq{padding:18px 20px;font-size:15px;font-weight:500;color:#1c1c1c;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none}
-.plc-fq:hover{background:#f5f2eb}
+.plc-fq:hover{background:#F8F8F4}
 .plc-fa{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
 .plc-fa-in{padding:0 20px 18px;font-size:14px;color:#6b6b6b;line-height:1.7}
-.plc-arr{font-size:18px;color:#639922;transition:transform 0.3s;flex-shrink:0}
+.plc-arr{font-size:18px;color:#FA8072;transition:transform 0.3s;flex-shrink:0}
 .plc-fi.open .plc-arr{transform:rotate(180deg)}
 .plc-fi.open .plc-fa{max-height:300px}
 </style>
-<section style="background:#EAF3DE;padding:clamp(56px,7vw,88px) clamp(20px,4vw,44px)">
+<section style="background:#eaf5f0;padding:clamp(56px,7vw,88px) clamp(20px,4vw,44px)">
   <div style="max-width:var(--mx);margin:0 auto">
     <div class="stag" style="display:block">Questions fréquentes</div>
     <h2 class="stitle">Tout ce qu'il faut savoir<br>avant de se lancer</h2>
