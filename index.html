@@ -205,7 +205,8 @@ section{padding:clamp(72px,10vw,120px) clamp(20px,4vw,44px)}
   border-radius:18px;padding:28px 24px;
   transition:transform .25s,box-shadow .25s}
 .prob-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.09)}
-.prob-icon{font-size:26px;margin-bottom:14px}
+.prob-icon{margin-bottom:14px;color:var(--salmon);display:flex}
+.prob-icon svg{width:26px;height:26px}
 .prob-card h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--tx)}
 .prob-card p{font-size:13px;color:var(--mu);line-height:1.65}
 
@@ -220,7 +221,7 @@ section{padding:clamp(72px,10vw,120px) clamp(20px,4vw,44px)}
   border-radius:18px;padding:28px 24px;
   transition:background .25s,border-color .25s,transform .25s}
 .feat-card:hover{background:rgba(99,153,34,0.1);border-color:rgba(99,153,34,0.35);transform:translateY(-3px)}
-.feat-icon{width:44px;height:44px;border-radius:14px;background:rgba(99,153,34,0.18);
+.feat-icon{width:44px;height:44px;border-radius:14px;background:rgba(155,185,143,0.16);color:var(--sage);
   display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
 .feat-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
 .feat-card p{font-size:13px;color:rgba(192,221,151,.55);line-height:1.65}
@@ -393,22 +394,22 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
     </div>
     <div class="prob-grid">
       <div class="prob-card rv rv-d1">
-        <div class="prob-icon">📣</div>
+        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
         <h3>Communication fragmentée</h3>
         <p>Chaque famille utilise son groupe WhatsApp personnel. Les annonces officielles se noient dans le bruit.</p>
       </div>
       <div class="prob-card rv rv-d2">
-        <div class="prob-icon">🗺️</div>
+        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 7v13l6-3 6 3 6-3V4l-6 3-6-3z"/><path d="M9 4v13"/><path d="M15 7v13"/></svg></div>
         <h3>Orientation impossible</h3>
         <p>Les plans papier sont illisibles et les vacanciers appellent la réception pour localiser les sanitaires.</p>
       </div>
       <div class="prob-card rv rv-d3">
-        <div class="prob-icon">📅</div>
+        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
         <h3>Agenda inaccessible</h3>
         <p>Les événements sont sur le tableau d'affichage. Les vacanciers les ratent systématiquement.</p>
       </div>
       <div class="prob-card rv rv-d4">
-        <div class="prob-icon">🔇</div>
+        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></div>
         <h3>Lien social absent</h3>
         <p>Les vacanciers ne se rencontrent plus. L'esprit de convivialité du camping disparaît.</p>
       </div>
@@ -426,35 +427,35 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
     </div>
     <div class="feat-grid">
       <div class="feat-card rv rv-d1">
-        <div class="feat-icon">🛰️</div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
         <h3>Carte satellite GPS</h3>
         <p>Vue satellite haute résolution avec position GPS en temps réel. Les vacanciers se repèrent instantanément et trouvent chaque équipement.</p>
         <a href="carte-gps-camping.html" style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--gl);text-decoration:none">En savoir plus →</a>
       </div>
       <div class="feat-card rv rv-d2">
-        <div class="feat-icon">👥</div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 20v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.5a4 4 0 0 1 0 7"/></svg></div>
         <h3>Groupes thématiques</h3>
         <p>Piscine, barbecue, ados, emplacements A… Créez les groupes adaptés à votre camping. Les vacanciers rejoignent ceux qui les intéressent.</p>
         <a href="chat-camping.html" style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--gl);text-decoration:none">En savoir plus →</a>
       </div>
       <div class="feat-card rv rv-d3">
-        <div class="feat-icon">💬</div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.7-.8L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg></div>
         <h3>Chat en temps réel</h3>
         <p>Messagerie native dans chaque groupe. Notifications push, partage de photos, réactions. Sans quitter l'app, sans WhatsApp.</p>
       </div>
       <div class="feat-card rv rv-d4">
-        <div class="feat-icon">📅</div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
         <h3>Agenda interactif</h3>
         <p>Publiez vos animations en quelques secondes. Les vacanciers reçoivent une notification et ajoutent l'événement à leur calendrier.</p>
         <a href="agenda-camping.html" style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--gl);text-decoration:none">En savoir plus →</a>
       </div>
       <div class="feat-card rv rv-d5">
-        <div class="feat-icon">📊</div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg></div>
         <h3>Dashboard gérant</h3>
         <p>Interface web dédiée pour gérer l'app : créer des groupes, publier des annonces, voir l'engagement en temps réel.</p>
       </div>
       <div class="feat-card rv rv-d6">
-        <div class="feat-icon">🔐</div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="11" width="17" height="10" rx="2"/><path d="M7.5 11V7.5a4.5 4.5 0 0 1 9 0V11"/></svg></div>
         <h3>Accès sécurisé</h3>
         <p>Seuls vos vacanciers actuels accèdent à l'app. Code d'accès lié à la réservation. Données hébergées en Europe.</p>
       </div>
