@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page introuvable — CampConnect</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#23423A;color:#fff;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:40px 24px;text-align:center;position:relative;overflow:hidden}
+.glow{position:absolute;width:700px;height:700px;top:-220px;left:50%;
+  transform:translateX(-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(121,219,220,0.15),transparent 65%)}
+.box{position:relative;z-index:2;max-width:540px}
+.logo{width:74px;height:74px;margin:0 auto 28px;display:block}
+.code{font-family:'Playfair Display',serif;font-size:clamp(64px,12vw,104px);
+  font-weight:900;line-height:1;color:#FA8072;letter-spacing:-2px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,34px);
+  font-weight:700;margin:10px 0 16px}
+p{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.66);margin-bottom:34px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+a.bp{background:#FA8072;color:#fff;font-size:14px;font-weight:700;
+  padding:14px 30px;border-radius:30px;text-decoration:none;
+  box-shadow:0 4px 20px rgba(250,128,114,0.42);
+  transition:background .2s,transform .15s}
+a.bp:hover{background:#d9604a;transform:translateY(-2px)}
+a.bg{padding:14px 28px;border-radius:30px;border:1px solid rgba(255,255,255,0.28);
+  color:rgba(255,255,255,0.85);font-size:14px;font-weight:600;text-decoration:none;
+  transition:border-color .2s,color .2s,transform .15s}
+a.bg:hover{border-color:#9BB98F;color:#fff;transform:translateY(-2px)}
+.links{margin-top:34px;font-size:13px;color:rgba(255,255,255,0.45)}
+.links a{color:#9BB98F;text-decoration:none;margin:0 8px}
+.links a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="box">
+  <img src="/logo-mark.png" alt="CampConnect" class="logo">
+  <div class="code">404</div>
+  <h1>Cette page a levé le camp</h1>
+  <p>La page que vous cherchez n'existe pas ou a été déplacée.
+     Pas de panique — le chemin du retour est juste en dessous.</p>
+  <div class="actions">
+    <a href="/" class="bp">Retour à l'accueil →</a>
+    <a href="/pour-les-campings.html" class="bg">Découvrir CampConnect</a>
+  </div>
+  <div class="links">
+    <a href="/tarifs.html">Tarifs</a>·
+    <a href="/blog.html">Blog</a>·
+    <a href="/index.html#contact">Nous contacter</a>
+  </div>
+</div>
+</body>
+</html>
