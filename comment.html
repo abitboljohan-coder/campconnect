@@ -31,7 +31,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .page-label{font-size:11px;font-weight:600;color:var(--green-pale);letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:14px}
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:900;color:white;line-height:1.12;margin-bottom:16px}
 .page-title em{color:var(--green-light);font-style:italic}
-.page-sub{font-size:clamp(14px,1.7vw,16px);color:rgba(192,221,151,0.55);max-width:500px;margin:0 auto;line-height:1.75}
+.page-sub{font-size:clamp(14px,1.7vw,16px);color:rgba(155,185,143,0.55);max-width:500px;margin:0 auto;line-height:1.75}
 
 section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
 .section-inner{max-width:var(--max);margin:0 auto}
@@ -92,7 +92,9 @@ section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
 
 footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align:center}
 .footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-light);margin-bottom:8px}
-.footer-sub{font-size:11px;color:rgba(192,221,151,0.3)}
+.footer-sub{font-size:11px;color:rgba(155,185,143,0.3)}
+.footer-sub a{color:var(--green-pale);text-decoration:none}
+.footer-sub a:hover{color:#fff;text-decoration:underline}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRTR7LJLGD"></script>
@@ -367,7 +369,7 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 <section style="background:var(--green-deep);text-align:center">
   <div class="section-inner">
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:white;margin-bottom:12px;line-height:1.2" class="reveal">Prêt à essayer pour la saison 2026 ?</h2>
-    <p style="font-size:15px;color:rgba(192,221,151,0.5);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7" class="reveal">100% gratuit pour 3 campings pionniers. Déployé en 48h.</p>
+    <p style="font-size:15px;color:rgba(155,185,143,0.5);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7" class="reveal">100% gratuit pour 3 campings pionniers. Déployé en 48h.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="reveal">
       <a href="index.html#contact" style="display:inline-block;background:var(--green-main);color:white;font-size:14px;font-weight:600;padding:13px 26px;border-radius:30px;text-decoration:none">Postuler au pilote gratuit →</a>
       <a href="tarifs.html" style="display:inline-block;background:transparent;color:var(--green-pale);font-size:14px;font-weight:600;padding:13px 26px;border-radius:30px;text-decoration:none;border:1px solid rgba(99,153,34,0.35)">Voir les tarifs</a>
@@ -378,13 +380,13 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 <footer>
   <div class="footer-logo"><img src="logo-mark.png" alt="" style="height:22px;width:22px;vertical-align:middle;margin-right:6px">CampConnect</div>
   <div style="display:flex;gap:20px;justify-content:center;margin:12px 0">
-    <a href="tarifs.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Tarifs</a>
-    <a href="apropos.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">À propos</a>
-    <a href="comment.html" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Comment ça marche</a>
-    <a href="index.html#contact" style="font-size:12px;color:rgba(192,221,151,0.45);text-decoration:none">Contact</a>
+    <a href="tarifs.html" style="font-size:12px;color:rgba(155,185,143,0.45);text-decoration:none">Tarifs</a>
+    <a href="apropos.html" style="font-size:12px;color:rgba(155,185,143,0.45);text-decoration:none">À propos</a>
+    <a href="comment.html" style="font-size:12px;color:rgba(155,185,143,0.45);text-decoration:none">Comment ça marche</a>
+    <a href="index.html#contact" style="font-size:12px;color:rgba(155,185,143,0.45);text-decoration:none">Contact</a>
   </div>
-  <div class="footer-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="71121e1f051012053112101c01121e1f1f1412055f1703">[email&#160;protected]</a> · © 2026</div>
+  <div class="footer-sub"><a href="mailto:contact@campconnect.fr">contact@campconnect.fr</a> · © 2026</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.targ
