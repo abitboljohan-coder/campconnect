@@ -789,15 +789,38 @@ document.getElementById('contactForm').addEventListener('submit',async function(
     }else{
       var err=await res.json().catch(function(){return{};});
       console.error('Supabase error',res.status,err);
-      btn.textContent='Erreur — réessayez';
-      btn.disabled=false;
+      echecEnvoi(btn,data,'Envoi impossible');
     }
   }catch(err){
     console.error(err);
-    btn.textContent='Erreur réseau — réessayez';
-    btn.disabled=false;
+    echecEnvoi(btn,data,'Connexion impossible');
   }
 });
+
+// Repli : si l'enregistrement échoue (serveur indisponible, réseau coupé…),
+// on ne perd pas le prospect — on lui propose d'envoyer sa demande par email,
+// pré-remplie avec ce qu'il vient de saisir.
+function echecEnvoi(btn, data, titre){
+  btn.textContent='Réessayer';
+  btn.disabled=false;
+  if(document.getElementById('cfFallback')) return;
+  var sujet=encodeURIComponent('Programme pilote 2026 — '+(data.camping||'candidature'));
+  var corps=encodeURIComponent(
+    'Nom : '+data.nom+'\n'+
+    'Email : '+data.email+'\n'+
+    'Camping : '+data.camping+'\n'+
+    'Emplacements : '+data.emplacements+'\n'+
+    'Message : '+(data.message||'—')
+  );
+  var d=document.createElement('div');
+  d.id='cfFallback';
+  d.style.cssText='margin-top:14px;padding:14px 16px;border-radius:12px;background:#fff5f3;border:1px solid #f8b7ab;font-size:14px;line-height:1.6;color:#8a2f1d';
+  d.innerHTML='<strong>'+titre+' pour le moment.</strong><br>'+
+    'Envoyez-nous directement votre demande — elle est déjà pré-remplie : '+
+    '<a href="mailto:contact@campconnect.fr?subject='+sujet+'&body='+corps+'" '+
+    'style="color:#c2410c;font-weight:700;text-decoration:underline">contact@campconnect.fr</a>';
+  btn.parentNode.insertBefore(d, btn.nextSibling);
+}
 </script>
 </body>
 </html>
