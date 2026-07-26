@@ -82,21 +82,31 @@ footer{background:var(--green-dark);padding:clamp(32px,4vw,48px) clamp(20px,4vw,
     <h2>Données collectées</h2>
     <p>CampConnect collecte uniquement les données nécessaires au fonctionnement du service :</p>
     <ul>
-      <li>Un pseudo choisi par l'utilisateur (aucun nom réel requis)</li>
-      <li>L'emplacement de camping déclaré par l'utilisateur</li>
+      <li>Un pseudo et un avatar choisis par l'utilisateur (aucun nom réel requis)</li>
+      <li>L'emplacement de camping déclaré par l'utilisateur, sa tranche d'âge, ses centres d'intérêt et sa date de départ — tous facultatifs</li>
       <li>Les groupes rejoints et les animations auxquelles l'utilisateur s'inscrit</li>
-      <li>Les messages envoyés dans les groupes</li>
+      <li>Les messages envoyés dans les groupes et les statuts publiés (éphémères, 24 h)</li>
+      <li><strong>Les photos</strong> volontairement jointes à un signalement ou à une petite annonce</li>
+      <li>Le contenu des signalements adressés à l'équipe du camping (catégorie, description, lieu)</li>
+      <li>Le contenu des petites annonces et objets trouvés publiés</li>
+      <li>Un identifiant technique d'appareil, et un jeton de notification si l'utilisateur accepte les notifications</li>
+      <li>Une position GPS approximative, uniquement pour vérifier la présence au camping et afficher la carte</li>
     </ul>
-    <p><strong>Nous ne collectons pas</strong> d'adresse email, de numéro de téléphone, de données bancaires, ni de localisation GPS en dehors de la vérification d'accès au camping.</p>
+    <p><strong>Nous ne collectons pas</strong> d'adresse email, de numéro de téléphone, de données bancaires, ni de suivi de déplacement. La position n'est jamais enregistrée en continu ni partagée avec les autres vacanciers.</p>
+    <p>L'indicateur « en ligne » affiche uniquement un <strong>nombre</strong> de personnes actuellement connectées dans le camping. Il ne conserve aucun historique et ne révèle l'identité de personne.</p>
+    <p>La météo affichée provient d'un service tiers (Open-Meteo) interrogé avec les coordonnées <em>du camping</em>, jamais avec votre position personnelle.</p>
 
     <h2>Utilisation des données</h2>
     <p>Les données collectées sont utilisées exclusivement pour :</p>
     <ul>
       <li>Permettre la mise en relation entre vacanciers d'un même camping</li>
       <li>Afficher les animations et permettre les inscriptions</li>
+      <li>Transmettre les signalements et les annonces à l'équipe du camping ou aux autres vacanciers du site</li>
+      <li>Envoyer, avec votre accord, des notifications liées à vos groupes et aux animations</li>
       <li>Fournir au gérant des statistiques agrégées et anonymisées sur la fréquentation</li>
     </ul>
-    <p>Nous ne vendons, ne louons et ne partageons aucune donnée personnelle avec des tiers à des fins commerciales.</p>
+    <p>Nous ne vendons, ne louons et ne partageons aucune donnée personnelle avec des tiers à des fins commerciales. Aucune donnée n'est utilisée à des fins publicitaires.</p>
+    <p><strong>Cloisonnement :</strong> les données de chaque camping sont strictement isolées. Un vacancier ne peut consulter que les contenus de son propre camping, et cette séparation est appliquée côté serveur.</p>
 
     <h2>Hébergement et sécurité</h2>
     <p>Toutes les données sont hébergées sur des serveurs situés en Europe (Supabase, région EU West). Les communications sont chiffrées via HTTPS/TLS. L'accès à l'application est restreint aux vacanciers présents physiquement dans le camping (vérification QR code ou GPS).</p>
