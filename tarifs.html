@@ -83,7 +83,8 @@ section{padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px)}
 .sim-sliders{display:flex;flex-direction:column;gap:20px;margin-bottom:28px}
 .sim-row{display:flex;align-items:center;gap:14px}
 .sim-label{font-size:13px;color:rgba(155,185,143,0.7);min-width:140px;text-align:left;font-weight:500}
-.sim-slider{flex:1;accent-color:var(--green-main)}
+.sim-slider{flex:1;min-width:0;accent-color:var(--green-main)}
+@media(max-width:560px){.sim-box{padding:20px 16px}.sim-row{flex-wrap:wrap;gap:6px 12px}.sim-label{min-width:0;flex:1}.sim-slider{flex:1 1 100%;order:3}}
 .sim-val{font-size:15px;font-weight:600;color:var(--green-light);min-width:28px;text-align:right}
 .sim-results{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(max-width:500px){.sim-results{grid-template-columns:1fr}}
@@ -301,8 +302,8 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
 <section class="simulator">
   <div class="sim-inner">
     <div class="section-label" style="color:var(--green-pale);opacity:0.6">Simulateur</div>
-    <h2 class="sim-title reveal">Estimez votre retour sur investissement</h2>
-    <p class="sim-sub reveal">Jouez avec les curseurs pour voir ce que CampConnect peut vous rapporter</p>
+    <h2 class="sim-title reveal">Combien ça coûte vraiment ?</h2>
+    <p class="sim-sub reveal">Réglez les curseurs sur votre camping : le prix ramené à chaque vacancier et à chaque nuitée</p>
     <div class="sim-box reveal">
       <div class="sim-sliders">
         <div class="sim-row">
@@ -332,15 +333,15 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
           <div class="sim-stat-val" id="r-vac">5 400</div>
         </div>
         <div class="sim-stat">
-          <div class="sim-stat-label">Animations +42% fréquentation</div>
-          <div class="sim-stat-val" id="r-anim">+42%</div>
+          <div class="sim-stat-label">Formule CampConnect</div>
+          <div class="sim-stat-val" id="r-prix">790 €/an</div>
         </div>
         <div class="sim-stat highlight">
           <div class="sim-stat-label">Coût / nuitée occupée</div>
           <div class="sim-stat-val" id="r-cout">0,65 €</div>
         </div>
         <div class="sim-stat highlight">
-          <div class="sim-stat-label">ROI estimé (fidélisation +5%)</div>
+          <div class="sim-stat-label">Coût par vacancier</div>
           <div class="sim-stat-val" id="r-roi">×12</div>
         </div>
       </div>
@@ -431,7 +432,7 @@ footer{background:var(--green-dark);padding:32px clamp(20px,4vw,40px);text-align
     <div class="story-header">
       <div class="section-label reveal">Mises en situation</div>
       <h2 class="section-title reveal">Deux points de vue.<br><em>Une même transformation.</em></h2>
-      <p class="section-sub reveal" style="margin:0 auto;text-align:center">Le camping qui adopte CampConnect change l'expérience de tout le monde en même temps.</p>
+      <p class="section-sub reveal" style="margin:0 auto;text-align:center">Le camping qui adopte CampConnect change l'expérience de tout le monde en même temps. <em>(Histoires imaginées pour illustrer, les personnages sont fictifs.)</em></p>
     </div>
 
     <div class="isolation-stats reveal">
@@ -704,12 +705,13 @@ function calcROI(){
   const jours=mois*30;
   const nuitees=Math.round(empl*occ*jours);
   const vac=Math.round(nuitees/dur);
-  const coutNuitee=(790/nuitees).toFixed(3).replace('.',',');
-  const roi=Math.round((vac*0.05*80)/790);
+  // prix de la formule selon la taille du camping (grille de la page)
+  const prix=empl<=50?490:empl<=200?790:1290;
+  const fmt=n=>n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});
   document.getElementById('r-vac').textContent=vac.toLocaleString('fr-FR');
-  document.getElementById('r-anim').textContent='+42%';
-  document.getElementById('r-cout').textContent=coutNuitee+' €';
-  document.getElementById('r-roi').textContent='×'+Math.max(1,roi);
+  document.getElementById('r-prix').textContent=prix.toLocaleString('fr-FR')+' €/an';
+  document.getElementById('r-cout').textContent=fmt(prix/nuitees)+' €';
+  document.getElementById('r-roi').textContent=fmt(prix/Math.max(1,vac))+' €';
 }
 calcROI();
 
