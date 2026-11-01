@@ -296,6 +296,71 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
 /* ── UTIL ── */
 .text-center{text-align:center}
 .mt-8{margin-top:8px}
+
+/* ── VIDÉOS « EN 30 SECONDES » ── */
+.vid-sect{background:#F8F8F4}
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);margin-top:44px}
+.vid-card{margin:0}
+.vid-frame{position:relative;border-radius:22px;overflow:hidden;background:#23423A;aspect-ratio:9/16;
+  box-shadow:0 24px 60px -24px rgba(35,66,58,.45);transform:translateZ(0)}
+.vid-frame video{display:block;width:100%;height:100%;object-fit:cover}
+.vid-frame:after{content:'';position:absolute;inset:0;border-radius:22px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);pointer-events:none}
+.vid-card figcaption{margin-top:14px}
+.vid-card b{display:block;font-size:16px;color:var(--tx)}
+.vid-card span{display:block;font-size:13.5px;color:var(--mu);margin-top:3px;line-height:1.5}
+@media(max-width:760px){
+  .vid-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:36px -20px 0;padding:0 20px 8px;scrollbar-width:none}
+  .vid-grid::-webkit-scrollbar{display:none}
+  .vid-card{flex:0 0 72%;scroll-snap-align:center}
+}
+
+/* ── ESSAYER COMME UN VACANCIER ── */
+.try-sect{background:#fff}
+.try-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,80px);align-items:center}
+.try-pts{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:18px}
+.try-pts li{display:flex;gap:16px;align-items:flex-start}
+.try-pts i{font-style:normal;flex:none;width:46px;height:46px;border-radius:14px;background:#eaf5f0;display:grid;place-items:center;font-size:22px}
+.try-pts b{display:block;font-size:16px;color:var(--tx);margin-bottom:3px}
+.try-pts span{font-size:14.5px;color:var(--mu);line-height:1.6}
+.try-card{background:linear-gradient(160deg,#23423A,#1a332b);border-radius:28px;padding:clamp(28px,4vw,40px);color:#fff;text-align:center;
+  box-shadow:0 30px 70px -30px rgba(26,51,43,.7);position:relative;overflow:hidden}
+.try-card:before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(121,219,220,.25),transparent 70%)}
+.try-card h3{font-family:'Playfair Display',serif;font-size:26px;line-height:1.2;margin:0 0 8px}
+.try-card p{font-size:14.5px;color:rgba(234,245,240,.7);line-height:1.6;margin:0 0 22px}
+.try-qr{display:inline-block;background:#fff;border-radius:20px;padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.try-qr img{display:block;width:180px;height:180px}
+.try-or{font-size:12.5px;color:rgba(234,245,240,.5);margin:18px 0 10px}
+.try-btn{display:inline-block;background:#FA8072;color:#fff;font-weight:700;font-size:15px;padding:14px 24px;border-radius:40px;text-decoration:none;
+  box-shadow:0 12px 28px -10px rgba(250,128,114,.7);transition:transform .2s}
+.try-btn:hover{transform:translateY(-2px)}
+.try-mob{display:none}
+@media(max-width:860px){.try-wrap{grid-template-columns:1fr}}
+@media(hover:none) and (pointer:coarse),(max-width:760px){.try-qr,.try-or{display:none}.try-mob{display:block}.try-desk{display:none}}
+
+/* ── COMPARATIF ── */
+.cmp-sect{background:#F8F8F4}
+.cmp-box{margin-top:40px;background:#fff;border-radius:24px;box-shadow:0 20px 60px -30px rgba(0,0,0,.25);overflow:hidden;border:1px solid rgba(0,0,0,.05)}
+.cmp{width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed}
+.cmp col.c0{width:40%}
+.cmp th,.cmp td{padding:16px 18px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)}
+.cmp th{font-size:13px;font-weight:700;color:var(--mu);background:#fbfaf6}
+.cmp th.cc{background:#23423A;color:#fff;font-size:14px}
+.cmp td:first-child,.cmp th:first-child{text-align:left;color:var(--tx);font-weight:600}
+.cmp td.cc{background:rgba(121,219,220,.08)}
+.cmp tr:last-child td{border-bottom:0}
+.ok,.ko,.mid{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:900;font-size:14px}
+.ok{background:#dff3ea;color:#1f7a4d}.ko{background:#fbe4e0;color:#c2410c}.mid{background:#fdf1d8;color:#a16207}
+.cmp small{display:block;font-size:11.5px;color:var(--mu);font-weight:500;margin-top:4px}
+.cmp-sure{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.cmp-sure div{background:#fff;border-radius:18px;padding:20px;border:1px solid rgba(0,0,0,.05)}
+.cmp-sure b{display:block;font-size:15.5px;color:var(--tx);margin:8px 0 4px}
+.cmp-sure span{font-size:14px;color:var(--mu);line-height:1.6}
+.cmp-sure em{font-style:normal;font-size:22px}
+@media(max-width:760px){
+  .cmp{font-size:13px}.cmp th,.cmp td{padding:12px 6px}.cmp td:first-child,.cmp th:first-child{padding-left:14px}.cmp small{display:none}.cmp col.c0{width:42%}
+  .cmp th{font-size:11px}.ok,.ko,.mid{width:24px;height:24px;font-size:12px}
+  .cmp-sure{grid-template-columns:1fr}
+}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRTR7LJLGD"></script>
@@ -396,6 +461,44 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
     </div>
   </div>
 </div>
+
+
+<!-- ══════════════ VIDÉOS : EN 30 SECONDES ══════════════ -->
+<section class="vid-sect" id="videos">
+  <div class="sec-inner">
+    <div class="rv" style="text-align:center;max-width:640px;margin:0 auto">
+      <div class="sec-label">En 30 secondes</div>
+      <h2 class="sec-title">Des situations que vous <em>connaissez par cœur</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Trois moments de la vie d'un camping, et ce que CampConnect change pour vous.</p>
+    </div>
+    <div class="vid-grid">
+      <figure class="vid-card rv">
+        <div class="vid-frame"><video muted loop playsinline preload="none" poster="videos/doudou.jpg" aria-label="Vidéo : un doudou perdu le soir"><source src="videos/doudou.mp4" type="video/mp4"></video></div>
+        <figcaption><b>Le doudou perdu, un soir</b><span>Une annonce, et tout le camping cherche avec vous.</span></figcaption>
+      </figure>
+      <figure class="vid-card rv rv-d1">
+        <div class="vid-frame"><video muted loop playsinline preload="none" poster="videos/piscine.jpg" aria-label="Vidéo : la piscine fermée pour entretien"><source src="videos/piscine.mp4" type="video/mp4"></video></div>
+        <figcaption><b>La piscine fermée</b><span>Vous le dites une fois, depuis votre téléphone.</span></figcaption>
+      </figure>
+      <figure class="vid-card rv rv-d2">
+        <div class="vid-frame"><video muted loop playsinline preload="none" poster="videos/poubelles.jpg" aria-label="Vidéo : les poubelles qui débordent"><source src="videos/poubelles.mp4" type="video/mp4"></video></div>
+        <figcaption><b>Les poubelles qui débordent</b><span>Le vacancier le signale avec une photo, vous êtes prévenu tout de suite.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<script>
+// Les vidéos ne se chargent et ne jouent que lorsqu'elles sont visibles.
+(function(){
+  var vs=document.querySelectorAll('.vid-frame video');
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){vs.forEach(function(v){v.controls=true});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var v=e.target; if(e.isIntersecting){var p=v.play(); if(p&&p.catch)p.catch(function(){v.controls=true})} else v.pause();
+  })},{threshold:0.5});
+  vs.forEach(function(v){io.observe(v)});
+})();
+</script>
 
 <!-- ══════════════ PROBLEM ══════════════ -->
 <section id="problem">
@@ -504,6 +607,59 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
   </div>
 </section>
 
+
+
+<!-- ══════════════ ESSAYER COMME UN VACANCIER ══════════════ -->
+<section class="try-sect" id="essayer">
+  <div class="sec-inner try-wrap">
+    <div class="rv">
+      <div class="sec-label">La vraie question</div>
+      <h2 class="sec-title">« Mes vacanciers vont-ils <em>vraiment</em> l'utiliser ? »</h2>
+      <p class="sec-sub">C'est la question que tous les gérants se posent. CampConnect a été pensée pour qu'il n'y ait rien à apprendre.</p>
+      <ul class="try-pts">
+        <li><i>📷</i><div><b>Un QR code à l'arrivée</b><span>Affiché à l'accueil. Le vacancier le scanne et il est dans votre camping.</span></div></li>
+        <li><i>🔓</i><div><b>Pas de compte, pas de mot de passe</b><span>Un pseudo, un avatar, c'est tout. Aucun numéro de téléphone à donner.</span></div></li>
+        <li><i>🌍</i><div><b>Dans leur langue</b><span>L'application s'affiche en 4 langues, pour vos vacanciers étrangers aussi.</span></div></li>
+      </ul>
+    </div>
+    <div class="try-card rv rv-d1">
+      <h3>Essayez comme un vacancier</h3>
+      <p class="try-desk">Scannez ce QR code avec votre téléphone : vous entrez dans notre camping de démonstration, comme le feraient vos vacanciers.</p>
+      <p class="try-mob">Entrez dans notre camping de démonstration, exactement comme le feraient vos vacanciers.</p>
+      <div class="try-qr"><img src="videos/qr-demo.svg" alt="QR code du camping de démonstration CampConnect" width="180" height="180" loading="lazy"></div>
+      <div class="try-or">ou</div>
+      <a class="try-btn" href="https://app.campconnect.fr/join/les-flots-bleus" target="_blank" rel="noopener">Ouvrir la démo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ COMPARATIF ══════════════ -->
+<section class="cmp-sect" id="comparatif">
+  <div class="sec-inner">
+    <div class="rv" style="text-align:center;max-width:640px;margin:0 auto">
+      <div class="sec-label">Et pourquoi pas…</div>
+      <h2 class="sec-title">L'affichage ? Un groupe <em>WhatsApp</em> ?</h2>
+      <p class="sec-sub" style="margin:0 auto">Ce que vous faites déjà marche un peu. Voici ce que ça change.</p>
+    </div>
+    <div class="cmp-box rv">
+      <table class="cmp"><colgroup><col class="c0"><col><col><col></colgroup>
+        <thead><tr><th></th><th>Affichage <wbr>papier</th><th>Groupe <wbr>WhatsApp</th><th class="cc">Camp<wbr>Connect</th></tr></thead>
+        <tbody>
+          <tr><td>Prévenir tout le camping en un geste</td><td><span class="ko">✕</span><small>il faut passer devant</small></td><td><span class="mid">~</span><small>seulement les membres</small></td><td class="cc"><span class="ok">✓</span><small>une notification</small></td></tr>
+          <tr><td>Inscriptions aux animations</td><td><span class="ko">✕</span></td><td><span class="ko">✕</span></td><td class="cc"><span class="ok">✓</span></td></tr>
+          <tr><td>Changer une info sans réimprimer</td><td><span class="ko">✕</span></td><td><span class="ok">✓</span></td><td class="cc"><span class="ok">✓</span></td></tr>
+          <tr><td>Sans échanger son numéro de téléphone</td><td><span class="ok">✓</span></td><td><span class="ko">✕</span></td><td class="cc"><span class="ok">✓</span></td></tr>
+          <tr><td>Signalements avec photo, rangés pour vous</td><td><span class="ko">✕</span></td><td><span class="mid">~</span><small>noyés dans la discussion</small></td><td class="cc"><span class="ok">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cmp-sure">
+      <div class="rv"><em>🔌</em><b>Rien à brancher</b><span>CampConnect fonctionne à côté de votre logiciel de réservation, sans rien changer à vos outils.</span></div>
+      <div class="rv rv-d1"><em>🎨</em><b>On s'occupe de la mise en place</b><span>Vous envoyez votre logo et vos couleurs, votre espace est prêt en 48 h.</span></div>
+      <div class="rv rv-d2"><em>🤝</em><b>Sans engagement</b><span>Le programme pilote 2027 est gratuit. Vous arrêtez quand vous voulez.</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════ APERÇU DE MON CAMPING ══════════════ -->
 <section id="apercu" data-apercu></section>
