@@ -65,9 +65,9 @@
 .ap-bub i{font-style:normal;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;flex:none}
 .ap-bub b{display:block;font-size:13px;line-height:1.25}
 .ap-bub small{display:block;font-size:11.5px;color:#5b6862;line-height:1.3;margin-top:2px}
-.ap-b1{top:190px;left:-118px}.ap-b1 i{background:#fff1ee}
+.ap-b1{top:190px;left:-100px}.ap-b1 i{background:#fff1ee}
 .ap-b2{top:50%;right:-72px;animation-delay:-2s}.ap-b2 i{background:#e6f5f5}
-.ap-b3{bottom:118px;left:-128px;animation-delay:-4s}.ap-b3 i{background:#eef3ea}
+.ap-b3{bottom:118px;left:-108px;animation-delay:-4s}.ap-b3 i{background:#eef3ea}
 .ap-cf{position:absolute;top:30%;left:50%;width:9px;height:14px;border-radius:2px;z-index:5;pointer-events:none;animation:apCf 1.6s cubic-bezier(.2,.7,.4,1) forwards}
 .ap-btn:disabled{opacity:.7;cursor:wait;transform:none}
 .ap-fine{font-size:12.5px;color:rgba(234,245,240,.5);margin:12px 0 0;line-height:1.5;text-align:center}

@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="CampConnect — Application mobile pour campings">
 <meta name="twitter:description" content="Offrez à vos vacanciers une application mobile personnalisée : carte GPS, groupes, chat, animations. Dashboard gérant inclus. Opérationnel en 48h.">
 <meta name="twitter:image" content="https://www.campconnect.fr/og-image.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qu'est-ce qu'une application pour camping ?","acceptedAnswer":{"@type":"Answer","text":"CampConnect est une application mobile iOS et Android pour campings : carte GPS interactive, groupes spontanés entre vacanciers, chat temps réel, agenda des animations et livret d'accueil numérique — le tout aux couleurs du camping."}},{"@type":"Question","name":"Comment digitaliser mon camping ?","acceptedAnswer":{"@type":"Answer","text":"CampConnect permet de digitaliser votre camping en 48h sans compétence technique. Vous fournissez votre logo et vos couleurs, on configure tout. Vos vacanciers accèdent via QR code dès leur arrivée."}},{"@type":"Question","name":"Combien coûte une application pour camping ?","acceptedAnswer":{"@type":"Answer","text":"CampConnect propose des formules à partir de 490 €/an (jusqu'à 50 emplacements), 790 €/an (jusqu'à 200 emplacements) et 1 290 €/an (200+ emplacements). Une offre pilote gratuite est disponible pour 3 à 5 campings sélectionnés en 2027."}},{"@type":"Question","name":"Comment les vacanciers téléchargent-ils l'application camping ?","acceptedAnswer":{"@type":"Answer","text":"Application mobile native iOS et Android. Les vacanciers scannent le QR code à la réception et y accèdent en moins d'une minute, sans compte ni mot de passe."}},{"@type":"Question","name":"Peut-on personnaliser l'application aux couleurs de son camping ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Chaque camping personnalise son espace dans l'app CampConnect : logo, couleurs, nom. Votre identité visuelle est visible instantanément sur l'app de vos vacanciers."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qu'est-ce qu'une application pour camping ?","acceptedAnswer":{"@type":"Answer","text":"CampConnect est une application mobile iOS et Android pour campings : carte GPS interactive, groupes spontanés entre vacanciers, chat temps réel, agenda des animations et livret d'accueil numérique — le tout aux couleurs du camping."}},{"@type":"Question","name":"Comment digitaliser mon camping ?","acceptedAnswer":{"@type":"Answer","text":"CampConnect permet de digitaliser votre camping en 48h sans compétence technique. Vous fournissez votre logo et vos couleurs, on configure tout. Vos vacanciers accèdent via QR code dès leur arrivée."}},{"@type":"Question","name":"Combien coûte une application pour camping ?","acceptedAnswer":{"@type":"Answer","text":"CampConnect propose des formules à partir de 490 €/an (jusqu'à 50 emplacements), 790 €/an (jusqu'à 200 emplacements) et 1 290 €/an (200+ emplacements). Une offre pilote gratuite est disponible pour 5 campings sélectionnés en 2027."}},{"@type":"Question","name":"Comment les vacanciers téléchargent-ils l'application camping ?","acceptedAnswer":{"@type":"Answer","text":"Application mobile native iOS et Android. Les vacanciers scannent le QR code à la réception et y accèdent en moins d'une minute, sans compte ni mot de passe."}},{"@type":"Question","name":"Peut-on personnaliser l'application aux couleurs de son camping ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Chaque camping personnalise son espace dans l'app CampConnect : logo, couleurs, nom. Votre identité visuelle est visible instantanément sur l'app de vos vacanciers."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CampConnect","applicationCategory":"BusinessApplication","operatingSystem":"iOS, Android","description":"Application mobile personnalisable pour campings : carte GPS interactive, groupes spontanés, chat temps réel, agenda des animations, livret d'accueil numérique et dashboard gérant.","url":"https://www.campconnect.fr","offers":{"@type":"AggregateOffer","lowPrice":"490","highPrice":"1290","priceCurrency":"EUR","priceSpecification":[{"@type":"UnitPriceSpecification","price":"490","priceCurrency":"EUR","name":"Découverte"},{"@type":"UnitPriceSpecification","price":"790","priceCurrency":"EUR","name":"Essentiel"},{"@type":"UnitPriceSpecification","price":"1290","priceCurrency":"EUR","name":"Premium"}]},"publisher":{"@type":"Organization","name":"CampConnect","url":"https://www.campconnect.fr"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +237,7 @@ section{padding:clamp(72px,10vw,120px) clamp(20px,4vw,44px)}
 .step-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;
   color:rgba(155,185,143,0.22);line-height:1}
 .step-card h3{font-size:16px;font-weight:700;color:#fff}
-.step-card p{font-size:13px;color:rgba(155,185,143,.5);line-height:1.7}
+.step-card p{font-size:14px;color:rgba(234,245,240,.68);line-height:1.7}
 
 /* ── PILOT ── */
 .pilot-box{background:var(--gd);border:1px solid rgba(155,185,143,0.25);
@@ -361,6 +361,40 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
   .cmp th{font-size:11px}.ok,.ko,.mid{width:24px;height:24px;font-size:12px}
   .cmp-sure{grid-template-columns:1fr}
 }
+
+/* ── ACCUEIL V2 ── */
+.htrust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;animation:fadeup .9s .55s ease both}
+.htrust li{font-size:13px;font-weight:600;color:rgba(234,245,240,.78);display:flex;align-items:center;gap:7px}
+.htrust li:before{content:'✓';width:18px;height:18px;border-radius:50%;background:rgba(121,219,220,.18);color:#79DBDC;display:grid;place-items:center;font-size:10px;font-weight:900}
+@media(max-width:960px){.htrust{justify-content:center}}
+.ben-sect{background:#fff}
+.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px}
+.ben{background:#F8F8F4;border-radius:22px;padding:28px 28px 26px;border:1px solid rgba(0,0,0,.04);transition:transform .25s,box-shadow .25s}
+.ben:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(35,66,58,.35)}
+.ben i{font-style:normal;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#fff;font-size:24px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.ben h3{font-family:'Playfair Display',serif;font-size:22px;line-height:1.25;color:var(--tx);margin:18px 0 8px}
+.ben p{font-size:15px;color:var(--mu);line-height:1.65;margin:0}
+@media(max-width:720px){.ben-grid{grid-template-columns:1fr}}
+.try-sect{background:#F8F8F4}
+.conf-sect{background:#fff}
+.conf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.conf{display:flex;flex-direction:column;gap:6px;padding:22px;border-radius:18px;border:1px solid rgba(0,0,0,.06);background:#fff}
+.conf i{font-style:normal;font-size:24px}
+.conf b{font-size:16px;color:var(--tx);margin-top:6px}
+.conf span{font-size:14px;color:var(--mu);line-height:1.6}
+.conf-who{text-align:center;margin:30px auto 0;font-size:15px;color:var(--mu)}
+.conf-who a{color:var(--gm);font-weight:600}
+@media(max-width:960px){.conf-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.conf-grid{grid-template-columns:1fr}}
+.faq details{background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.06);margin-bottom:10px;padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;font-weight:700;font-size:16px;color:var(--tx);padding:18px 30px 18px 0;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:22px;color:var(--gn);transition:transform .2s}
+.faq details[open] summary:after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{font-size:15px;color:var(--mu);line-height:1.7;margin:0 0 18px}
+.faq details p a{color:var(--gm);font-weight:600}
+.faq details.guide{background:transparent;border-style:dashed}
+.faq details.guide summary{font-weight:600;color:var(--mu);font-size:14.5px}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRTR7LJLGD"></script>
@@ -384,8 +418,8 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
       <a href="#how" class="nk">Comment ça marche</a>
       <a href="tarifs.html" class="nk">Tarifs</a>
       <a href="blog.html" class="nk">Blog</a>
-      <a href="#about" class="nk">À propos</a>
-      <a href="#contact" class="nc">Rejoindre le pilote</a>
+      <a href="apropos.html" class="nk">À propos</a>
+      <a href="#apercu" class="nc">Voir mon camping</a>
     </div>
   </div>
 </nav>
@@ -398,14 +432,14 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
   <div class="hero-inner">
     <!-- LEFT -->
     <div class="hero-left">
-      <div class="hbadge"><span class="hbdot"></span> Programme pilote · saison 2027</div>
-      <h1 class="htitle">L'app qui <em>réunit</em> vos vacanciers</h1>
-      <p class="hsub">CampConnect est une application mobile (iOS &amp; Android) construite sur Capacitor — carte satellite GPS, groupes, chat et agenda dans une expérience fluide. Vos vacanciers y accèdent en scannant un QR code, sans compte ni téléchargement compliqué.</p>
+      <div class="hbadge"><span class="hbdot"></span> Programme pilote 2027 · 5 campings</div>
+      <h1 class="htitle" style="font-size:clamp(34px,4.3vw,56px)">Moins de questions à l'accueil. <em>Plus de monde</em> aux animations.</h1>
+      <p class="hsub">L'application de votre camping, à vos couleurs : animations, annonces, livret d'accueil et rencontres entre vacanciers. Ils scannent un QR code à l'arrivée, c'est tout.</p>
       <div class="hbtns">
-        <a href="#contact" class="bp">Rejoindre le pilote →</a>
-        <a href="https://app.campconnect.fr" target="_blank" rel="noopener" class="bg">Voir l'app en vrai ↗</a>
+        <a href="#apercu" class="bp">Voir mon camping dans l'app →</a>
+        <a href="https://app.campconnect.fr/join/les-flots-bleus" target="_blank" rel="noopener" class="bg">Essayer la démo ↗</a>
       </div>
-      <a href="#apercu" style="display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;color:#79DBDC;text-decoration:none">✨ Voir mon camping dans l'app, en 30 secondes →</a>
+      <ul class="htrust"><li>Prêt en 48 h</li><li>Sans compte pour vos vacanciers</li><li>Pilote 2027 gratuit</li></ul>
       <p style="margin-top:16px;font-size:13px;color:rgba(155,185,143,.6)">
         Ou téléchargez-la :
         <a href="https://apps.apple.com/fr/app/id6796962438" target="_blank" rel="noopener"
@@ -440,28 +474,6 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
     </div><!-- /phone-wrap -->
   </div><!-- /hero-inner -->
 </section>
-
-<!-- ══════════════ STATS BAND ══════════════ -->
-<div class="stats-band">
-  <div class="stats-inner">
-    <div class="stat-item rv">
-      <div class="stat-num">&lt; 1 min</div>
-      <div class="stat-label">Accès vacancier</div>
-      <div class="stat-desc">un QR code, sans compte à créer</div>
-    </div>
-    <div class="stat-item rv rv-d1">
-      <div class="stat-num">48h</div>
-      <div class="stat-label">Mise en place</div>
-      <div class="stat-desc">votre espace prêt et personnalisé</div>
-    </div>
-    <div class="stat-item rv rv-d2">
-      <div class="stat-num">0 €</div>
-      <div class="stat-label">Programme pilote</div>
-      <div class="stat-desc">gratuit pour la saison 2027</div>
-    </div>
-  </div>
-</div>
-
 
 <!-- ══════════════ VIDÉOS : EN 30 SECONDES ══════════════ -->
 <section class="vid-sect" id="videos">
@@ -500,114 +512,21 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
 })();
 </script>
 
-<!-- ══════════════ PROBLEM ══════════════ -->
-<section id="problem">
+<!-- ══════════════ BÉNÉFICES ══════════════ -->
+<section class="ben-sect" id="benefices">
   <div class="sec-inner">
-    <div class="rv">
-      <div class="sec-label">Le problème</div>
-      <h2 class="sec-title">Les campings perdent leurs vacanciers <em>dans le bruit</em></h2>
-      <p class="sec-sub">Groupes WhatsApp incontrôlables, affiches papier ignorées, informations éparpillées : la communication camping repose encore sur des outils d'il y a vingt ans. Résultat, des vacanciers frustrés et une réception débordée d'appels.</p>
+    <div class="rv" style="text-align:center;max-width:620px;margin:0 auto">
+      <div class="sec-label">Pour vous</div>
+      <h2 class="sec-title">Ce qui change <em>dès la première semaine</em></h2>
     </div>
-    <div class="prob-grid">
-      <div class="prob-card rv rv-d1">
-        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
-        <h3>Communication fragmentée</h3>
-        <p>Chaque famille utilise son groupe WhatsApp personnel. Les annonces officielles se noient dans le bruit.</p>
-      </div>
-      <div class="prob-card rv rv-d2">
-        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 7v13l6-3 6 3 6-3V4l-6 3-6-3z"/><path d="M9 4v13"/><path d="M15 7v13"/></svg></div>
-        <h3>Orientation impossible</h3>
-        <p>Les plans papier sont illisibles et les vacanciers appellent la réception pour localiser les sanitaires.</p>
-      </div>
-      <div class="prob-card rv rv-d3">
-        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>Agenda inaccessible</h3>
-        <p>Les événements sont sur le tableau d'affichage. Les vacanciers les ratent systématiquement.</p>
-      </div>
-      <div class="prob-card rv rv-d4">
-        <div class="prob-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></div>
-        <h3>Lien social absent</h3>
-        <p>Les vacanciers ne se rencontrent plus. L'esprit de convivialité du camping disparaît.</p>
-      </div>
+    <div class="ben-grid">
+      <div class="ben rv"><i>📣</i><h3>Tout le camping prévenu en un geste</h3><p>Une annonce, un changement de programme : chaque vacancier reçoit une notification. Fini les affiches que personne ne lit.</p></div>
+      <div class="ben rv rv-d1"><i>🎯</i><h3>Des animations qui se remplissent</h3><p>Le programme est dans leur poche, l'inscription se fait en un geste, et vous savez qui vient.</p></div>
+      <div class="ben rv rv-d2"><i>🛎️</i><h3>Moins de questions à l'accueil</h3><p>Wi-Fi, horaires, piscine, boulangerie : le livret d'accueil répond à votre place, toujours à jour.</p></div>
+      <div class="ben rv rv-d3"><i>🤝</i><h3>Des vacanciers qui se rencontrent</h3><p>Apéro, pétanque, foot du soir : ils créent des groupes et se retrouvent. C'est ce dont ils se souviendront.</p></div>
     </div>
   </div>
 </section>
-
-<!-- ══════════════ FEATURES ══════════════ -->
-<section class="feat-sect" id="features">
-  <div class="sec-inner">
-    <div class="rv">
-      <div class="sec-label">Fonctionnalités</div>
-      <h2 class="sec-title" style="color:#fff">Tout ce dont vos vacanciers <em>ont besoin</em></h2>
-      <p class="sec-sub">Une application vacanciers native (Capacitor), fluide comme une app Apple, avec un espace personnalisé aux couleurs de chaque camping — le logiciel camping pensé pour ceux qui plantent la tente, pas pour la compta.</p>
-    </div>
-    <div class="feat-grid">
-      <div class="feat-card rv rv-d1">
-        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
-        <h3>Carte satellite GPS</h3>
-        <p>Vue satellite haute résolution avec position GPS en temps réel. Les vacanciers se repèrent instantanément et trouvent chaque équipement.</p>
-        <a href="carte-gps-camping.html" style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--gl);text-decoration:none">En savoir plus →</a>
-      </div>
-      <div class="feat-card rv rv-d2">
-        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 20v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.5a4 4 0 0 1 0 7"/></svg></div>
-        <h3>Groupes thématiques</h3>
-        <p>Piscine, barbecue, ados, emplacements A… Créez les groupes adaptés à votre camping. Les vacanciers rejoignent ceux qui les intéressent.</p>
-        <a href="chat-camping.html" style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--gl);text-decoration:none">En savoir plus →</a>
-      </div>
-      <div class="feat-card rv rv-d3">
-        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.7-.8L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg></div>
-        <h3>Chat en temps réel</h3>
-        <p>Messagerie native dans chaque groupe. Notifications push, partage de photos, réactions. Sans quitter l'app, sans WhatsApp.</p>
-      </div>
-      <div class="feat-card rv rv-d4">
-        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>Agenda interactif</h3>
-        <p>Publiez vos animations en quelques secondes. Les vacanciers reçoivent une notification et ajoutent l'événement à leur calendrier.</p>
-        <a href="agenda-camping.html" style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--gl);text-decoration:none">En savoir plus →</a>
-      </div>
-      <div class="feat-card rv rv-d5">
-        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg></div>
-        <h3>Dashboard gérant</h3>
-        <p>Interface web dédiée pour gérer l'app : créer des groupes, publier des annonces, voir l'engagement en temps réel.</p>
-      </div>
-      <div class="feat-card rv rv-d6">
-        <div class="feat-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="11" width="17" height="10" rx="2"/><path d="M7.5 11V7.5a4.5 4.5 0 0 1 9 0V11"/></svg></div>
-        <h3>Accès sécurisé</h3>
-        <p>Seuls vos vacanciers actuels accèdent à l'app. Code d'accès lié à la réservation. Données hébergées en Europe.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ HOW IT WORKS ══════════════ -->
-<section class="steps-sect" id="how">
-  <div class="sec-inner">
-    <div class="rv text-center">
-      <div class="sec-label">Comment ça marche</div>
-      <h2 class="sec-title">Déployé en <em>48 heures</em></h2>
-      <p class="sec-sub" style="margin:0 auto">La digitalisation de votre camping sans développement ni équipe technique : vous configurez votre espace, vos vacanciers scannent le QR code — l'application mobile de votre camping est en service.</p>
-    </div>
-    <div class="steps-grid" style="margin-top:56px">
-      <div class="step-card rv rv-d1">
-        <div class="step-num">01</div>
-        <h3>Vous configurez votre camping</h3>
-        <p>Logo, couleurs, groupes, carte, événements récurrents. Notre équipe vous accompagne lors d'un appel de 30 minutes.</p>
-      </div>
-      <div class="step-card rv rv-d2">
-        <div class="step-num">02</div>
-        <h3>Votre espace est prêt en 48h</h3>
-        <p>Votre camping obtient son espace personnalisé (nom, logo, couleurs) dans l'app CampConnect, avec son QR code d'accès. Délai moyen : 48h.</p>
-      </div>
-      <div class="step-card rv rv-d3">
-        <div class="step-num">03</div>
-        <h3>Vos vacanciers rejoignent</h3>
-        <p>À l'arrivée, ils scannent le QR code affiché à la réception, choisissent un pseudo et rejoignent les groupes de leur choix — sans compte ni mot de passe.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
 <!-- ══════════════ ESSAYER COMME UN VACANCIER ══════════════ -->
 <section class="try-sect" id="essayer">
@@ -633,158 +552,72 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
   </div>
 </section>
 
-<!-- ══════════════ COMPARATIF ══════════════ -->
-<section class="cmp-sect" id="comparatif">
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section class="steps-sect" id="how">
   <div class="sec-inner">
-    <div class="rv" style="text-align:center;max-width:640px;margin:0 auto">
-      <div class="sec-label">Et pourquoi pas…</div>
-      <h2 class="sec-title">L'affichage ? Un groupe <em>WhatsApp</em> ?</h2>
-      <p class="sec-sub" style="margin:0 auto">Ce que vous faites déjà marche un peu. Voici ce que ça change.</p>
+    <div class="rv text-center">
+      <div class="sec-label">Comment ça marche</div>
+      <h2 class="sec-title">Prêt en <em>48 heures</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Sans développement, sans matériel, sans rien changer à vos outils.</p>
     </div>
-    <div class="cmp-box rv">
-      <table class="cmp"><colgroup><col class="c0"><col><col><col></colgroup>
-        <thead><tr><th></th><th>Affichage <wbr>papier</th><th>Groupe <wbr>WhatsApp</th><th class="cc">Camp<wbr>Connect</th></tr></thead>
-        <tbody>
-          <tr><td>Prévenir tout le camping en un geste</td><td><span class="ko">✕</span><small>il faut passer devant</small></td><td><span class="mid">~</span><small>seulement les membres</small></td><td class="cc"><span class="ok">✓</span><small>une notification</small></td></tr>
-          <tr><td>Inscriptions aux animations</td><td><span class="ko">✕</span></td><td><span class="ko">✕</span></td><td class="cc"><span class="ok">✓</span></td></tr>
-          <tr><td>Changer une info sans réimprimer</td><td><span class="ko">✕</span></td><td><span class="ok">✓</span></td><td class="cc"><span class="ok">✓</span></td></tr>
-          <tr><td>Sans échanger son numéro de téléphone</td><td><span class="ok">✓</span></td><td><span class="ko">✕</span></td><td class="cc"><span class="ok">✓</span></td></tr>
-          <tr><td>Signalements avec photo, rangés pour vous</td><td><span class="ko">✕</span></td><td><span class="mid">~</span><small>noyés dans la discussion</small></td><td class="cc"><span class="ok">✓</span></td></tr>
-        </tbody>
-      </table>
+    <div class="steps-grid" style="margin-top:56px">
+      <div class="step-card rv rv-d1">
+        <div class="step-num">01</div>
+        <h3>Un appel de 30 minutes</h3>
+        <p>Vous nous donnez votre logo, vos couleurs, votre plan et vos animations habituelles.</p>
+      </div>
+      <div class="step-card rv rv-d2">
+        <div class="step-num">02</div>
+        <h3>Votre espace prêt en 48 h</h3>
+        <p>Nous configurons tout, nous formons votre équipe en 30 minutes et vous recevez votre QR code.</p>
+      </div>
+      <div class="step-card rv rv-d3">
+        <div class="step-num">03</div>
+        <h3>Le QR code à l'accueil</h3>
+        <p>Vos vacanciers le scannent à l'arrivée, choisissent un pseudo, et ils sont dans votre camping.</p>
+      </div>
     </div>
-    <div class="cmp-sure">
-      <div class="rv"><em>🔌</em><b>Rien à brancher</b><span>CampConnect fonctionne à côté de votre logiciel de réservation, sans rien changer à vos outils.</span></div>
-      <div class="rv rv-d1"><em>🎨</em><b>On s'occupe de la mise en place</b><span>Vous envoyez votre logo et vos couleurs, votre espace est prêt en 48 h.</span></div>
-      <div class="rv rv-d2"><em>🤝</em><b>Sans engagement</b><span>Le programme pilote 2027 est gratuit. Vous arrêtez quand vous voulez.</span></div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════ CONFIANCE ══════════════ -->
+<section class="conf-sect" id="confiance">
+  <div class="sec-inner">
+    <div class="rv" style="text-align:center;max-width:620px;margin:0 auto">
+      <div class="sec-label">En confiance</div>
+      <h2 class="sec-title">Vous gardez <em>la main</em></h2>
     </div>
+    <div class="conf-grid">
+      <div class="conf rv"><i>🛡️</i><b>Les échanges sous contrôle</b><span>Un vacancier peut en signaler ou en bloquer un autre. Vous pouvez supprimer un message ou exclure quelqu'un.</span></div>
+      <div class="conf rv rv-d1"><i>🇪🇺</i><b>Données protégées</b><span>Hébergées en Europe, cloisonnées par camping, effacées après le départ du vacancier. Aucune publicité.</span></div>
+      <div class="conf rv rv-d2"><i>🔌</i><b>Rien à brancher</b><span>CampConnect fonctionne à côté de votre logiciel de réservation, sans rien changer à vos outils.</span></div>
+      <div class="conf rv rv-d3"><i>🤝</i><b>Sans engagement</b><span>Le pilote 2027 est gratuit. Ensuite, vous décidez.</span></div>
+    </div>
+    <p class="conf-who rv">Un seul interlocuteur : <strong>Johan, le fondateur</strong>, qui vous répond directement à <a href="mailto:contact@campconnect.fr">contact@campconnect.fr</a>.</p>
   </div>
 </section>
 
 <!-- ══════════════ APERÇU DE MON CAMPING ══════════════ -->
+<div id="contact"></div>
 <section id="apercu" data-apercu></section>
 <script src="/apercu.js" defer></script>
 
-<!-- ══════════════ DASHBOARD GÉRANT ══════════════ -->
-<section style="background:#f2efe6">
-  <div class="sec-inner">
-    <div class="rv" style="text-align:center;max-width:660px;margin:0 auto 40px">
-      <div class="sec-label">Côté gérant</div>
-      <h2 class="sec-title">Votre tableau de bord, <em>en temps réel</em></h2>
-      <p class="sec-sub">Vacanciers présents, départs de la semaine, inscriptions aux animations, groupes actifs et code d'accès du jour : le logiciel de gestion de la vie sociale de votre camping, centralisé et en temps réel.</p>
-    </div>
-    <div class="rv" style="max-width:1000px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.18);border:1px solid rgba(0,0,0,0.08)">
-      <img src="screenshots/app-dashboard.png" alt="Tableau de bord gérant CampConnect en temps réel" style="display:block;width:100%;height:auto" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ SÉCURITÉ / RGPD ══════════════ -->
-<section style="background:#23423A;padding:46px 0">
-  <div class="sec-inner">
-    <div class="rv" style="text-align:center;margin-bottom:26px">
-      <div style="color:#FA8072;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Confiance &amp; conformité</div>
-      <h2 style="color:#fff;font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,30px);font-weight:700;margin-top:8px">Les données de vos vacanciers, protégées</h2>
-    </div>
-    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;max-width:920px;margin:0 auto">
-      <div style="background:rgba(155,185,143,0.1);border:1px solid rgba(155,185,143,0.22);border-radius:14px;padding:18px 20px">
-        <div style="font-size:26px;margin-bottom:8px">🇪🇺</div>
-        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Hébergement en Europe</div>
-        <div style="color:rgba(155,185,143,0.6);font-size:13px;line-height:1.5">Infrastructure et base de données hébergées dans l'Union européenne.</div>
-      </div>
-      <div style="background:rgba(155,185,143,0.1);border:1px solid rgba(155,185,143,0.22);border-radius:14px;padding:18px 20px">
-        <div style="font-size:26px;margin-bottom:8px">🔒</div>
-        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Cloisonné par camping</div>
-        <div style="color:rgba(155,185,143,0.6);font-size:13px;line-height:1.5">Chaque camping ne voit que ses propres vacanciers. Isolation garantie côté serveur.</div>
-      </div>
-      <div style="background:rgba(155,185,143,0.1);border:1px solid rgba(155,185,143,0.22);border-radius:14px;padding:18px 20px">
-        <div style="font-size:26px;margin-bottom:8px">🗓️</div>
-        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Effacé en fin de séjour</div>
-        <div style="color:rgba(155,185,143,0.6);font-size:13px;line-height:1.5">Les données des vacanciers sont supprimées automatiquement après leur départ.</div>
-      </div>
-      <div style="background:rgba(155,185,143,0.1);border:1px solid rgba(155,185,143,0.22);border-radius:14px;padding:18px 20px">
-        <div style="font-size:26px;margin-bottom:8px">🚫</div>
-        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:4px">Aucun pistage publicitaire</div>
-        <div style="color:rgba(155,185,143,0.6);font-size:13px;line-height:1.5">Pas de revente de données, pas de traceurs tiers. Conforme RGPD.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ ABOUT ══════════════ -->
-<section style="background:var(--gd)" id="about">
-  <div class="sec-inner text-center">
-    <div class="rv">
-      <div class="sec-label" style="color:var(--gl)">À propos</div>
-      <h2 class="sec-title" style="color:#fff;margin:0 auto 16px">Construit par des gens <em>qui aiment le camping</em></h2>
-      <p class="sec-sub" style="color:rgba(155,185,143,.55);margin:0 auto 28px;max-width:600px">CampConnect est un projet indépendant né d'un constat simple : les campings méritent les mêmes outils digitaux que les hôtels 5 étoiles. Nous construisons une app native Capacitor, pas un simple site web déguisé.</p>
-      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(155,185,143,0.12);border:1px solid rgba(155,185,143,0.25);border-radius:14px;padding:14px 20px">
-        <span style="font-size:18px">⚡</span>
-        <span style="font-size:13px;color:rgba(155,185,143,.7)">Construit avec <strong style="color:var(--gl)">Capacitor</strong> · Natif iOS &amp; Android · Accès instantané par QR code</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ CONTACT ══════════════ -->
-<section id="contact">
-  <div class="sec-inner text-center">
-    <div class="rv">
-      <div class="sec-label">Contact</div>
-      <h2 class="sec-title">Candidatez au <em>programme pilote</em></h2>
-      <p class="sec-sub" style="margin:0 auto">3 à 5 campings pionniers pour la saison 2027. Remplissez ce formulaire et nous vous recontactons sous 48h.</p>
-    </div>
-    <div class="contact-form rv">
-      <form id="contactForm">
-        <input type="hidden" name="_subject" value="Nouvelle candidature pilote CampConnect">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <div class="cf-field">
-          <label>Prénom &amp; Nom</label>
-          <input type="text" name="nom" placeholder="Marie Dupont" required>
-        </div>
-        <div class="cf-field">
-          <label>Email professionnel</label>
-          <input type="email" name="email" placeholder="marie@camping-les-pins.fr" required>
-        </div>
-        <div class="cf-field">
-          <label>Nom du camping</label>
-          <input type="text" name="camping" placeholder="Camping Les Pins Dorés" required>
-        </div>
-        <div class="cf-field">
-          <label>Nombre d'emplacements</label>
-          <select name="emplacements">
-            <option>Moins de 50</option>
-            <option>50 – 150</option>
-            <option>150 – 300</option>
-            <option>300 – 600</option>
-            <option>Plus de 600</option>
-          </select>
-        </div>
-        <div class="cf-field">
-          <label>Message (optionnel)</label>
-          <textarea name="message" rows="3" placeholder="Dites-nous en plus sur votre camping ou vos besoins…"></textarea>
-        </div>
-        <button type="submit" id="cfBtn" class="bp" style="width:100%;margin-top:8px;font-size:14px">Envoyer ma candidature →</button>
-      </form>
-      <div class="cf-success" id="cfSuccess">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9,12 11,14 15,10"/></svg>
-        <p style="font-size:16px;font-weight:700;color:var(--gm);margin-bottom:6px">Candidature envoyée !</p>
-        <p style="font-size:13px;color:var(--mu)">Merci ! Nous vous recontactons dans les 48 heures pour discuter de votre camping.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ GUIDE LONG-FORM (SEO) ══════════════ -->
-<section style="background:#faf7f0;border-top:1px solid rgba(0,0,0,0.05)">
+<!-- ══════════════ FAQ ET GUIDE ══════════════ -->
+<section style="background:#faf7f0" id="faq">
   <div class="sec-inner" style="max-width:760px">
-    <div class="rv" style="margin-bottom:34px">
-      <div class="sec-label">Le guide</div>
-      <h2 class="sec-title" style="font-size:clamp(24px,3.2vw,36px)">Tout savoir sur l'<em>application pour camping</em></h2>
+    <div class="rv" style="text-align:center;margin-bottom:30px">
+      <div class="sec-label">Questions fréquentes</div>
+      <h2 class="sec-title" style="font-size:clamp(26px,3.4vw,38px)">Vous vous demandez <em>peut-être</em></h2>
     </div>
-
-    <div class="rv" style="font-size:15.5px;line-height:1.85;color:#3d3d3d;display:flex;flex-direction:column;gap:22px">
+    <div class="faq rv">
+      <details><summary>Combien ça coûte ?</summary><p>De 490 € à 1 290 € par an selon la taille du camping, toutes les fonctions incluses. Pour la saison 2027, 5 campings pilotes l'utilisent gratuitement. <a href="tarifs.html">Voir les tarifs</a></p></details>
+      <details><summary>Faut-il des compétences techniques ?</summary><p>Non. Nous mettons votre espace en place en 48 h et formons votre équipe en 30 minutes. Publier une animation ou une annonce se fait depuis un téléphone.</p></details>
+      <details><summary>Mes vacanciers doivent-ils télécharger quelque chose ?</summary><p>Ils scannent le QR code affiché à l'accueil. Ils peuvent installer l'app (iPhone ou Android) ou rester dans le navigateur, sans compte ni mot de passe.</p></details>
+      <details><summary>Et si un vacancier dérape ?</summary><p>Chaque vacancier peut signaler ou bloquer quelqu'un. De votre côté, vous voyez les signalements, vous pouvez supprimer un message ou exclure un vacancier de votre camping.</p></details>
+      <details class="guide"><summary>Le guide complet : tout savoir sur l'application pour camping</summary>
+    <div style="font-size:15.5px;line-height:1.85;color:#3d3d3d;display:flex;flex-direction:column;gap:22px;padding-top:8px">
       <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a1a1a;margin-top:6px">Pourquoi équiper son camping d'une application mobile ?</h3>
       <p>Le camping a changé. Les vacanciers arrivent avec leur smartphone, réservent en ligne, consultent les avis Google avant de choisir leur destination. Pourtant, une fois sur place, la <strong>communication du camping</strong> repose souvent sur un panneau d'affichage à la réception et un groupe Facebook à l'abandon. Une <strong>application pour camping</strong> comble exactement ce fossé : elle met le programme des animations, la carte du terrain et la vie sociale du camping directement dans la poche de chaque vacancier.</p>
       <p>Concrètement, une <strong>application vacanciers</strong> comme CampConnect répond à trois besoins. D'abord, <em>informer</em> : horaires de la piscine, code Wi-Fi, soirées à venir, tout est accessible sans passer par la réception — et votre équipe répond moins souvent aux mêmes questions. Ensuite, <em>orienter</em> : la carte GPS interactive permet de trouver les sanitaires, le restaurant ou l'emplacement d'un ami en quelques secondes, même dans un camping de 400 emplacements. Enfin, <em>connecter</em> : les groupes spontanés (pétanque, rando, apéro) et le chat redonnent aux campings ce qui a toujours fait leur magie — les rencontres.</p>
@@ -801,6 +634,8 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
       <p>Une <strong>application mobile camping</strong> manipule des données personnelles : pseudos, emplacements, messages. CampConnect a été conçu pour la conformité RGPD dès le départ : hébergement dans l'Union européenne, cloisonnement strict par camping (chaque établissement ne voit que ses propres vacanciers, garanti côté serveur), suppression automatique des données à la fin du séjour, et aucun traceur publicitaire. Vos vacanciers profitent, personne ne les piste.</p>
 
       <p style="background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:14px;padding:18px 22px;font-size:14.5px">💡 <strong>En résumé :</strong> une application pour camping moderne, c'est trois promesses — des vacanciers mieux informés, des animations qui se remplissent, et une équipe déchargée des questions répétitives. Le tout sans compétence technique et sans engagement. <a href="#contact" style="color:#FA8072;font-weight:600">Rejoignez le programme pilote 2027 →</a></p>
+    </div>
+      </details>
     </div>
   </div>
 </section>
@@ -834,7 +669,7 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
       </div>
       <div class="foot-col">
         <h4>Entreprise</h4>
-        <a href="#about">À propos</a>
+        <a href="apropos.html">À propos</a>
         <a href="#contact">Contact</a>
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="confidentialite.html">Confidentialité</a>
@@ -850,7 +685,7 @@ footer{background:var(--gd);padding:clamp(48px,6vw,72px) clamp(20px,4vw,44px) cl
   </div>
   <div class="foot-bottom">
       <p>© 2026 CampConnect. Tous droits réservés.</p>
-      <p>App native Capacitor · iOS &amp; Android · Fait avec ♥ en France</p>
+      <p>iPhone et Android · Fait avec ♥ en France</p>
     </div>
   </div>
 </footer>
@@ -941,72 +776,6 @@ var rvObs=new IntersectionObserver(function(entries){
 },{threshold:0.12});
 rvEls.forEach(function(el){rvObs.observe(el);});
 
-/* ── CONTACT FORM ── */
-document.getElementById('contactForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  var btn=document.getElementById('cfBtn');
-  btn.textContent='Envoi en cours…';
-  btn.disabled=true;
-  var f=this;
-  var data={
-    nom:      f.querySelector('[name=nom]').value.trim(),
-    email:    f.querySelector('[name=email]').value.trim(),
-    camping:  f.querySelector('[name=camping]').value.trim(),
-    emplacements: f.querySelector('[name=emplacements]').value,
-    message:  f.querySelector('[name=message]').value.trim()
-  };
-  try{
-    var res=await fetch('https://tswpintevokeasteyjno.supabase.co/rest/v1/candidatures',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzd3BpbnRldm9rZWFzdGV5am5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwNDM2OTksImV4cCI6MjA5OTYxOTY5OX0.cepTJDe0IlEoevZCDiAsDKLo9BNqqdwWF9O5D9LKRE0',
-        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzd3BpbnRldm9rZWFzdGV5am5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwNDM2OTksImV4cCI6MjA5OTYxOTY5OX0.cepTJDe0IlEoevZCDiAsDKLo9BNqqdwWF9O5D9LKRE0',
-        'Prefer':'return=minimal'
-      },
-      body:JSON.stringify(data)
-    });
-    if(res.ok||res.status===201){
-      if(typeof gtag==='function')gtag('event','generate_lead',{formulaire:'candidature_pilote',emplacements:data.emplacements});
-      f.style.display='none';
-      var s=document.getElementById('cfSuccess');
-      s.style.display='block';
-      s.style.animation='fadeup .6s ease both';
-    }else{
-      var err=await res.json().catch(function(){return{};});
-      console.error('Supabase error',res.status,err);
-      echecEnvoi(btn,data,'Envoi impossible');
-    }
-  }catch(err){
-    console.error(err);
-    echecEnvoi(btn,data,'Connexion impossible');
-  }
-});
-
-// Repli : si l'enregistrement échoue (serveur indisponible, réseau coupé…),
-// on ne perd pas le prospect — on lui propose d'envoyer sa demande par email,
-// pré-remplie avec ce qu'il vient de saisir.
-function echecEnvoi(btn, data, titre){
-  btn.textContent='Réessayer';
-  btn.disabled=false;
-  if(document.getElementById('cfFallback')) return;
-  var sujet=encodeURIComponent('Programme pilote 2027 — '+(data.camping||'candidature'));
-  var corps=encodeURIComponent(
-    'Nom : '+data.nom+'\n'+
-    'Email : '+data.email+'\n'+
-    'Camping : '+data.camping+'\n'+
-    'Emplacements : '+data.emplacements+'\n'+
-    'Message : '+(data.message||'—')
-  );
-  var d=document.createElement('div');
-  d.id='cfFallback';
-  d.style.cssText='margin-top:14px;padding:14px 16px;border-radius:12px;background:#fff5f3;border:1px solid #f8b7ab;font-size:14px;line-height:1.6;color:#8a2f1d';
-  d.innerHTML='<strong>'+titre+' pour le moment.</strong><br>'+
-    'Envoyez-nous directement votre demande — elle est déjà pré-remplie : '+
-    '<a href="mailto:contact@campconnect.fr?subject='+sujet+'&body='+corps+'" '+
-    'style="color:#c2410c;font-weight:700;text-decoration:underline">contact@campconnect.fr</a>';
-  btn.parentNode.insertBefore(d, btn.nextSibling);
-}
 </script>
 </body>
 </html>
