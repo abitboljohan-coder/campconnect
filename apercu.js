@@ -48,6 +48,27 @@
   background:linear-gradient(135deg,#FA8072,#e8664f);border-radius:40px;padding:16px 22px;
   box-shadow:0 12px 30px -8px rgba(250,128,114,.6);transition:transform .2s,box-shadow .2s,opacity .2s}
 .ap-btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -8px rgba(250,128,114,.7)}
+.ap-btn{position:relative;overflow:hidden}
+.ap-btn:after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:apShine 3.4s ease-in-out infinite}
+.ap-ben{list-style:none;padding:0;margin:-6px 0 28px;display:flex;flex-wrap:wrap;gap:8px}
+.ap-ben li{font-size:13px;font-weight:600;color:#eaf5f0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:30px;padding:7px 13px 7px 10px;display:flex;align-items:center;gap:7px}
+.ap-ben li:before{content:'✓';display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#79DBDC;color:#123;font-size:11px;font-weight:900}
+.ap-ff{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 10px 3px rgba(255,220,130,.55);
+  opacity:0;pointer-events:none;animation:apFly 9s ease-in-out infinite}
+.ap-stage{position:relative}
+.ap-bub{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.96);color:#1d2a26;
+  border-radius:16px;padding:10px 14px 10px 10px;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);font-family:'DM Sans',system-ui,sans-serif;
+  max-width:220px;animation:apBub 6s ease-in-out infinite;transition:opacity .5s}
+.ap-sent .ap-bub{opacity:0}
+.ap-bub i{font-style:normal;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;flex:none}
+.ap-bub b{display:block;font-size:13px;line-height:1.25}
+.ap-bub small{display:block;font-size:11.5px;color:#5b6862;line-height:1.3;margin-top:2px}
+.ap-b1{top:190px;left:-118px}.ap-b1 i{background:#fff1ee}
+.ap-b2{top:50%;right:-72px;animation-delay:-2s}.ap-b2 i{background:#e6f5f5}
+.ap-b3{bottom:118px;left:-128px;animation-delay:-4s}.ap-b3 i{background:#eef3ea}
+.ap-cf{position:absolute;top:30%;left:50%;width:9px;height:14px;border-radius:2px;z-index:5;pointer-events:none;animation:apCf 1.6s cubic-bezier(.2,.7,.4,1) forwards}
 .ap-btn:disabled{opacity:.7;cursor:wait;transform:none}
 .ap-fine{font-size:12.5px;color:rgba(234,245,240,.5);margin:12px 0 0;line-height:1.5;text-align:center}
 .ap-err{font-size:13px;color:#ffb4a6;margin:8px 0 0;min-height:0}
@@ -107,6 +128,10 @@
 @keyframes apFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
 @keyframes apBlink{50%{opacity:0}}
 @keyframes apPulse{0%{box-shadow:0 0 0 0 rgba(121,219,220,.55)}70%{box-shadow:0 0 0 9px rgba(121,219,220,0)}100%{box-shadow:0 0 0 0 rgba(121,219,220,0)}}
+@keyframes apShine{0%,55%{left:-60%}100%{left:130%}}
+@keyframes apFly{0%{opacity:0;transform:translate(0,0)}20%{opacity:.9}50%{opacity:.3;transform:translate(var(--x),var(--y))}80%{opacity:.9}100%{opacity:0;transform:translate(0,0)}}
+@keyframes apBub{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes apCf{0%{transform:translate(-50%,0) rotate(0);opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
 @keyframes apPop{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
 .ap-pop{animation:apPop .35s ease}
 
@@ -116,12 +141,13 @@
   .ap-ph{width:280px;height:390px;border-radius:44px 44px 0 0;padding-bottom:0;animation:none;
     -webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
   .ap-sc{border-radius:36px 36px 0 0}
-  .ap-tab,.ap-glow{display:none}
+  .ap-tab,.ap-glow,.ap-bub{display:none}
   .ap-stage{margin-bottom:8px}
   .ap-p,.ap-form,.ap-ok{max-width:none}
 }
 @media (max-width:380px){.ap-ph{width:260px}.ap-hero strong{font-size:19px}.ap-form{padding:18px}.ap-tiles div{font-size:11px}}
-@media (prefers-reduced-motion:reduce){.ap-ph,.ap-tag i,.ap-cur{animation:none}}
+@media (min-width:861px) and (max-width:1100px){.ap-b1,.ap-b3{left:-40px}.ap-b2{right:-40px}.ap-bub{max-width:190px}}
+@media (prefers-reduced-motion:reduce){.ap-ph,.ap-tag i,.ap-cur,.ap-btn:after,.ap-bub,.ap-ff{animation:none}.ap-ff{display:none}}
 `;
 
   function el(tag, cls, txt) {
@@ -138,12 +164,14 @@
 
   function monter(sect) {
     sect.classList.add('ap-sect');
+    var calme = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     sect.innerHTML = `
 <div class="ap-wrap">
   <div class="ap-intro">
     <span class="ap-tag"><i></i>Aperçu gratuit, sans engagement</span>
     <h2 class="ap-h">Voyez <em>votre camping</em> dans l'app.</h2>
     <p class="ap-p">Tapez son nom : il apparaît dans le téléphone. Laissez votre email, et nous vous envoyons l'aperçu complet de votre camping dans CampConnect, prêt à montrer à votre équipe.</p>
+    <ul class="ap-ben"><li>À vos couleurs</li><li>Gratuit, en 30 s</li><li>Sans engagement</li></ul>
   </div>
   <div class="ap-fz">
     <form class="ap-form" novalidate>
@@ -164,6 +192,9 @@
     <div class="ap-ok" role="status"><b></b><p></p></div>
   </div>
   <div class="ap-stage" aria-hidden="true">
+    <div class="ap-bub ap-b1"><i>🔔</i><div><b>Soirée crêpes à 20 h</b><small>Tout le camping est prévenu</small></div></div>
+    <div class="ap-bub ap-b2"><i>✋</i><div><b>Nouvelle inscription</b><small>Tournoi de pétanque</small></div></div>
+    <div class="ap-bub ap-b3"><i>📣</i><div><b>Annonce envoyée</b><small>Piscine ouverte jusqu’à 21 h</small></div></div>
     <div class="ap-ph"><div class="ap-glow"></div><div class="ap-sc">
       <div class="ap-isl"></div>
       <div class="ap-notif"><i>⛺</i><div><b>CampConnect</b><small></small></div></div>
@@ -182,6 +213,16 @@
   </div>
 </div>`;
 
+    for (var f = 0; f < 16; f++) {
+      var ff = el('span', 'ap-ff');
+      ff.style.left = (Math.random() * 100) + '%';
+      ff.style.top = (Math.random() * 100) + '%';
+      ff.style.setProperty('--x', (Math.random() * 80 - 40) + 'px');
+      ff.style.setProperty('--y', (Math.random() * 80 - 40) + 'px');
+      ff.style.animationDelay = (-Math.random() * 9) + 's';
+      ff.style.animationDuration = (7 + Math.random() * 6) + 's';
+      sect.appendChild(ff);
+    }
     var form = sect.querySelector('form'), nom = sect.querySelector('#apNom'), mail = sect.querySelector('#apMail');
     var btn = sect.querySelector('.ap-btn'), err = sect.querySelector('.ap-err'), ok = sect.querySelector('.ap-ok');
     var ecran = sect.querySelector('.ap-nm'), hero = sect.querySelector('.ap-hero'), ic = sect.querySelector('.ap-ic');
@@ -280,6 +321,22 @@
       ok.querySelector('b').textContent = 'C’est noté !';
       ok.querySelector('p').textContent = 'Nous préparons l’aperçu du camping ' + camping + ' et vous l’envoyons sous 48 h. Regardez aussi vos courriers indésirables, au cas où.';
       ok.style.display = 'block';
+      sect.classList.add('ap-sent');
+      if (!calme) confettis();
+    }
+
+    function confettis() {
+      var scene = sect.querySelector('.ap-stage'), tons = ['#FA8072', '#79DBDC', '#9BB98F', '#ffe9a8', couleur.a];
+      for (var k = 0; k < 36; k++) {
+        var c = el('span', 'ap-cf');
+        c.style.background = tons[k % tons.length];
+        c.style.setProperty('--x', (Math.random() * 360 - 180) + 'px');
+        c.style.setProperty('--y', (Math.random() * 320 - 60) + 'px');
+        c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+        c.style.animationDelay = (Math.random() * 0.15) + 's';
+        scene.appendChild(c);
+        setTimeout(c.remove.bind(c), 2000);
+      }
     }
 
     function echec(d) {
