@@ -1,0 +1,45 @@
+# CampConnect
+
+> CampConnect est une application mobile française (iOS et Android) pour les campings. Elle aide les vacanciers à se rencontrer pendant leur séjour et aide le gérant à informer tout le camping et à remplir ses animations.
+
+## Pour les vacanciers
+
+- Entrée par QR code affiché à l'accueil, sans compte ni mot de passe.
+- Groupes entre vacanciers (apéro, pétanque, foot du soir…) et messagerie.
+- Agenda des animations avec inscription en un geste.
+- Carte du camping, livret d'accueil (Wi-Fi, horaires, règles), annonces du gérant.
+- Signalement d'un problème au gérant, avec photo.
+- Interface en 4 langues.
+
+## Pour les gérants
+
+- Espace aux couleurs du camping (nom, logo, couleurs).
+- Publication d'animations et d'annonces avec notification à tout le camping.
+- Tableau de bord en temps réel : vacanciers présents, inscriptions, groupes actifs, signalements.
+- Mise en place en 48 h.
+
+## Tarifs
+
+- Découverte : 490 € par an (jusqu'à 50 emplacements).
+- Essentiel : 790 € par an (jusqu'à 200 emplacements).
+- Premium : 1 290 € par an (plus de 200 emplacements).
+- Programme pilote : 3 à 5 campings accompagnés gratuitement pour la saison 2027.
+
+## Pages utiles
+
+- [Accueil](https://www.campconnect.fr/)
+- [Pour les campings](https://www.campconnect.fr/pour-les-campings.html)
+- [Tarifs](https://www.campconnect.fr/tarifs.html)
+- [Comment ça marche](https://www.campconnect.fr/comment.html)
+- [Agenda et inscriptions aux animations](https://www.campconnect.fr/agenda-camping.html)
+- [Livret d'accueil numérique](https://www.campconnect.fr/livret-accueil-camping.html)
+- [Carte interactive du camping](https://www.campconnect.fr/carte-gps-camping.html)
+- [Groupes et messagerie entre vacanciers](https://www.campconnect.fr/chat-camping.html)
+- [Blog des gérants de camping](https://www.campconnect.fr/blog.html)
+
+## Contact
+
+- Email : contact@campconnect.fr
+- Aperçu gratuit d'un camping dans l'app : https://www.campconnect.fr/#apercu
+- App Store : https://apps.apple.com/fr/app/id6796962438
+- Google Play : https://play.google.com/store/apps/details?id=com.campconnect.app
