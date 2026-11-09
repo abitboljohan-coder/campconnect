@@ -70,6 +70,7 @@
 .ap-b3{bottom:118px;left:-108px;animation-delay:-4s}.ap-b3 i{background:#eef3ea}
 .ap-cf{position:absolute;top:30%;left:50%;width:9px;height:14px;border-radius:2px;z-index:5;pointer-events:none;animation:apCf 1.6s cubic-bezier(.2,.7,.4,1) forwards}
 .ap-btn:disabled{opacity:.7;cursor:wait;transform:none}
+.ap-alt{margin:14px 0 0;font-size:14.5px;color:rgba(255,255,255,.75);text-align:center;line-height:1.5}.ap-alt a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .ap-fine{font-size:12.5px;color:rgba(234,245,240,.5);margin:12px 0 0;line-height:1.5;text-align:center}
 .ap-err{font-size:13px;color:#ffb4a6;margin:8px 0 0;min-height:0}
 .ap-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
@@ -188,6 +189,7 @@
       <button class="ap-btn" type="submit">Recevoir l'aperçu de mon camping →</button>
       <p class="ap-err" role="alert"></p>
       <p class="ap-fine">Réponse sous 48 h. Votre email sert uniquement à vous envoyer l'aperçu.</p>
+      <p class="ap-alt">Plus simple ? <a href="tel:+33651749493" data-ev="contact_telephone">Appelez Johan</a> ou <a href="https://wa.me/33651749493?text=Bonjour%20Johan%2C%20je%20g%C3%A8re%20un%20camping%20et%20je%20voudrais%20voir%20CampConnect." target="_blank" rel="noopener" data-ev="contact_whatsapp">écrivez-lui sur WhatsApp</a> · 06 51 74 94 93</p>
     </form>
     <div class="ap-ok" role="status"><b></b><p></p></div>
   </div>
@@ -283,6 +285,11 @@
     nom.addEventListener('input', function () { stopDemo(); afficher(nettoyer(nom.value), true); });
     nom.addEventListener('blur', function () { afficher(nettoyer(nom.value) || EXEMPLES[0], false); });
 
+    sect.querySelectorAll('.ap-alt a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') gtag('event', a.getAttribute('data-ev'), { page: location.pathname });
+      });
+    });
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       err.textContent = '';
